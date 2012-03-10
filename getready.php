@@ -1,4 +1,9 @@
 <?php
+$game = $_REQUEST['game'];
+if (!isset($game)) {
+exit("game not set");
+}
+
 $host = "localhost"; //database location
 $user = "yasyfcom_play"; //database username
 $pass = "Brentwood!"; //database password

@@ -1,4 +1,8 @@
 <?php
+$game = $_REQUEST['game'];
+if (!isset($game)) {
+exit("game not set");
+}
 
 	$host = "localhost"; //database location
 	$user = "yasyfcom_play"; //database username
@@ -11,7 +15,7 @@
 	if ($player == 1) //side-scrolling player
 	{ 
 		$player1y = $_REQUEST['player1y'];
-		$sql = "UPDATE `yasyfcom_play`.`game1`
+		$sql = "UPDATE `yasyfcom_play`.`".$game."`
 		SET player1y=".$player1y."
 		WHERE turn=".$turn;
 		mysql_query($sql);
@@ -23,7 +27,7 @@
 	$box2y = $_REQUEST['box2y']; //new box2y
 	$box3y = $_REQUEST['box3y']; //new box3y
 	
-		$sql = "UPDATE `yasyfcom_play`.`game1`
+		$sql = "UPDATE `yasyfcom_play`.`".$game."`
 			SET box1y=".$box1y.",box2y=".$box2y.",box3y=".$box3y."
 			WHERE turn=".$turn;
 		mysql_query($sql);

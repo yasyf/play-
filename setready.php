@@ -1,4 +1,9 @@
 <?php
+$game = $_REQUEST['game'];
+if (!isset($game)) {
+exit("game not set");
+}
+
 $host = "localhost"; //database location
 $user = "yasyfcom_play"; //database username
 $pass = "Brentwood!"; //database password
@@ -9,7 +14,7 @@ $player = $_REQUEST['player'];
 $turn = $_REQUEST['turn']; //current turn
 if ($player == 1) //side-scrolling player
 { 
-	$sql = "UPDATE `yasyfcom_play`.`game1`
+	$sql = "UPDATE `yasyfcom_play`.`".$game."`
 	SET player1ready=1
 	WHERE turn=".$turn;
 	mysql_query($sql);
@@ -17,7 +22,7 @@ if ($player == 1) //side-scrolling player
 }
 elseif ($player == 2) //box-dropping player
 { 
-	$sql = "UPDATE `yasyfcom_play`.`game1`
+	$sql = "UPDATE `yasyfcom_play`.`".$game."`
 	SET player2ready=1
 	WHERE turn=".$turn;
 	mysql_query($sql);

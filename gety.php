@@ -1,4 +1,8 @@
 <?php
+$game = $_REQUEST['game'];
+if (!isset($game)) {
+exit("game not set");
+}
 
 	$host = "localhost"; //database location
 	$user = "yasyfcom_play"; //database username
@@ -11,7 +15,7 @@
 	if ($player == 1) //side-scrolling player
 	{ 
 		$sql = "SELECT player1y
-		 FROM `yasyfcom_play`.`game1`
+		 FROM `yasyfcom_play`.`".$game."`
 		WHERE turn=".$turn;
 		$result = mysql_query($sql);
 		while($data = mysql_fetch_row($result)){
@@ -23,7 +27,7 @@
 	{ 
 	$box = $_REQUEST['box']; //box to get
 	$sql = "SELECT box".$box."y
-		 FROM `yasyfcom_play`.`game1`
+		 FROM `yasyfcom_play`.`".$game."`
 		WHERE turn=".$turn;
 		$result = mysql_query($sql);
 		while($data = mysql_fetch_row($result)){
