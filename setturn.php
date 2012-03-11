@@ -12,8 +12,8 @@ mysql_select_db($db_name);
 $turn = $_REQUEST['turn']; //new (next) turn
 
 $sql = "INSERT INTO `yasyfcom_play`.`".$game."`(`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`)
-(SELECT box1y, box1x, box2y, box2x, box3y, box3x, player1y, player1x, ".$turn.", player1ready, player2ready
+(SELECT box1y, box1x, box2y, box2x, box3y, box3x, player1y, player1x, ".$turn.", 0, 0
 FROM `yasyfcom_play`.`".$game."` WHERE turn=".($turn - 1).")";
-	mysql_query($sql);
+	mysql_query($sql)or die(mysql_error());
 
 ?>

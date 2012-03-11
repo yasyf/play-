@@ -3,7 +3,6 @@ $game = $_REQUEST['game'];
 if (!isset($game)) {
 exit("game not set");
 }
-
 	$host = "localhost"; //database location
 	$user = "yasyfcom_play"; //database username
 	$pass = "Brentwood!"; //database password
@@ -18,7 +17,7 @@ exit("game not set");
 		$sql = "UPDATE `yasyfcom_play`.`".$game."`
 		SET player1y=".$player1y."
 		WHERE turn=".$turn;
-		mysql_query($sql);
+		mysql_query($sql)or die(mysql_error());
 
 	}
 	elseif ($player == 2) //box-dropping player

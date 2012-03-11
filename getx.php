@@ -31,7 +31,7 @@ exit("game not set");
 		WHERE turn=".$turn;
 		$result = mysql_query($sql);
 		while($data = mysql_fetch_row($result)){
-		   echo("box."$box."x=$data[0]");
+		   echo("box".$box."x=$data[0]");
 		}
 
 	}
