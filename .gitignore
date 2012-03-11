@@ -32,9 +32,9 @@
 *.jpeg
 *.tiff
 *.png
-*.flv
-*.fla
-*.swf
+#*.flv
+#*.fla
+#*.swf
 *.gif
 *.psb
 *.psd
