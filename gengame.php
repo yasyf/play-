@@ -17,6 +17,6 @@ while (!$finished) {
 	$finished = true;
 	}
 }
-echo($table);
+echo("game=$table");
 
 ?>
