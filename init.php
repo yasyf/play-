@@ -9,8 +9,7 @@ $pass = "Brentwood!"; //database password
 $db_name = "yasyfcom_play"; //database name
 $link = mysql_connect($host, $user, $pass);
 mysql_select_db($db_name);
-$sql = "
-DROP TABLE IF EXISTS `".$game."`"; //wipe and start over
+$sql = "DROP TABLE IF EXISTS `".$game."`"; //wipe and start over
 mysql_query($sql)or die(mysql_error());
 $sql3 = "CREATE TABLE IF NOT EXISTS `".$game."` (
   `box1y` int(1) NOT NULL,

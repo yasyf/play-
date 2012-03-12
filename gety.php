@@ -25,7 +25,7 @@ exit("game not set");
 	}
 	elseif ($player == 2) //box-dropping player
 	{ 
-	$box = $_REQUEST['box']; //box to get
+//	$box = $_REQUEST['box']; //box to get
 	$sql = "SELECT box1y,box2y,box3y
 		 FROM `yasyfcom_play`.`".$game."`
 		WHERE turn=".$turn;
