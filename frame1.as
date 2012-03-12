@@ -14,6 +14,20 @@ function getReady()
 		}
 		//getready
 }
+function checkFound()
+{
+	_root.opponentFinding = true;
+	opponentFoundd = new LoadVars(); 
+opponentFoundd.player = _root.player;
+opponentFoundd.game = _root.game;
+opponentFoundd.sendAndLoad("http://direct.yasyf.com/play/checkgame.php", opponentFoundd, "POST");
+opponentFoundd.onLoad = function (success) {
+	_root.opponentFound = opponentFoundd.opponentFound;
+	trace("Opponent Found:" + _root.opponentFound);
+	_root.opponentFinding = false;
+											}
+											
+}
 function getVars()
 {
 	_root.getxbool = false;
@@ -109,12 +123,15 @@ function plusTurn()
 }
 function exit()
 {
-	exit = new LoadVars();
-	exit.game = _root.game;
-	exit.sendAndLoad("http://direct.yasyf.com/play/exit.php", exit, "POST");
-	exit.onLoad = function (success) {
-		
+	 _root.exiterbool = false;
+	exiter = new LoadVars();
+	exiter.game = _root.game;
+	exiter.sendAndLoad("http://direct.yasyf.com/play/exit.php", exiter, "POST");
+	exiter.onLoad = function (success) {
+		_root.exiterbool = true;
+		trace("exit cleanup done");
 	}
+
 }
 function sendVars()
 {
@@ -155,6 +172,8 @@ function sendVars()
 }
 _root.player = 1; //side scroller
 _root.turn = 1;
+_root.opponentFinding = false;
+_root.opponentFound = false;
 _root.loading.embedFonts = false;
 gameTable = new LoadVars(); 
 gameTable.player = _root.player;
@@ -170,6 +189,8 @@ gameTable.onLoad = function (success) {
 		trace ("Game Table Initialized"); //game table now initialized
 		getVars();
 		getReady();
+		
+		
 		}
 } 
 
