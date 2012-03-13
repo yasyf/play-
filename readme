@@ -3,6 +3,10 @@ accept arguments: `box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1
 
 v1 - flash files
 multiplayer framework (ActionScript 2)
+play - player one - side scroller
+player2 - player two - box dropper
 
 v2 - flash files
 game framework [animation with graphic placeholders]
+play - player one - side scroller
+player2 - player two - box dropper
