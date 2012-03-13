@@ -1,0 +1,8 @@
+API - php files
+accept arguments: `box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`
+
+v1 - flash files
+multiplayer framework (ActionScript 2)
+
+v2 - flash files
+game framework [animation with graphic placeholders]
