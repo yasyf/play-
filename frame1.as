@@ -38,7 +38,7 @@ function getVars()
 	//getx
 		getx = new LoadVars();
 		getx.game = _root.game;
-		getx.player = _root.player;
+		getx.player = 1;
 		getx.turn = _root.turn;
 		getx.sendAndLoad("http://direct.yasyf.com/play/getx.php", getx, "POST");
 		getx.onLoad = function (success) {
@@ -52,7 +52,7 @@ function getVars()
 		//gety
 		gety = new LoadVars();
 		gety.game = _root.game;
-		gety.player = _root.player;
+		gety.player = 1;
 		gety.turn = _root.turn;
 		gety.sendAndLoad("http://direct.yasyf.com/play/gety.php", gety, "POST");
 		gety.onLoad = function (success) {
@@ -73,7 +73,9 @@ function getVars()
 			_root.box2x = getboxx.box2x;
 			_root.box3x = getboxx.box3x;
 			_root.getboxxbool = true;
-					trace("updated boxX");
+					trace("box1x:" + _root.box1x);
+					trace("box2x:" + _root.box2x);
+					trace("box3x:" + _root.box3x);
 		}
 		//getboxx
 		//--
@@ -89,7 +91,9 @@ function getVars()
 			_root.box2y = getboxy.box2y;
 			_root.box3y = getboxy.box3y;
 			_root.getboxybool = true;
-					trace("updated boxY");
+					trace("box1y:" + _root.box1y);
+					trace("box2y:" + _root.box2y);
+					trace("box3y:" + _root.box3y);
 		}
 		//getboxx
 		//--
@@ -97,7 +101,8 @@ function getVars()
 }
 function plusTurn()
 {
-	    setturn = new LoadVars();
+	    _root.setturnbool = false;
+		setturn = new LoadVars();
 		setturn.game = _root.game;
 		setturn.player = _root.player;
 		setturn.turn = (_root.turn +1);
@@ -105,7 +110,7 @@ function plusTurn()
 		setturn.onLoad = function (success) {
 			_root.turn ++;
 		trace ("Next Turn! (Turn "+ _root.turn+")"); //Next Turn
-		_root.getreadybool = false;
+			_root.setturnbool = true;
 			//getready
 		getready = new LoadVars();
 		getready.game = _root.game;
@@ -114,7 +119,7 @@ function plusTurn()
 		getready.sendAndLoad("http://direct.yasyf.com/play/getready.php", getready, "POST");
 		getready.onLoad = function (success) {
 			_root.player2ready = getready.player2ready;
-			_root.getreadybool = true;
+
 					trace("player2ready: " + getready.player2ready);
 		}
 		//getready
@@ -123,7 +128,7 @@ function plusTurn()
 }
 function exit()
 {
-	 _root.exiterbool = false;
+
 	exiter = new LoadVars();
 	exiter.game = _root.game;
 	exiter.sendAndLoad("http://direct.yasyf.com/play/exit.php", exiter, "POST");
@@ -172,6 +177,8 @@ function sendVars()
 }
 _root.player = 1; //side scroller
 _root.turn = 1;
+_root.timout = 1;
+_root.timout = 1;
 _root.opponentFinding = false;
 _root.opponentFound = false;
 _root.loading.embedFonts = false;
