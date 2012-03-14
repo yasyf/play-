@@ -10,3 +10,8 @@ v2 - flash files
 game framework [animation with graphic placeholders]
 play - player one - side scroller
 player2 - player two - box dropper
+
+v3 - flash files
+game framework combined [animation with both player's objects with graphic placeholders]
+play - player one - side scroller with boxes
+player2 - player two - box dropper with player
