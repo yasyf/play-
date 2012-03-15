@@ -15,7 +15,7 @@ $sql2 =  "SELECT *
 		 FROM `yasyfcom_play`.`".$game."`
 		WHERE turn=".($turn + 1);
 		$result=@mysql_query($sql2);
-		$data = mysql_fetch_row($result);
+		$data = @mysql_fetch_row($result);
 		
 		if (!$data)
 					{
