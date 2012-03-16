@@ -26,6 +26,6 @@ $sql3 = "CREATE TABLE IF NOT EXISTS `".$game."` (
   PRIMARY KEY  (`turn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;";
 mysql_query($sql3)or die(mysql_error()); //create and format table
-$sql2 = "INSERT INTO `yasyfcom_play`.`".$game."` (`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`) VALUES ('2', '1', '2', '3', '2', '5', '2', '3', '1', '1', '1')";
+$sql2 = "INSERT INTO `yasyfcom_play`.`".$game."` (`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`) VALUES ('2', '1', '2', '3', '2', '5', '2', '3', '1', '0', '0')";
 mysql_query($sql2)or die(mysql_error()); //populate starting data
 ?>
