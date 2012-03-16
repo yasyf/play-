@@ -14,6 +14,7 @@ exit("game not set");
 	if ($player == 1) //side-scrolling player
 	{ 
 		$player1x = $_REQUEST['player1x']; //new player1x
+		
 		$sql = "UPDATE `yasyfcom_play`.`".$game."`
 		SET player1x=".$player1x."
 		WHERE turn=".$turn;

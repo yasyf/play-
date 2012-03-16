@@ -10,8 +10,26 @@ exit("game not set");
 	$db_name = "yasyfcom_play"; //database name
 	$link = mysql_connect($host, $user, $pass);
 	mysql_select_db($db_name);
+	$player = $_REQUEST['player'];
 	$turn = $_REQUEST['turn']; //current turn
-$sql2 =  "SELECT *
+	
+	if ($player == 1) //side-scrolling player
+	{ 
+		$sql3 = "UPDATE `yasyfcom_play`.`".$game."`
+		SET player1ready=1
+		WHERE turn=".$turn;
+		mysql_query($sql3);
+
+	}
+	elseif ($player == 2) //box-dropping player
+	{ 
+		$sql3 = "UPDATE `yasyfcom_play`.`".$game."`
+		SET player2ready=1
+		WHERE turn=".$turn;
+		mysql_query($sql3);
+
+	}
+      $sql2 =  "SELECT *
 		 FROM `yasyfcom_play`.`".$game."`
 		WHERE turn=".($turn + 1);
 		$result=@mysql_query($sql2);
