@@ -28,11 +28,23 @@
 
 	
 	
-	$sql = "SELECT player1x,player1y,player1ready
+	$sql = "SELECT player1x,player1y
 			 FROM `yasyfcom_play`.`".$game."`
 			WHERE turn=".$turn;
 			$result = mysql_query($sql);
 				while($data = mysql_fetch_row($result)){
-				   echo("player1x=$data[0]&player1y=$data[1]&player1ready=$data[2]");
+				   echo("player1x=$data[0]&player1y=$data[1]");
 				}
+					
+			
+				$sql3 = "SELECT player1ready
+															 FROM `yasyfcom_play`.`".$game."`
+															WHERE turn=".$turn;
+				
+			
+					
+							$result = mysql_query($sql3);
+								while($data = mysql_fetch_row($result)){
+								   echo("&player1ready=$data[0]");
+								}
 ?>

@@ -15,7 +15,7 @@ $turn = $_REQUEST['turn']; //current turn
 if ($player == 1) //side-scrolling player
 { 
 	$sql = "UPDATE `yasyfcom_play`.`".$game."`
-	SET player1ready=1
+	SET player1ready=0
 	WHERE turn=".$turn;
 	mysql_query($sql);
 
