@@ -20,3 +20,6 @@ v4 - flash files
 game framework and multiplayer framework integration [with placeholder graphics]
 play - player one - side scroller with boxes
 player2 - player two - box dropper with player
+
+*Notes*
+-For my sanity, these will be the basic grid of the game. All external backgrounds/surroundings will be a SEPARATE flash file, so that I do not have to recode everything!
