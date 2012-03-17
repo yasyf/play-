@@ -1,0 +1,2 @@
+1. Adjust reset and fall timing so both players match
+2. Add hittests for both players upon box "landing", before reset.
