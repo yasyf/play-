@@ -23,3 +23,5 @@ player2 - player two - box dropper with player
 
 *Notes*
 -For my sanity, these will be the basic grid of the game. All external backgrounds/surroundings will be a SEPARATE flash file, so that I do not have to recode everything!
+-External .as files are not up-to-date or reliable, and should not be referred to except for base framework code.
+-ChangeLog is auto generated, and up-to-date since the second-latest commit (HEAD~1).
