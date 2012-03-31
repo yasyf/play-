@@ -7,13 +7,7 @@
 		if (!isset($turn)) {
 		exit("turn not set");
 		}
-	$host = "localhost"; //database location
-	$user = "yasyfcom_play"; //database username
-	$pass = "Brentwood!"; //database password
-	$db_name = "yasyfcom_play"; //database name
-	$link = mysql_connect($host, $user, $pass);
-	mysql_select_db($db_name);
-	
+	include 'vars.php';	
 	$player1x = $_REQUEST['player1x'];
 	$player1y = $_REQUEST['player1y'];  
 	$setready = $_REQUEST['setready'];  

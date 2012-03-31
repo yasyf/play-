@@ -1,11 +1,6 @@
 <?php
 //JUST check for current games
-	$host = "localhost"; //database location
-	$user = "yasyfcom_play"; //database username
-	$pass = "Brentwood!"; //database password
-	$db_name = "yasyfcom_play"; //database name
-	$link = mysql_connect($host, $user, $pass);
-	mysql_select_db($db_name);
+include 'vars.php';
 	$sql = "SELECT `table` FROM `active`";
 		$result = mysql_query($sql);
 			$data = mysql_fetch_row($result);

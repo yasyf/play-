@@ -4,13 +4,7 @@
 	if (!isset($player)) {
 	exit("player not set");
 	}
-	$host = "localhost"; //database location
-	$user = "yasyfcom_play"; //database username
-	$pass = "Brentwood!"; //database password
-	$db_name = "yasyfcom_play"; //database name
-	$link = mysql_connect($host, $user, $pass);
-	mysql_select_db($db_name);
-	switch ($player) {
+	$include 'vars.php';	switch ($player) {
 			case 1:
 			$opponent = 2;
 			break;
