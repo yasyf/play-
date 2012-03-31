@@ -1,5 +1,6 @@
 import mx.transitions.Tween;
 import mx.transitions.easing.*;
+serverloc = "http://direct.yasyf.com/play/";
 function gridY(celly, object)
 {
 	//I <3 Math
@@ -94,7 +95,8 @@ function fall()
 			var tweenSmall:Tween = new Tween(this, "scalefactor", Regular.easeOut, scalefactor, 0, 1, true);
 			tweenSmall.onMotionFinished = function()
 			{
-				_root.reset();
+				
+				_root.resetready = true;
 				_root.motion = false;
 
 			};
@@ -159,7 +161,7 @@ function getReady()
 	getready.game = _root.game;
 	getready.player = _root.iamplayer;
 	getready.turn = _root.turn;
-	getready.sendAndLoad("http://direct.yasyf.com/play/getready.php",getready,"POST");
+	getready.sendAndLoad(serverloc + "getready.php",getready,"POST");
 	getready.onLoad = function(success)
 	{
 		_root.player1ready = getready.player1ready;
@@ -174,7 +176,7 @@ function checkFound()
 	opponentFoundd = new LoadVars();
 	opponentFoundd.player = _root.iamplayer;
 	opponentFoundd.game = _root.game;
-	opponentFoundd.sendAndLoad("http://direct.yasyf.com/play/checkgame.php",opponentFoundd,"POST");
+	opponentFoundd.sendAndLoad(serverloc + "checkgame.php",opponentFoundd,"POST");
 	opponentFoundd.onLoad = function(success)
 	{
 		_root.opponentFound = opponentFoundd.opponentFound;
@@ -192,7 +194,7 @@ function plusTurn()
 	setturn.game = _root.game;
 	setturn.player = _root.iamplayer;
 	setturn.turn = _root.turn;
-	setturn.sendAndLoad("http://direct.yasyf.com/play/setturn.php",setturn,"POST");
+	setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
 	setturn.onLoad = function(success)
 	{
 		_root.movemade = false;
@@ -207,7 +209,7 @@ function exit()
 
 	exiter = new LoadVars();
 	exiter.game = _root.game;
-	exiter.sendAndLoad("http://direct.yasyf.com/play/exit.php",exiter,"POST");
+	exiter.sendAndLoad(serverloc + "exit.php",exiter,"POST");
 	exiter.onLoad = function(success)
 	{
 		_root.exiterbool = true;
@@ -222,14 +224,16 @@ function sendReceive(ismovemade)
 	variables.game = _root.game;
 	variables.turn = _root.turn;
 	
-	_root.box2x = _root.box2.cellx;
-	_root.box2y = _root.box2.celly;
-	_root.box1x = _root.box1.cellx;
-	_root.box1y = _root.box1.celly;
-	_root.box3x = _root.box3.cellx;
-	_root.box3y = _root.box3.celly;
+	variables.box2x = _root.box2.cellx;
+	variables.box2y = _root.box2.celly;
+	variables.box1x = _root.box1.cellx;
+	variables.box1y = _root.box1.celly;
+	variables.box3x = _root.box3.cellx;
+	variables.box3y = _root.box3.celly;
 	
-	variables.sendAndLoad("http://direct.yasyf.com/play/player2.php",variables,"POST");
+	
+	
+	variables.sendAndLoad(serverloc + "player2.php",variables,"POST");
 	variables.onLoad = function(success)
 	{
 		_root.player1ready = variables.player1ready;
@@ -282,6 +286,7 @@ _root.timer = 1;
 _root.opponentFinding = false;
 _root.opponentFound = false;
 _root.init = true;
+_root.myonemove = true;
 //columns
 for (i = 3; i >= 1; i--)
 {
@@ -306,11 +311,6 @@ for (i = 3; i >= 1; i--)
 		grid_container["cell" + counter].onRelease = function()
 		{
 			trace(this._name + " (" + this.cellx + "," + this.celly + ")");
-			if (_root.resetsafe)
-			{
-
-				fall();
-			}
 
 		};
 
@@ -321,7 +321,7 @@ for (i = 3; i >= 1; i--)
 }
 gameTable = new LoadVars();
 gameTable.player = _root.iamplayer;
-gameTable.sendAndLoad("http://direct.yasyf.com/play/gengame.php",gameTable,"POST");
+gameTable.sendAndLoad(serverloc + "gengame.php",gameTable,"POST");
 gameTable.onLoad = function(success)
 {
 	_root.game = this.game;
@@ -329,7 +329,7 @@ gameTable.onLoad = function(success)
 	gameInit = new LoadVars();
 	gameInit.game = _root.game;
 	gameInit.player = _root.iamplayer;
-	gameInit.sendAndLoad("http://direct.yasyf.com/play/init.php",gameInit,"POST");
+	gameInit.sendAndLoad(serverloc + "init.php",gameInit,"POST");
 	gameInit.onLoad = function(success)
 	{
 		trace("Game Table Initialized");//game table now initialized

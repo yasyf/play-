@@ -1,15 +1,26 @@
 import mx.transitions.Tween;
 import mx.transitions.easing.*;
+serverloc = serverloc + "";
 function sendReceive(ismovemade)
 {
-_root.sendReceivebool = false;
+	_root.sendReceivebool = false;
 	variables = new LoadVars();
 	variables.game = _root.game;
 	variables.turn = _root.turn;
 	variables.player1x = _root.player.cellx;
 	variables.player1y = _root.player.celly;
-	
-	variables.sendAndLoad("http://direct.yasyf.com/play/player1.php",variables,"POST");
+
+	if (ismovemade)
+	{
+		variables.setready = true;
+
+	}
+	else
+	{
+		variables.setready = false;
+	}
+
+	variables.sendAndLoad(serverloc + "player1.php",variables,"POST");
 	variables.onLoad = function(success)
 	{
 		_root.player2ready = variables.player2ready;
@@ -19,20 +30,20 @@ _root.sendReceivebool = false;
 		_root.box1y = variables.box1y;
 		_root.box2y = variables.box2y;
 		_root.box3y = variables.box3y;
-		
-        _root.sendReceivebool = true;
+
+		_root.sendReceivebool = true;
 		_root.getreadybool = true;
-		
+
 		trace("box1x:" + _root.box1x);
 		trace("box2x:" + _root.box2x);
-		trace("box3x:" + _root.box3x);	
+		trace("box3x:" + _root.box3x);
 		trace("box1y:" + _root.box1y);
 		trace("box2y:" + _root.box2y);
 		trace("box3y:" + _root.box3y);
 		trace("player2ready: " + variables.player2ready);
 		trace("New Y Set! (Y=" + variables.player1y + ")");
 		trace("New X Set! (X=" + variables.player1x + ")");
-		
+
 		_root.gridX(_root.box1x,_root.box1);
 		_root.gridX(_root.box2x,_root.box2);
 		_root.gridX(_root.box3x,_root.box3);
@@ -46,16 +57,17 @@ _root.sendReceivebool = false;
 		var tweenY1:Tween = new Tween(_root.box1, "_y", Regular.easeOut, _root.box1._y, _root.box1.gridy, 1, true);
 		var tweenY2:Tween = new Tween(_root.box2, "_y", Regular.easeOut, _root.box2._y, _root.box2.gridy, 1, true);
 		var tweenY3:Tween = new Tween(_root.box3, "_y", Regular.easeOut, _root.box3._y, _root.box3.gridy, 1, true);
-	
+
 		if (ismovemade)
 		{
 			_root.movemade = true;
 			trace("recorded move, sent");
 
+
 		}
 	};
-}	
-	
+}
+
 function getReady()
 {
 	_root.getreadybool = false;
@@ -64,7 +76,7 @@ function getReady()
 	getready.game = _root.game;
 	getready.player = _root.iamplayer;
 	getready.turn = _root.turn;
-	getready.sendAndLoad("http://direct.yasyf.com/play/getready.php",getready,"POST");
+	getready.sendAndLoad(serverloc + "getready.php",getready,"POST");
 	getready.onLoad = function(success)
 	{
 		_root.player2ready = getready.player2ready;
@@ -81,7 +93,7 @@ function checkFound()
 	opponentFoundd = new LoadVars();
 	opponentFoundd.player = _root.iamplayer;
 	opponentFoundd.game = _root.game;
-	opponentFoundd.sendAndLoad("http://direct.yasyf.com/play/checkgame.php",opponentFoundd,"POST");
+	opponentFoundd.sendAndLoad(serverloc + "checkgame.php",opponentFoundd,"POST");
 	opponentFoundd.onLoad = function(success)
 	{
 		_root.opponentFound = opponentFoundd.opponentFound;
@@ -93,12 +105,49 @@ function plusTurn()
 {
 
 	_root.setturnbool = false;
+	if (_root.box1.scalefactor < 100)
+	{
+		var tweenGrow1:Tween = new Tween(_root.box1, "scalefactor", Regular.easeOut, _root.box1.scalefactor, _root.box1.scalefactor * 1.15, 1, true);
+		tweenGrow.onMotionFinished = function()
+		{
+			_root.box1.scalefactor = _root.box1.scalefactor * 1.15;
+		};
+		var tweenGrow2:Tween = new Tween(_root.box2, "scalefactor", Regular.easeOut, _root.box2.scalefactor, _root.box2.scalefactor * 1.15, 1, true);
+		tweenGrow.onMotionFinished = function()
+		{
+			_root.box2.scalefactor = _root.box2.scalefactor * 1.15;
+		};
+		var tweenGrow3:Tween = new Tween(_root.box3, "scalefactor", Regular.easeOut, _root.box3.scalefactor, _root.box3.scalefactor * 1.15, 1, true);
+		tweenGrow.onMotionFinished = function()
+		{
+			_root.box3.scalefactor = _root.box3.scalefactor * 1.15;
+		};
 
+
+	}
+	else
+	{
+		var tweenGrow1:Tween = new Tween(_root.box1, "scalefactor", Regular.easeOut, _root.box1.scalefactor, 10, 1, true);
+		tweenGrow.onMotionFinished = function()
+		{
+			_root.box1.scalefactor = 10;
+		};
+		var tweenGrow2:Tween = new Tween(_root.box2, "scalefactor", Regular.easeOut, _root.box2.scalefactor, 10, 1, true);
+		tweenGrow.onMotionFinished = function()
+		{
+			_root.box2.scalefactor = 10;
+		};
+		var tweenGrow3:Tween = new Tween(_root.box3, "scalefactor", Regular.easeOut, _root.box3.scalefactor, 10, 1, true);
+		tweenGrow.onMotionFinished = function()
+		{
+			_root.box3.scalefactor = 10;
+		};
+	}
 	setturn = new LoadVars();
 	setturn.game = _root.game;
 	setturn.player = _root.iamplayer;
 	setturn.turn = _root.turn;
-	setturn.sendAndLoad("http://direct.yasyf.com/play/setturn.php",setturn,"POST");
+	setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
 	setturn.onLoad = function(success)
 	{
 		_root.movemade = false;
@@ -106,14 +155,14 @@ function plusTurn()
 		trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
 		_root.setturnbool = true;
 	};
-	
+
 }
 function exit()
 {
 
 	exiter = new LoadVars();
 	exiter.game = _root.game;
-	exiter.sendAndLoad("http://direct.yasyf.com/play/exit.php",exiter,"POST");
+	exiter.sendAndLoad(serverloc + "exit.php",exiter,"POST");
 	exiter.onLoad = function(success)
 	{
 		_root.exiterbool = true;
@@ -171,6 +220,7 @@ initX = 0;
 initY = 0;
 counter = 0;
 turn = 1;
+_root.resetsafe = true;
 _root.iamplayer = 1;//side scroller
 _root.opponent = 2;
 _root.timer = 1;
@@ -178,6 +228,7 @@ _root.timout = 1;
 _root.opponentFinding = false;
 _root.opponentFound = false;
 _root.init = true;
+_root.myonemove = true;
 //columns
 for (i = 3; i >= 1; i--)
 {
@@ -211,7 +262,7 @@ for (i = 3; i >= 1; i--)
 }
 gameTable = new LoadVars();
 gameTable.player = _root.iamplayer;
-gameTable.sendAndLoad("http://direct.yasyf.com/play/gengame.php",gameTable,"POST");
+gameTable.sendAndLoad(serverloc + "gengame.php",gameTable,"GET");
 gameTable.onLoad = function(success)
 {
 	_root.game = this.game;
@@ -219,7 +270,7 @@ gameTable.onLoad = function(success)
 	gameInit = new LoadVars();
 	gameInit.game = _root.game;
 	gameInit.player = _root.iamplayer;
-	gameInit.sendAndLoad("http://direct.yasyf.com/play/init.php",gameInit,"POST");
+	gameInit.sendAndLoad(serverloc + "init.php",gameInit,"POST");
 	gameInit.onLoad = function(success)
 	{
 		trace("Game Table Initialized");//game table now initialized
