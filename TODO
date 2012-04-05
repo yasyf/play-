@@ -1,3 +1,9 @@
 //1. Adjust reset and fall timing so both players match
 2. Add hittests for both players upon box "landing", before reset.
 3. Make cage bottom transparent
+4. Turn player1 into 2D side-scrolling veiw
+//5. Turn-based logic
+//6. Database functionaliy
+//7. PHP backend/API
+//8. Grid Framework
+//9. Automatic animation and framework code
