@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>/Users/yasyf/Sites/testnew/play/sety.php</title>
+<style type="text/css">
+<!--
+body.hl	{ background-color:#000000; }
+pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Courier New;}
+.num	{ color:#ff00ff; }
+.esc	{ color:#cd00ff; }
+.str	{ color:#cd00ff; }
+.dstr	{ color:#cd00ff; }
+.slc	{ color:#00ff00; font-style:italic; }
+.com	{ color:#00ff00; font-style:italic; }
+.dir	{ color:#ffbb00; }
+.sym	{ color:#ee5896; font-weight:bold; }
+.line	{ color:#55abff; }
+.kwa	{ color:#00ffff; font-weight:bold; }
+.kwb	{ color:#ffff00; }
+.kwc	{ color:#ef1347; font-weight:bold; }
+.kwd	{ color:#ffffff; font-weight:bold; }
+//-->
+</style>
+</head>
+<body class="hl">
+<pre class="hl"><a name="l_1"></a><span class="line">    1 </span><span class="sym">&lt;</span>?php
+<a name="l_2"></a><span class="line">    2 </span>
+<a name="l_3"></a><span class="line">    3 </span><span class="kwb">$game</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'game'</span><span class="sym">];</span>
+<a name="l_4"></a><span class="line">    4 </span><span class="kwa">if</span> <span class="sym">(!</span>isset<span class="sym">(</span><span class="kwb">$game</span><span class="sym">)) {</span>
+<a name="l_5"></a><span class="line">    5 </span>    <span class="kwa">exit</span><span class="sym">(</span><span class="str">&quot;game not set&quot;</span><span class="sym">);</span>
+<a name="l_6"></a><span class="line">    6 </span><span class="sym">}</span>
+<a name="l_7"></a><span class="line">    7 </span>include <span class="str">'vars.php'</span><span class="sym">;</span>
+<a name="l_8"></a><span class="line">    8 </span><span class="kwb">$player</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'player'</span><span class="sym">];</span>
+<a name="l_9"></a><span class="line">    9 </span><span class="kwb">$turn</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'turn'</span><span class="sym">];</span> <span class="slc">//current turn</span>
+<a name="l_10"></a><span class="line">   10 </span><span class="kwa">if</span> <span class="sym">(</span><span class="kwb">$player</span> <span class="sym">==</span> <span class="num">1</span><span class="sym">) {</span> <span class="slc">//side-scrolling player</span>
+<a name="l_11"></a><span class="line">   11 </span>    <span class="kwb">$player1y</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'player1y'</span><span class="sym">];</span>
+<a name="l_12"></a><span class="line">   12 </span>    <span class="kwb">$sql</span> <span class="sym">=</span> <span class="str">&quot;UPDATE `yasyfcom_play`.`&quot;</span> . <span class="kwb">$game</span> . <span class="str">&quot;` SET player1y=&quot;</span> . <span class="kwb">$player1y</span> . <span class="str">&quot; WHERE turn=&quot;</span> . <span class="kwb">$turn</span><span class="sym">;</span>
+<a name="l_13"></a><span class="line">   13 </span>    <span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql</span><span class="sym">)</span> or die<span class="sym">(</span><span class="kwa">mysql_error</span><span class="sym">());</span>
+<a name="l_14"></a><span class="line">   14 </span><span class="sym">}</span> <span class="kwa">elseif</span> <span class="sym">(</span><span class="kwb">$player</span> <span class="sym">==</span> <span class="num">2</span><span class="sym">) {</span> <span class="slc">//box-dropping player</span>
+<a name="l_15"></a><span class="line">   15 </span>    <span class="kwb">$box1y</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'box1y'</span><span class="sym">];</span> <span class="slc">//new box1y</span>
+<a name="l_16"></a><span class="line">   16 </span>    <span class="kwb">$box2y</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'box2y'</span><span class="sym">];</span> <span class="slc">//new box2y</span>
+<a name="l_17"></a><span class="line">   17 </span>    <span class="kwb">$box3y</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'box3y'</span><span class="sym">];</span> <span class="slc">//new box3y</span>
+<a name="l_18"></a><span class="line">   18 </span>
+<a name="l_19"></a><span class="line">   19 </span>    <span class="kwb">$sql</span> <span class="sym">=</span> <span class="str">&quot;UPDATE `yasyfcom_play`.`&quot;</span> . <span class="kwb">$game</span> . <span class="str">&quot;` SET box1y=&quot;</span> . <span class="kwb">$box1y</span> . <span class="str">&quot;,box2y=&quot;</span> . <span class="kwb">$box2y</span> . <span class="str">&quot;,box3y=&quot;</span> . <span class="kwb">$box3y</span> . <span class="str">&quot; HERE turn=&quot;</span> . <span class="kwb">$turn</span><span class="sym">;</span>
+<a name="l_20"></a><span class="line">   20 </span>    <span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>
+<a name="l_21"></a><span class="line">   21 </span><span class="sym">}</span>
+<a name="l_22"></a><span class="line">   22 </span>?<span class="sym">&gt;</span>
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.4.8, http://www.andre-simon.de/-->

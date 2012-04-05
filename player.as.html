@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>/Users/yasyf/Sites/testnew/play/v4/player.as</title>
+<style type="text/css">
+<!--
+body.hl	{ background-color:#000000; }
+pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Courier New;}
+.num	{ color:#ff00ff; }
+.esc	{ color:#cd00ff; }
+.str	{ color:#cd00ff; }
+.dstr	{ color:#cd00ff; }
+.slc	{ color:#00ff00; font-style:italic; }
+.com	{ color:#00ff00; font-style:italic; }
+.dir	{ color:#ffbb00; }
+.sym	{ color:#ee5896; font-weight:bold; }
+.line	{ color:#55abff; }
+.kwa	{ color:#00ffff; font-weight:bold; }
+.kwb	{ color:#ffff00; }
+.kwc	{ color:#ef1347; font-weight:bold; }
+.kwd	{ color:#ffffff; font-weight:bold; }
+//-->
+</style>
+</head>
+<body class="hl">
+<pre class="hl"><a name="l_1"></a><span class="line">    1 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span>enterFrame<span class="sym">) {</span>
+<a name="l_2"></a><span class="line">    2 </span>	_xscale <span class="sym">=</span> scalefactor<span class="sym">;</span>
+<a name="l_3"></a><span class="line">    3 </span>	_yscale <span class="sym">=</span> scalefactor<span class="sym">;</span>
+<a name="l_4"></a><span class="line">    4 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.timer <span class="sym">&lt;</span> <span class="num">61</span><span class="sym">)</span>
+<a name="l_5"></a><span class="line">    5 </span>	<span class="sym">{</span>
+<a name="l_6"></a><span class="line">    6 </span>		_root.timer<span class="sym">++;</span>
+<a name="l_7"></a><span class="line">    7 </span>	<span class="sym">}</span>
+<a name="l_8"></a><span class="line">    8 </span>	<span class="kwb">else</span>
+<a name="l_9"></a><span class="line">    9 </span>	<span class="sym">{</span>
+<a name="l_10"></a><span class="line">   10 </span>		_root.timer <span class="sym">=</span> <span class="num">20</span><span class="sym">;</span>
+<a name="l_11"></a><span class="line">   11 </span>	<span class="sym">}</span>
+<a name="l_12"></a><span class="line">   12 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.getxbool <span class="kwb">and</span> _root.getybool <span class="kwb">and</span> _root.getreadybool <span class="kwb">and</span> _root.getboxxbool <span class="kwb">and</span> _root.getboxybool <span class="kwb">and</span> _root.exiterbool <span class="sym">!=</span> <span class="kwb">true and</span> _root.varsSent <span class="sym">!=</span> <span class="kwb">true</span><span class="sym">)</span>
+<a name="l_13"></a><span class="line">   13 </span>	<span class="sym">{</span>
+<a name="l_14"></a><span class="line">   14 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.opponentFound <span class="sym">==</span> <span class="str">&quot;true&quot;</span> <span class="kwb">and</span> _root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
+<a name="l_15"></a><span class="line">   15 </span>		<span class="sym">{</span>
+<a name="l_16"></a><span class="line">   16 </span>
+<a name="l_17"></a><span class="line">   17 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;opponent found&quot;</span><span class="sym">);</span>
+<a name="l_18"></a><span class="line">   18 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_19"></a><span class="line">   19 </span>			_root.<span class="kwd">sendVars</span><span class="sym">();</span>
+<a name="l_20"></a><span class="line">   20 </span>
+<a name="l_21"></a><span class="line">   21 </span>		<span class="sym">}</span>
+<a name="l_22"></a><span class="line">   22 </span>		<span class="kwb">else</span>
+<a name="l_23"></a><span class="line">   23 </span>		<span class="sym">{</span>
+<a name="l_24"></a><span class="line">   24 </span>
+<a name="l_25"></a><span class="line">   25 </span>
+<a name="l_26"></a><span class="line">   26 </span>
+<a name="l_27"></a><span class="line">   27 </span>			<span class="kwb">if</span> <span class="sym">(</span>_root.opponentFinding <span class="sym">==</span> <span class="kwb">false and</span> _root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
+<a name="l_28"></a><span class="line">   28 </span>			<span class="sym">{</span>
+<a name="l_29"></a><span class="line">   29 </span>				<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;looking...&quot;</span><span class="sym">);</span>
+<a name="l_30"></a><span class="line">   30 </span>				_root.<span class="kwd">checkFound</span><span class="sym">();</span>
+<a name="l_31"></a><span class="line">   31 </span>			<span class="sym">}</span>
+<a name="l_32"></a><span class="line">   32 </span>		<span class="sym">}</span>
+<a name="l_33"></a><span class="line">   33 </span>
+<a name="l_34"></a><span class="line">   34 </span>	<span class="sym">}</span>
+<a name="l_35"></a><span class="line">   35 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.exiterbool<span class="sym">)</span>
+<a name="l_36"></a><span class="line">   36 </span>	<span class="sym">{</span>
+<a name="l_37"></a><span class="line">   37 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.abandoned<span class="sym">)</span>
+<a name="l_38"></a><span class="line">   38 </span>		<span class="sym">{</span>
+<a name="l_39"></a><span class="line">   39 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;opponent left&quot;</span><span class="sym">);</span>
+<a name="l_40"></a><span class="line">   40 </span>		<span class="sym">}</span>
+<a name="l_41"></a><span class="line">   41 </span>		<span class="kwb">else</span>
+<a name="l_42"></a><span class="line">   42 </span>		<span class="sym">{</span>
+<a name="l_43"></a><span class="line">   43 </span>
+<a name="l_44"></a><span class="line">   44 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;game over&quot;</span><span class="sym">);</span>
+<a name="l_45"></a><span class="line">   45 </span>
+<a name="l_46"></a><span class="line">   46 </span>		<span class="sym">}</span>
+<a name="l_47"></a><span class="line">   47 </span>
+<a name="l_48"></a><span class="line">   48 </span>	<span class="sym">}</span>
+<a name="l_49"></a><span class="line">   49 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.varsSent <span class="kwb">and</span> _root.exiterbool <span class="sym">!=</span> <span class="kwb">true</span><span class="sym">)</span>
+<a name="l_50"></a><span class="line">   50 </span>	<span class="sym">{</span>
+<a name="l_51"></a><span class="line">   51 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.setxbool <span class="kwb">and</span> _root.setybool <span class="kwb">and</span> _root.setreadybool<span class="sym">)</span>
+<a name="l_52"></a><span class="line">   52 </span>		<span class="sym">{</span>
+<a name="l_53"></a><span class="line">   53 </span>			<span class="kwb">if</span> <span class="sym">(</span>_root.getreadybool <span class="kwb">and</span> _root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
+<a name="l_54"></a><span class="line">   54 </span>			<span class="sym">{</span>
+<a name="l_55"></a><span class="line">   55 </span>				<span class="kwb">if</span> <span class="sym">(</span>_root.player2ready <span class="sym">==</span> <span class="num">0</span><span class="sym">)</span>
+<a name="l_56"></a><span class="line">   56 </span>				<span class="sym">{</span>
+<a name="l_57"></a><span class="line">   57 </span>					<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Opponent Not Ready&quot;</span><span class="sym">);</span>
+<a name="l_58"></a><span class="line">   58 </span>					_root.<span class="kwd">getReady</span><span class="sym">();</span>
+<a name="l_59"></a><span class="line">   59 </span>
+<a name="l_60"></a><span class="line">   60 </span>				<span class="sym">}</span>
+<a name="l_61"></a><span class="line">   61 </span>				<span class="kwb">else if</span> <span class="sym">(</span>_root.player2ready <span class="sym">==</span> <span class="num">1</span> <span class="kwb">and</span> _root.movemade <span class="sym">==</span> <span class="kwb">true</span><span class="sym">)</span>
+<a name="l_62"></a><span class="line">   62 </span>				<span class="sym">{</span>
+<a name="l_63"></a><span class="line">   63 </span>					_root.varsSent <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_64"></a><span class="line">   64 </span>					<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Opponent Ready!&quot;</span><span class="sym">);</span>
+<a name="l_65"></a><span class="line">   65 </span>					_root.<span class="kwd">plusTurn</span><span class="sym">();</span>
+<a name="l_66"></a><span class="line">   66 </span>
+<a name="l_67"></a><span class="line">   67 </span>
+<a name="l_68"></a><span class="line">   68 </span>
+<a name="l_69"></a><span class="line">   69 </span>				<span class="sym">}</span>
+<a name="l_70"></a><span class="line">   70 </span>				<span class="kwb">else if</span><span class="sym">(</span>_root.player2ready <span class="sym">==</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_71"></a><span class="line">   71 </span>				<span class="sym">{</span>
+<a name="l_72"></a><span class="line">   72 </span>					_root.timout<span class="sym">++;</span>
+<a name="l_73"></a><span class="line">   73 </span>					<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;timeout: &quot;</span> <span class="sym">+</span> _root.timout<span class="sym">);</span>
+<a name="l_74"></a><span class="line">   74 </span>					<span class="kwb">if</span> <span class="sym">(</span>_root.timout <span class="sym">==</span> <span class="num">5</span><span class="sym">)</span>
+<a name="l_75"></a><span class="line">   75 </span>					<span class="sym">{</span>
+<a name="l_76"></a><span class="line">   76 </span>
+<a name="l_77"></a><span class="line">   77 </span>						<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Opponent Left Game!&quot;</span><span class="sym">);</span>
+<a name="l_78"></a><span class="line">   78 </span>						_root.abandoned <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_79"></a><span class="line">   79 </span>						_root.<span class="kwd">exit</span><span class="sym">();</span>
+<a name="l_80"></a><span class="line">   80 </span>
+<a name="l_81"></a><span class="line">   81 </span>					<span class="sym">}</span>
+<a name="l_82"></a><span class="line">   82 </span>				<span class="sym">}</span>
+<a name="l_83"></a><span class="line">   83 </span>			<span class="sym">}</span>
+<a name="l_84"></a><span class="line">   84 </span>		<span class="sym">}</span>
+<a name="l_85"></a><span class="line">   85 </span>		<span class="kwb">else</span>
+<a name="l_86"></a><span class="line">   86 </span>		<span class="sym">{</span>
+<a name="l_87"></a><span class="line">   87 </span>			<span class="kwb">if</span> <span class="sym">(</span>_root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
+<a name="l_88"></a><span class="line">   88 </span>			<span class="sym">{</span>
+<a name="l_89"></a><span class="line">   89 </span>				<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Vars have been sent, waiting...&quot;</span><span class="sym">);</span>
+<a name="l_90"></a><span class="line">   90 </span>
+<a name="l_91"></a><span class="line">   91 </span>			<span class="sym">}</span>
+<a name="l_92"></a><span class="line">   92 </span>		<span class="sym">}</span>
+<a name="l_93"></a><span class="line">   93 </span>	<span class="sym">}</span>
+<a name="l_94"></a><span class="line">   94 </span>
+<a name="l_95"></a><span class="line">   95 </span>
+<a name="l_96"></a><span class="line">   96 </span><span class="sym">}</span>
+<a name="l_97"></a><span class="line">   97 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span><span class="kwb">load</span><span class="sym">) {</span>
+<a name="l_98"></a><span class="line">   98 </span>	import mx.transitions.Tween<span class="sym">;</span>
+<a name="l_99"></a><span class="line">   99 </span>	import mx.transitions.easing.<span class="sym">*;</span>
+<a name="l_100"></a><span class="line">  100 </span>	_root.<span class="kwd">togridX</span><span class="sym">(</span><span class="num">3</span><span class="sym">,</span>_root.player<span class="sym">);</span>
+<a name="l_101"></a><span class="line">  101 </span>	_root.<span class="kwd">togridY</span><span class="sym">(</span><span class="num">2</span><span class="sym">,</span>_root.player<span class="sym">);</span>
+<a name="l_102"></a><span class="line">  102 </span>	scalefactor <span class="sym">=</span> <span class="num">100</span><span class="sym">;</span>
+<a name="l_103"></a><span class="line">  103 </span>
+<a name="l_104"></a><span class="line">  104 </span><span class="sym">}</span>
+<a name="l_105"></a><span class="line">  105 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span>keyDown<span class="sym">) {</span>
+<a name="l_106"></a><span class="line">  106 </span>	<span class="kwb">if</span> <span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">isDown</span><span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">RIGHT</span><span class="sym">)</span> <span class="kwb">and</span> cellx <span class="sym">&lt;=</span> <span class="num">4</span> <span class="kwb">and</span> <span class="sym">!</span>motion <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="num">0</span> <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_107"></a><span class="line">  107 </span>	<span class="sym">{</span>
+<a name="l_108"></a><span class="line">  108 </span>		cellx<span class="sym">++;</span>
+<a name="l_109"></a><span class="line">  109 </span>		_root.<span class="kwd">gridX</span><span class="sym">(</span>cellx<span class="sym">,</span>_root.player<span class="sym">);</span>
+<a name="l_110"></a><span class="line">  110 </span>		motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_111"></a><span class="line">  111 </span>		<span class="kwb">var</span> tweenRight<span class="sym">:</span>Tween <span class="sym">=</span> <span class="kwb">new</span> <span class="kwd">Tween</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span> <span class="str">&quot;_x&quot;</span><span class="sym">,</span> Regular.easeOut<span class="sym">,</span> _x<span class="sym">,</span> gridx<span class="sym">,</span> <span class="num">1</span><span class="sym">,</span> <span class="kwb">true</span><span class="sym">);</span>
+<a name="l_112"></a><span class="line">  112 </span>		tweenRight.onMotionFinished <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_113"></a><span class="line">  113 </span>		<span class="sym">{</span>
+<a name="l_114"></a><span class="line">  114 </span>			motion <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_115"></a><span class="line">  115 </span>			_root.player1x <span class="sym">=</span> cellx<span class="sym">;</span>
+<a name="l_116"></a><span class="line">  116 </span>			_root.player1y <span class="sym">=</span> celly<span class="sym">;</span>
+<a name="l_117"></a><span class="line">  117 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_118"></a><span class="line">  118 </span>			_root.<span class="kwd">sendVars</span><span class="sym">(</span><span class="kwb">true</span><span class="sym">);</span>
+<a name="l_119"></a><span class="line">  119 </span>
+<a name="l_120"></a><span class="line">  120 </span>		<span class="sym">};</span>
+<a name="l_121"></a><span class="line">  121 </span>	<span class="sym">}</span>
+<a name="l_122"></a><span class="line">  122 </span>	<span class="kwb">else if</span> <span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">isDown</span><span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">LEFT</span><span class="sym">)</span> <span class="kwb">and</span> cellx <span class="sym">&gt;=</span> <span class="num">2</span> <span class="kwb">and</span> <span class="sym">!</span>motion <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="num">0</span> <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_123"></a><span class="line">  123 </span>	<span class="sym">{</span>
+<a name="l_124"></a><span class="line">  124 </span>		cellx<span class="sym">--;</span>
+<a name="l_125"></a><span class="line">  125 </span>		_root.<span class="kwd">gridX</span><span class="sym">(</span>cellx<span class="sym">,</span>_root.player<span class="sym">);</span>
+<a name="l_126"></a><span class="line">  126 </span>		motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_127"></a><span class="line">  127 </span>		<span class="kwb">var</span> tweenRight<span class="sym">:</span>Tween <span class="sym">=</span> <span class="kwb">new</span> <span class="kwd">Tween</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span> <span class="str">&quot;_x&quot;</span><span class="sym">,</span> Regular.easeOut<span class="sym">,</span> _x<span class="sym">,</span> gridx<span class="sym">,</span> <span class="num">1</span><span class="sym">,</span> <span class="kwb">true</span><span class="sym">);</span>
+<a name="l_128"></a><span class="line">  128 </span>		tweenRight.onMotionFinished <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_129"></a><span class="line">  129 </span>		<span class="sym">{</span>
+<a name="l_130"></a><span class="line">  130 </span>			motion <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_131"></a><span class="line">  131 </span>			_root.player1x <span class="sym">=</span> cellx<span class="sym">;</span>
+<a name="l_132"></a><span class="line">  132 </span>			_root.player1y <span class="sym">=</span> celly<span class="sym">;</span>
+<a name="l_133"></a><span class="line">  133 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_134"></a><span class="line">  134 </span>			_root.<span class="kwd">sendVars</span><span class="sym">(</span><span class="kwb">true</span><span class="sym">);</span>
+<a name="l_135"></a><span class="line">  135 </span>
+<a name="l_136"></a><span class="line">  136 </span>		<span class="sym">};</span>
+<a name="l_137"></a><span class="line">  137 </span>
+<a name="l_138"></a><span class="line">  138 </span>	<span class="sym">}</span>
+<a name="l_139"></a><span class="line">  139 </span>	<span class="kwb">else if</span> <span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">isDown</span><span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">UP</span><span class="sym">)</span> <span class="kwb">and</span> celly <span class="sym">&lt;=</span> <span class="num">2</span> <span class="kwb">and</span> <span class="sym">!</span>motion <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="num">0</span> <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_140"></a><span class="line">  140 </span>	<span class="sym">{</span>
+<a name="l_141"></a><span class="line">  141 </span>		celly<span class="sym">++;</span>
+<a name="l_142"></a><span class="line">  142 </span>		_root.<span class="kwd">gridY</span><span class="sym">(</span>celly<span class="sym">,</span>_root.player<span class="sym">);</span>
+<a name="l_143"></a><span class="line">  143 </span>		motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_144"></a><span class="line">  144 </span>		<span class="kwb">var</span> tweenUp<span class="sym">:</span>Tween <span class="sym">=</span> <span class="kwb">new</span> <span class="kwd">Tween</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span> <span class="str">&quot;_y&quot;</span><span class="sym">,</span> Regular.easeOut<span class="sym">,</span> _y<span class="sym">,</span> gridy<span class="sym">,</span> <span class="num">1</span><span class="sym">,</span> <span class="kwb">true</span><span class="sym">);</span>
+<a name="l_145"></a><span class="line">  145 </span>		tweenUp.onMotionFinished <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_146"></a><span class="line">  146 </span>		<span class="sym">{</span>
+<a name="l_147"></a><span class="line">  147 </span>			motion <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_148"></a><span class="line">  148 </span>			_root.player1x <span class="sym">=</span> cellx<span class="sym">;</span>
+<a name="l_149"></a><span class="line">  149 </span>			_root.player1y <span class="sym">=</span> celly<span class="sym">;</span>
+<a name="l_150"></a><span class="line">  150 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_151"></a><span class="line">  151 </span>			_root.<span class="kwd">sendVars</span><span class="sym">(</span><span class="kwb">true</span><span class="sym">);</span>
+<a name="l_152"></a><span class="line">  152 </span>			<span class="sym">;</span>
+<a name="l_153"></a><span class="line">  153 </span>		<span class="sym">};</span>
+<a name="l_154"></a><span class="line">  154 </span>		motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_155"></a><span class="line">  155 </span>		<span class="kwb">var</span> tweenSmall<span class="sym">:</span>Tween <span class="sym">=</span> <span class="kwb">new</span> <span class="kwd">Tween</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span> <span class="str">&quot;scalefactor&quot;</span><span class="sym">,</span> Strong.easeOut<span class="sym">,</span> scalefactor<span class="sym">,</span> scalefactor <span class="sym">-</span> <span class="num">55</span><span class="sym">,</span> <span class="num">1</span><span class="sym">,</span> <span class="kwb">true</span><span class="sym">);</span>
+<a name="l_156"></a><span class="line">  156 </span>		tweenSmall.onMotionFinished <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_157"></a><span class="line">  157 </span>		<span class="sym">{</span>
+<a name="l_158"></a><span class="line">  158 </span>			motion <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_159"></a><span class="line">  159 </span>		<span class="sym">};</span>
+<a name="l_160"></a><span class="line">  160 </span>
+<a name="l_161"></a><span class="line">  161 </span>
+<a name="l_162"></a><span class="line">  162 </span>	<span class="sym">}</span>
+<a name="l_163"></a><span class="line">  163 </span>	<span class="kwb">else if</span> <span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">isDown</span><span class="sym">(</span><span class="kwb">Key</span>.<span class="kwb">DOWN</span><span class="sym">)</span> <span class="kwb">and</span> celly <span class="sym">&gt;=</span> <span class="num">2</span> <span class="kwb">and</span> <span class="sym">!</span>motion <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="num">0</span> <span class="kwb">and</span> _root.player2ready <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_164"></a><span class="line">  164 </span>	<span class="sym">{</span>
+<a name="l_165"></a><span class="line">  165 </span>		celly<span class="sym">--;</span>
+<a name="l_166"></a><span class="line">  166 </span>		_root.<span class="kwd">gridY</span><span class="sym">(</span>celly<span class="sym">,</span>_root.player<span class="sym">);</span>
+<a name="l_167"></a><span class="line">  167 </span>		motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_168"></a><span class="line">  168 </span>		<span class="kwb">var</span> tweenDown<span class="sym">:</span>Tween <span class="sym">=</span> <span class="kwb">new</span> <span class="kwd">Tween</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span> <span class="str">&quot;_y&quot;</span><span class="sym">,</span> Regular.easeOut<span class="sym">,</span> _y<span class="sym">,</span> gridy<span class="sym">,</span> <span class="num">1</span><span class="sym">,</span> <span class="kwb">true</span><span class="sym">);</span>
+<a name="l_169"></a><span class="line">  169 </span>		tweenDown.onMotionFinished <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_170"></a><span class="line">  170 </span>		<span class="sym">{</span>
+<a name="l_171"></a><span class="line">  171 </span>			motion <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_172"></a><span class="line">  172 </span>			_root.player1x <span class="sym">=</span> cellx<span class="sym">;</span>
+<a name="l_173"></a><span class="line">  173 </span>			_root.player1y <span class="sym">=</span> celly<span class="sym">;</span>
+<a name="l_174"></a><span class="line">  174 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_175"></a><span class="line">  175 </span>			_root.<span class="kwd">sendVars</span><span class="sym">(</span><span class="kwb">true</span><span class="sym">);</span>
+<a name="l_176"></a><span class="line">  176 </span>
+<a name="l_177"></a><span class="line">  177 </span>		<span class="sym">};</span>
+<a name="l_178"></a><span class="line">  178 </span>		motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_179"></a><span class="line">  179 </span>		<span class="kwb">var</span> tweenBig<span class="sym">:</span>Tween <span class="sym">=</span> <span class="kwb">new</span> <span class="kwd">Tween</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span> <span class="str">&quot;scalefactor&quot;</span><span class="sym">,</span> Strong.easeOut<span class="sym">,</span> scalefactor<span class="sym">,</span> scalefactor <span class="sym">+</span> <span class="num">55</span><span class="sym">,</span> <span class="num">1</span><span class="sym">,</span> <span class="kwb">true</span><span class="sym">);</span>
+<a name="l_180"></a><span class="line">  180 </span>		tweenBig.onMotionFinished <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_181"></a><span class="line">  181 </span>		<span class="sym">{</span>
+<a name="l_182"></a><span class="line">  182 </span>			motion <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_183"></a><span class="line">  183 </span>		<span class="sym">};</span>
+<a name="l_184"></a><span class="line">  184 </span>	<span class="sym">}</span>
+<a name="l_185"></a><span class="line">  185 </span><span class="sym">}</span>
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.4.8, http://www.andre-simon.de/-->
