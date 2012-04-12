@@ -31,4 +31,4 @@ player2 - player two - box dropper with player
 -External .as files are not up-to-date or reliable, and should not be referred to except for base framework code.
 -ChangeLog is auto generated, and up-to-date since the second-latest commit (HEAD~1).
 -For v5, we will not use a coded grid, but a movie clip with the symbol in its correct scale and position, with one frame per cell, so that playing through the movie clip (or going to a certain frame) will show the new position. This is not compatible with animating this move, so a solution must be found (possible using AS within the movie clip, if possible).
--Turns per game: 
+-Turns per game: 9
