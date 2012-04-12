@@ -1,4 +1,4 @@
-//1. Adjust reset and fall timing so both players match
+1. Adjust reset and fall timing so both players match - need to make player 1 match 9 moves (to Turn 10 in code)
 2. Add hittests for both players upon box "landing", before reset.
 3. Make cage bottom transparent
 4. Turn player1 into 2D side-scrolling veiw
