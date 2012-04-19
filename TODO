@@ -14,6 +14,7 @@
 	BETTER IDEA! On the last "turn" (turn 9) in the code, player 2 cannot make a move, just watch the last move of p1. (Send in blank variables, progress. Set up some method to keep track of turns, and impliment this on the last one)
 		tl;dr T8: P1 makes final move, plays win sequence T9: p2 submits blank move (no change), animates final p1 move,then does same win sequence
 13. Impliment obstacles in flash that are already in PHP and db
+14. Add music
 
 Rafay
 1. Character (all angles)

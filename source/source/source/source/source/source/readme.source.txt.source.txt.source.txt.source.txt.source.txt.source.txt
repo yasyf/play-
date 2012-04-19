@@ -1,0 +1,34 @@
+API - php files
+accept arguments: `box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`
+
+v1 - flash files
+multiplayer framework (ActionScript 2)
+play - player one - side scroller
+player2 - player two - box dropper
+
+v2 - flash files
+game framework [animation with graphic placeholders]
+play - player one - side scroller
+player2 - player two - box dropper
+
+v3 - flash files
+game framework combined [animation with both player's objects with graphic placeholders]
+play - player one - side scroller with boxes
+player2 - player two - box dropper with player
+
+v4 - flash files
+game framework and multiplayer framework integration [with placeholder graphics]
+play - player one - side scroller with boxes
+player2 - player two - box dropper with player
+
+v5 - flash files
+game framework with actual layout and multiplayer framework integration [with placeholder graphics]
+play - player one - side scroller with boxes
+player2 - player two - box dropper with player
+
+*Notes*
+-For my sanity, these will be the basic grid of the game. All external backgrounds/surroundings will be a SEPARATE flash file, so that I do not have to recode everything!
+-External .as files are not up-to-date or reliable, and should not be referred to except for base framework code.
+-ChangeLog is auto generated, and up-to-date since the second-latest commit (HEAD~1).
+-For v5, we will not use a coded grid, but a movie clip with the symbol in its correct scale and position, with one frame per cell, so that playing through the movie clip (or going to a certain frame) will show the new position. This is not compatible with animating this move, so a solution must be found (possible using AS within the movie clip, if possible).
+-Turns per game: 9
