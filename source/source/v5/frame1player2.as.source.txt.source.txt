@@ -109,7 +109,21 @@ function reset()
 			}
 			break;
 	}
-	_root.resetBoxes();
+	
+	gameR = new LoadVars();
+	gameR.game = _root.game;
+	gameR.player = _root.iamplayer;
+	gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
+	gameR.onLoad = function(success)
+	{
+		_root.turn = 1;
+		_root.resetBoxes();
+		trace("Game Reset");//game table now initialized
+		sendReceive(false);
+
+
+	};
+	
 }
 /**
 * Resets boxes back to original position; resetsafe keeps track of active progress
@@ -378,7 +392,9 @@ function sendReceive(ismovemade)
 	variables = new LoadVars();
 	variables.game = _root.game;
 	variables.turn = _root.turn;
-
+if(_root.turn < 9)
+{
+	
 	variables.box2x = _root.box2.cellx;
 	variables.box2y = _root.box2.celly;
 	variables.box1x = _root.box1.cellx;
@@ -386,7 +402,7 @@ function sendReceive(ismovemade)
 	variables.box3x = _root.box3.cellx;
 	variables.box3y = _root.box3.celly;
 
-
+}
 
 	variables.sendAndLoad(serverloc + "player2.php",variables,"POST");
 	variables.onLoad = function(success)
@@ -451,7 +467,7 @@ for (i = 3; i >= 1; i--)
 		counter++;
 		// attach the movie clip on the stage - our dot now has the symbol attached to it
 		//grid_container["cell"+counter] = the cell that the loop is on
-		grid_container.attachMovie("cellMC","cell" + counter,counter);
+		//grid_container.attachMovie("cellMC","cell" + counter,counter);
 		// We assign a _x position to the cell, and a cellx for the grid
 		grid_container["cell" + counter]._x = initX;
 		grid_container["cell" + counter].celly = i;

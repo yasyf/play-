@@ -213,7 +213,17 @@ function plusTurn()
 			_root.box3.scalefactor = 35;
 		};
 	}
-	setturn = new LoadVars();
+		gameR = new LoadVars();
+	gameR.game = _root.game;
+	gameR.player = _root.iamplayer;
+	gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
+	gameR.onLoad = function(success)
+	{
+		_root.turn = 1;
+		_root.resetBoxes();
+		trace("Game Reset");//game table now initialized
+		sendReceive(false);
+setturn = new LoadVars();
 	setturn.game = _root.game;
 	setturn.player = _root.iamplayer;
 	setturn.turn = _root.turn;
@@ -225,6 +235,9 @@ function plusTurn()
 		trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
 		_root.setturnbool = true;
 	};
+
+	};
+	
 
 }
 /**
@@ -348,7 +361,7 @@ for (i = 3; i >= 1; i--)
 		counter++;
 		// attach the movie clip on the stage - our dot now has the symbol attached to it
 		//grid_container["cell"+counter] = the cell that the loop is on
-		grid_container.attachMovie("cellMC","cell" + counter,counter);
+		//grid_container.attachMovie("cellMC","cell" + counter,counter);
 		// We assign a _x position to the cell, and a cellx for the grid
 		grid_container["cell" + counter]._x = initX;
 		grid_container["cell" + counter].celly = i;

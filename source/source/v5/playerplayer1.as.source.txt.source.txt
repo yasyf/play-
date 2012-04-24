@@ -158,12 +158,12 @@ onClipEvent (keyDown) {
 			_root.sendReceive(true);
 
 		};
-		motion = true;
+		/*motion = true;
 		var tweenSmall:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor - 55, 1, true);
 		tweenSmall.onMotionFinished = function()
 		{
 			motion = false;
-		};
+		};*/
 
 
 	}
@@ -181,11 +181,11 @@ onClipEvent (keyDown) {
 			_root.sendReceive(true);
 
 		};
-		motion = true;
+	/*	motion = true;
 		var tweenBig:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor + 55, 1, true);
 		tweenBig.onMotionFinished = function()
 		{
 			motion = false;
-		};
+		};*/
 	}
 }

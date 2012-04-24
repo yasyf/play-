@@ -2,13 +2,19 @@ import mx.transitions.Tween;
 import mx.transitions.easing.*;
 serverloc = "http://site5.yasyf.com/";
 /**
-* Send and receive relevant game variables; used for communication with server-side PHP/MySQL API
-* @param bool ismovemade
+* Send and receive relevant game variables; used for communication with server-side PHP/MySQL API; getreadybool and sendReceivebool keep track of active progress
+* @param ismovemade
 * @param game
 * @param turn
+* @param setready
 * @param player1x
 * @param player1y
 * @param box1x
+* @param box1y
+* @param box2x
+* @param box2y
+* @param box3x
+* @param box3y
 */
 function sendReceive(ismovemade)
 {
@@ -77,7 +83,13 @@ function sendReceive(ismovemade)
 		}
 	};
 }
-
+/**
+* Check with API if other player is ready; getreadybool keeps track of active progress
+* @param game
+* @param turn
+* @param player
+* @param getreadybool
+*/
 function getReady()
 {
 	_root.getreadybool = false;
@@ -96,7 +108,14 @@ function getReady()
 	//getready
 }
 
-
+/**
+* Check with API if other player has been found; opponentFinding keeps track of active progress
+* @param game
+* @param turn
+* @param player
+* @param opponentFinding
+* @param opponentFoundd
+*/
 function checkFound()
 {
 	_root.opponentFinding = true;
@@ -111,6 +130,19 @@ function checkFound()
 		_root.opponentFinding = false;
 	};
 }
+/**
+* Increments turn in animation, and relays to API; setturnbool keeps track of active progress
+* @param game
+* @param turn
+* @param player
+* @param setturnbool
+* @param box1.scalefactor
+* @param box2.scalefactor
+* @param box3.scalefactor
+* @param player.cellx
+* @param player.celly
+* @param gotya
+*/
 function plusTurn()
 {
 
@@ -195,6 +227,11 @@ function plusTurn()
 	};
 
 }
+/**
+* Exits game and cleans up table; exiterbool keeps track of active progress
+* @param game
+* @param exiterbool
+*/
 function exit()
 {
 
@@ -208,7 +245,12 @@ function exit()
 	};
 
 }
-
+/**
+* Takes object's virtual cell Y coordinate, and turns it into flash grid location
+* @param object
+* @param celly
+* @return gridy
+*/
 function gridY(celly, object)
 {
 	//I <3 Math
@@ -216,6 +258,12 @@ function gridY(celly, object)
 	object.gridy = gridy;
 	object.celly = celly;
 }
+/**
+* Takes object's virtual cell X coordinate, and turns it into flash grid location
+* @param object
+* @param cellx
+* @return gridx
+*/
 function gridX(cellx, object)
 {
 	//I <3 Math
@@ -223,6 +271,12 @@ function gridX(cellx, object)
 	object.gridx = gridx;
 	object.cellx = cellx;
 }
+/**
+* Takes object's virtual cell X coordinate, and moves it to flash grid location
+* @param object
+* @param cellx
+* @return gridx
+*/
 function togridX(cellx, object)
 {
 	//I <3 Math
@@ -230,6 +284,12 @@ function togridX(cellx, object)
 	object._x = gridx;
 	object.cellx = cellx;
 }
+/**
+* Takes object's virtual cell Y coordinate, and moves it to flash grid location
+* @param object
+* @param celly
+* @return gridy
+*/
 function togridY(celly, object)
 {
 	//I <3 Math
@@ -237,6 +297,12 @@ function togridY(celly, object)
 	object._y = gridy;
 	object.celly = celly;
 }
+/**
+* Takes object's flash grid location, and moves it to virtual cell X coordinate
+* @param object
+* @param gridx
+* @return cellx
+*/
 function tocellX(gridx, object)
 {
 	//I <3 Math
@@ -244,6 +310,12 @@ function tocellX(gridx, object)
 	cellx = Math.round(cellx);
 	object.cellx = cellx;
 }
+/**
+* Takes object's flash grid location, and moves it to virtual cell Y coordinate
+* @param object
+* @param gridy
+* @return celly
+*/
 function tocellY(gridy, object)
 {
 	//I <3 Math
