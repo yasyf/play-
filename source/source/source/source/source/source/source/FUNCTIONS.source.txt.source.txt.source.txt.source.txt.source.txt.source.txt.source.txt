@@ -1,4 +1,0 @@
-function sendReceive(ismovemade)
-	Send and receive relevant game variables; used for communication with server-side PHP/MySQL API
-	Variables:
-		ismovemade: whether or not the player has made his move

@@ -1,2 +1,0 @@
-1. Flash (AS) inits game, requests game table, and inits game table
-2. 
