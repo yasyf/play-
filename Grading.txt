@@ -1,0 +1,8 @@
+Coding  	45%
+Graphics 	30%
+Gameplay 	10%
+Animation 	5%
+Audio 		5%
+Webpage 	5%
+			---
+TOTAL		100%

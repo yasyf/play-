@@ -9,12 +9,11 @@
 //9. Automatic animation and framework code
 10. Change graphics - both should be aerial (top-down or bottom-up)
 11. Ensure gameplay - you don't know what the other move is until you move (introduce element of luck) - on the last scene, both players see a cutscene while a killing or escaping animation takes place
-//12. Add new variable to be transmitted back and forth to keep track of who won - otherwise player 1 detects the winner afet 8 turns (first), but then player 2 could make a move to change the outcome (turn 9)
+12. Add new variable to be transmitted back and forth to keep track of who won - otherwise player 1 detects the winner afet 8 turns (first), but then player 2 could make a move to change the outcome (turn 9)
 	Since player 1 detects first, have him send the win or loss.
 	BETTER IDEA! On the last "turn" (turn 9) in the code, player 2 cannot make a move, just watch the last move of p1. (Send in blank variables, progress. Set up some method to keep track of turns, and impliment this on the last one)
 		tl;dr T8: P1 makes final move, plays win sequence T9: p2 submits blank move (no change), animates final p1 move,then does same win sequence
 13. Impliment obstacles in flash that are already in PHP and db
-14. Add music
 
 Rafay
 1. Character (all angles)
@@ -22,18 +21,6 @@ Rafay
 3. Begin Screen
 4. Final kill/escape animation
 5. End screen
-
-Specifics (Rafay)
-1. Cage (see-through)
-2. Hook
-3. TV Screen
-4. Barrell
-5. Background
-6. Walls
-7. SRK Character
-8. Runner Character
-9. Intro graphic
-10. Exit graphic
 
 Yasyf
 1. Gameplay (see #10 and #11 above)
