@@ -1,3 +1,33 @@
+commit add8062ef92f2d348091e1963707fbefb38730c4
+Author: Yasyf Mohamedali <yasyf@yasyf.com>
+Date:   Wed Apr 25 17:15:50 2012 -0700
+
+    source files gone crazy
+
+commit 3dd60b072c1254454d383e8715bac80f89e7b3a6
+Author: Yasyf <yasyf@yasyf.com>
+Date:   Wed Apr 25 17:03:09 2012 -0700
+
+    documentation
+
+commit f14c9981b69ff706a3a0deed451d0a5fb47d474b
+Author: Yasyf <yasyf@yasyf.com>
+Date:   Mon Apr 23 17:04:04 2012 -0700
+
+    tweaked final turn order so that player 1 has last move, player 2 just watches for result; removed '3D' perspective effect for player1
+
+commit fa9cf57a7503172e20a68f5fb3b20c89fd6f18ba
+Author: Yasyf <yasyf@yasyf.com>
+Date:   Wed Apr 18 17:07:28 2012 -0700
+
+    added source documentation and made grid invisible
+
+commit f7fec30378c4d092b1e737b3d00a90a2d4cdb2c2
+Author: Yasyf <yasyf@yasyf.com>
+Date:   Mon Apr 16 17:41:41 2012 -0700
+
+    added doumentation - need still for PHP API
+
 commit 2f6092b54f861251145f7fbeae9a0448a5d4545b
 Author: Yasyf <yasyf@yasyf.com>
 Date:   Fri Apr 13 17:15:39 2012 -0700

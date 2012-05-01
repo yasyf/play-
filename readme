@@ -1,3 +1,26 @@
+Welcome to Yasyf's Cousin Garvey's Den!
+This is a simple turn-based game developed completely using AS 2 and PHP. 
+The objective of the game is either to drop cages on an enemy player, trapping him, or to avoid the cages being dropped.
+The way this is accomplished is that each game starts with three cages positioned across the center of a 5x3 grid at positions (1,2), (3,2), and (5,2), and a player at (3,2).
+On Player 1's turn, he can move his player one square in any 90° direction (up, down, left, right), space permitting
+On Player 2's turn, he can move one of his three cages to anywhere on the grid (besides from the location occupied by the other two)
+Player 2 will move first.
+After both player's have made a move, the turn number increments, and the cages 'fall' one increment towards the ground.
+After 8 increments (8 moves EACH), Player 2 will not make a move on the 9th turn, but observe.
+Player 1 will make his 9th (final) turn, and then the game will decide the winner.
+If the player is trapped, Player 2 wins. If the player escapes, Player 1 wins.
+All communication between the two players is done via a PHP API and its connected MySQL Database.
+All in-game data is proccessed independently on either end by AS 2, based on what the API returns.
+
+The API is documented in the file: API
+The Todo List is documented in the file: TODO
+The Grading Scheme is documented in the file: Grading.txt
+The Gameplay Cycle is documented in the file: Gameplay.txt
+The Commit History is documented in the file: ChangeLog
+The Commit History (clean) is documented in the file: COMMITS.LOG
+The Source Files are documented in the folder: Source
+The Functions is documented in the file: FUNCTIONS
+
 API - php files
 accept arguments: `box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`
 
