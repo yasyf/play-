@@ -56,6 +56,12 @@ for ($i=1; $i<=$obstacleNumb; $i++) {
 
 }
 
-$sql2 = "INSERT INTO `yasyfcom_play`.`" . $game . "` (`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`,`obstacles`, `obstacle1x`,`obstacle1y`,`obstacle2x`,`obstacle2y`,`obstacle3x`,`obstacle3y`) VALUES ('2', '1', '2', '3', '2', '5', '2', '3', '1', '0', '0','".$obstacleNumb."','".$obstacle1[x]."','".$obstacle1[y]."','".$obstacle2[x]."','".$obstacle2[y]."','".$obstacle3[x]."','".$obstacle3[y]."')";
+$sql2 = "INSERT INTO `" . $game . "` (`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`,`obstacles`, `obstacle1x`,`obstacle1y`,`obstacle2x`,`obstacle2y`,`obstacle3x`,`obstacle3y`) VALUES ('2', '1', '2', '3', '2', '5', '2', '3', '1', '0', '0','".$obstacleNumb."','".$obstacle1[x]."','".$obstacle1[y]."','".$obstacle2[x]."','".$obstacle2[y]."','".$obstacle3[x]."','".$obstacle3[y]."')";
 mysql_query($sql2) or die(mysql_error()); //populate starting data
+$sql5 = "SELECT obstacles,obstacle1x,obstacle1y,obstacle2x,obstacle2y,obstacle3x,obstacle3y FROM `" . $game . "` WHERE turn=1";
+$result = mysql_query($sql5);
+while ($data = mysql_fetch_row($result)) {
+    echo("obstacles=$data[0]&obstacle1x=$data[1]&obstacle1y=$data[2]&obstacle2x=$data[3]&obstacle2y=$data[4]&obstacle3x=$data[5]&obstacle3y=$data[6]");
+}
+
 ?>

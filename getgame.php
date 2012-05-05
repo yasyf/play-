@@ -11,7 +11,7 @@ if (isset($game)) {
     echo("game=$data[0]");
 
 
-    $sql4 = "DELETE FROM `yasyfcom_play`.`active` WHERE `table`= '" . $game . "'";
+    $sql4 = "DELETE FROM `active` WHERE `table`= '" . $game . "'";
     mysql_query($sql4) or die(mysql_error()); //log game closing
 } else {
     echo("no existing games");

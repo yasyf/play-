@@ -37,7 +37,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_11"></a><span class="line">   11 </span>    <span class="kwa">echo</span><span class="sym">(</span><span class="str">&quot;game=$data[0]&quot;</span><span class="sym">);</span>
 <a name="l_12"></a><span class="line">   12 </span>
 <a name="l_13"></a><span class="line">   13 </span>
-<a name="l_14"></a><span class="line">   14 </span>    <span class="kwb">$sql4</span> <span class="sym">=</span> <span class="str">&quot;DELETE FROM `yasyfcom_play`.`active` WHERE `table`= '&quot;</span> . <span class="kwb">$game</span> . <span class="str">&quot;'&quot;</span><span class="sym">;</span>
+<a name="l_14"></a><span class="line">   14 </span>    <span class="kwb">$sql4</span> <span class="sym">=</span> <span class="str">&quot;DELETE FROM `active` WHERE `table`= '&quot;</span> . <span class="kwb">$game</span> . <span class="str">&quot;'&quot;</span><span class="sym">;</span>
 <a name="l_15"></a><span class="line">   15 </span>    <span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql4</span><span class="sym">)</span> or die<span class="sym">(</span><span class="kwa">mysql_error</span><span class="sym">());</span> <span class="slc">//log game closing</span>
 <a name="l_16"></a><span class="line">   16 </span><span class="sym">}</span> <span class="kwa">else</span> <span class="sym">{</span>
 <a name="l_17"></a><span class="line">   17 </span>    <span class="kwa">echo</span><span class="sym">(</span><span class="str">&quot;no existing games&quot;</span><span class="sym">);</span>

@@ -21,7 +21,7 @@ $data = mysql_fetch_row($result);
 $game = $data[0];
 if (isset($game)) {
     //echo("game found!");
-    $sql4 = "DELETE FROM `yasyfcom_play`.`active` WHERE `table`= '" . $game . "'";
+    $sql4 = "DELETE FROM `active` WHERE `table`= '" . $game . "'";
     mysql_query($sql4) or die(mysql_error()); //log game closing
     echo("game=$game");
 } else {
@@ -37,7 +37,7 @@ if (isset($game)) {
             $finished = true;
         }
     }
-    $sql4 = "INSERT INTO `yasyfcom_play`.`active` (`table`,`player`) VALUES ('" . $table . "','" . $player . "')";
+    $sql4 = "INSERT INTO `active` (`table`,`player`) VALUES ('" . $table . "','" . $player . "')";
     mysql_query($sql4) or die(mysql_error()); //log game opening
     echo("game=$table");
 }
