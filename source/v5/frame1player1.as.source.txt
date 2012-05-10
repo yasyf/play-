@@ -18,7 +18,7 @@ serverloc = "http://site5.yasyf.com/";
 */
 function sendReceive(ismovemade)
 {
-	
+
 	_root.sendReceivebool = false;
 	variables = new LoadVars();
 	variables.game = _root.game;
@@ -213,7 +213,7 @@ function plusTurn()
 			_root.box3.scalefactor = 35;
 		};
 	}
-		gameR = new LoadVars();
+	gameR = new LoadVars();
 	gameR.game = _root.game;
 	gameR.player = _root.iamplayer;
 	gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
@@ -223,21 +223,21 @@ function plusTurn()
 		_root.resetBoxes();
 		trace("Game Reset");//game table now initialized
 		sendReceive(false);
-setturn = new LoadVars();
-	setturn.game = _root.game;
-	setturn.player = _root.iamplayer;
-	setturn.turn = _root.turn;
-	setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
-	setturn.onLoad = function(success)
-	{
-		_root.movemade = false;
-		_root.turn++;
-		trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
-		_root.setturnbool = true;
-	};
+		setturn = new LoadVars();
+		setturn.game = _root.game;
+		setturn.player = _root.iamplayer;
+		setturn.turn = _root.turn;
+		setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
+		setturn.onLoad = function(success)
+		{
+			_root.movemade = false;
+			_root.turn++;
+			trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
+			_root.setturnbool = true;
+		};
 
 	};
-	
+
 
 }
 /**
@@ -361,7 +361,7 @@ for (i = 3; i >= 1; i--)
 		counter++;
 		// attach the movie clip on the stage - our dot now has the symbol attached to it
 		//grid_container["cell"+counter] = the cell that the loop is on
-		//grid_container.attachMovie("cellMC","cell" + counter,counter);
+		grid_container.attachMovie("cellMC","cell" + counter,counter);
 		// We assign a _x position to the cell, and a cellx for the grid
 		grid_container["cell" + counter]._x = initX;
 		grid_container["cell" + counter].celly = i;
@@ -385,7 +385,7 @@ for (i = 3; i >= 1; i--)
 }
 gameTable = new LoadVars();
 gameTable.player = _root.iamplayer;
-gameTable.sendAndLoad(serverloc + "gengame.php",gameTable,"GET");
+gameTable.sendAndLoad(serverloc + "gengame.php",gameTable,"POST");
 gameTable.onLoad = function(success)
 {
 	_root.game = this.game;
@@ -396,6 +396,30 @@ gameTable.onLoad = function(success)
 	gameInit.sendAndLoad(serverloc + "init.php",gameInit,"POST");
 	gameInit.onLoad = function(success)
 	{
+		_root.obstacles = gameInit.obstacles;
+		for (i = 1; i <= _root.obstacles; i++)
+		{
+			_root["obstacle" + i + "y"] = eval("_root.gameInit.obstacle" + i + "y");
+			_root["obstacle" + i + "x"] = eval("_root.gameInit.obstacle" + i + "x");
+			switch (eval("_root.gameInit.obstacle" + i + "type"))
+			{
+				case "1" :
+					_root["obstacle" + i + "type"] = "chain";
+					break;
+				case "2" :
+					_root["obstacle" + i + "type"] = "tv";
+					break;
+				case "3" :
+					_root["obstacle" + i + "type"] = "barrel";
+					break;
+			}
+			trace(_root["obstacle" + i + "type"]);
+			_root.obstacleMC.attachMovie(_root["obstacle" + i + "type"],"obstacle" + i,i);
+			togridX(_root["obstacle" + i + "x"], _root.obstacleMC["obstacle" + i]);
+			togridY(_root["obstacle" + i + "y"], _root.obstacleMC["obstacle" + i]);
+			_root.obstacleMC["obstacle" + i]._yscale = 50;
+			_root.obstacleMC["obstacle" + i]._xscale = 50;
+		}
 		trace("Game Table Initialized");//game table now initialized
 		sendReceive(false);
 

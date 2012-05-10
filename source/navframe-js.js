@@ -327,6 +327,7 @@ var TREE_ITEMS = [
 , ['getready.php', 'getready.php.html']
 , ['getx.php', 'getx.php.html']
 , ['gety.php', 'gety.php.html']
+, ['highlight.css', 'highlight.css.html']
 , ['init.php', 'init.php.html']
 , ['player1.php', 'player1.php.html']
 , ['player2.php', 'player2.php.html']
