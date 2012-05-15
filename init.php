@@ -5,7 +5,7 @@ if (!isset($game)) {
     exit("game not set");
 }
 include 'vars.php';
-if($_REQUEST['found'] == false)
+if($_REQUEST['found'] == "false")
 {
 $sql = "DROP TABLE IF EXISTS `" . $game . "`"; //wipe and start over
 mysql_query($sql) or die(mysql_error());
