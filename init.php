@@ -5,6 +5,8 @@ if (!isset($game)) {
     exit("game not set");
 }
 include 'vars.php';
+if($_REQUEST['found'] == false)
+{
 $sql = "DROP TABLE IF EXISTS `" . $game . "`"; //wipe and start over
 mysql_query($sql) or die(mysql_error());
 $sql3 = "CREATE TABLE IF NOT EXISTS `" . $game . "` (
@@ -59,9 +61,9 @@ for ($i=1; $i<=$obstacleNumb; $i++) {
 	
 
 }
-
 $sql2 = "INSERT INTO `" . $game . "` (`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`,`obstacles`, `obstacle1x`,`obstacle1y`,`obstacle2x`,`obstacle2y`,`obstacle3x`,`obstacle3y`,`obstacle1type`,`obstacle2type`,`obstacle3type`) VALUES ('2', '1', '2', '3', '2', '5', '2', '3', '1', '0', '0','".$obstacleNumb."','".$obstacle1[x]."','".$obstacle1[y]."','".$obstacle2[x]."','".$obstacle2[y]."','".$obstacle3[x]."','".$obstacle3[y]."','".$obstacle1[type]."','".$obstacle2[type]."','".$obstacle3[type]."')";
 mysql_query($sql2) or die(mysql_error()); //populate starting data
+}
 $sql5 = "SELECT obstacles,obstacle1x,obstacle1y,obstacle2x,obstacle2y,obstacle3x,obstacle3y,`obstacle1type`,`obstacle2type`,`obstacle3type` FROM `" . $game . "` WHERE turn=1";
 $result = mysql_query($sql5);
 while ($data = mysql_fetch_row($result)) {
