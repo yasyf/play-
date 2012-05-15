@@ -498,6 +498,7 @@ gameTable.onLoad = function(success)
 	_root.game = this.game;
 	trace("game table: " + _root.game);//game table now loaded
 	gameInit = new LoadVars();
+	gameInit.found = gameTable.found;
 	gameInit.game = _root.game;
 	gameInit.player = _root.iamplayer;
 	gameInit.sendAndLoad(serverloc + "init.php",gameInit,"POST");

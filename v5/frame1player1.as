@@ -336,7 +336,20 @@ function tocellY(gridy, object)
 	celly = Math.round(celly);
 	object.celly = celly;
 }
+function checkObstacle()
+{
+	_root.collider = null;
+	for (i = 1; i <= _root.obstacles; i++)
+	{
+		if (_root["obstacle" + i + "x"] == _root.player.cellx and _root["obstacle" + i + "y"] == _root.player.celly)
+		{
+			trace("detected collision with obstacle" + i);
+			_root.collider = i;
+		}
 
+	}
+	return _root.collider;
+}
 // init _x and _y position for  first cell (top right) plus the counter that sets the name (unique) and left/right and up/down
 // borrowed and adapted the dynamic grid from http://www.flashvalley.com/fv_tutorials/creating_a_grid_dynamically/
 initX = 0;
@@ -389,8 +402,10 @@ gameTable.sendAndLoad(serverloc + "gengame.php",gameTable,"POST");
 gameTable.onLoad = function(success)
 {
 	_root.game = this.game;
+	_root.found = this.found;
 	trace("game table: " + _root.game);//game table now loaded
 	gameInit = new LoadVars();
+	gameInit.found = _root.found;
 	gameInit.game = _root.game;
 	gameInit.player = _root.iamplayer;
 	gameInit.sendAndLoad(serverloc + "init.php",gameInit,"POST");
@@ -415,8 +430,8 @@ gameTable.onLoad = function(success)
 			}
 			trace(_root["obstacle" + i + "type"]);
 			_root.obstacleMC.attachMovie(_root["obstacle" + i + "type"],"obstacle" + i,i);
-			togridX(_root["obstacle" + i + "x"], _root.obstacleMC["obstacle" + i]);
-			togridY(_root["obstacle" + i + "y"], _root.obstacleMC["obstacle" + i]);
+			togridX(_root["obstacle" + i + "x"],_root.obstacleMC["obstacle" + i]);
+			togridY(_root["obstacle" + i + "y"],_root.obstacleMC["obstacle" + i]);
 			_root.obstacleMC["obstacle" + i]._yscale = 50;
 			_root.obstacleMC["obstacle" + i]._xscale = 50;
 		}
