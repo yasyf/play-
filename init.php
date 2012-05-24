@@ -46,11 +46,12 @@ for ($j=1; $j<=3; $j++)
 	
 }
 $uniquer = array();
+$uniquer[0][x] = 3;
+$uniquer[0][y] = 2;
 for ($i=1; $i<=$obstacleNumb; $i++) {
 	$obstacle = "obstacle".$i;
 	${$obstacle}[x] = rand(1,5);
 	${$obstacle}[y] = rand(1,3);
-	${$obstacle}[type] = rand(1,3);
 	while(in_array($$obstacle,$uniquer))
 	{
 	${$obstacle}[x] = rand(1,5);
@@ -58,7 +59,7 @@ for ($i=1; $i<=$obstacleNumb; $i++) {
 	}
 	$uniquer[$i][x] = ${$obstacle}[x];
 	$uniquer[$i][y] = ${$obstacle}[y];		
-	
+	${$obstacle}[type] = rand(1,3);
 
 }
 $sql2 = "INSERT INTO `" . $game . "` (`box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`,`obstacles`, `obstacle1x`,`obstacle1y`,`obstacle2x`,`obstacle2y`,`obstacle3x`,`obstacle3y`,`obstacle1type`,`obstacle2type`,`obstacle3type`) VALUES ('2', '1', '2', '3', '2', '5', '2', '3', '1', '0', '0','".$obstacleNumb."','".$obstacle1[x]."','".$obstacle1[y]."','".$obstacle2[x]."','".$obstacle2[y]."','".$obstacle3[x]."','".$obstacle3[y]."','".$obstacle1[type]."','".$obstacle2[type]."','".$obstacle3[type]."')";

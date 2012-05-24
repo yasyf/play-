@@ -4,27 +4,23 @@ onClipEvent (enterFrame) {
 
 		_xscale = _root.scalefactor;
 		_yscale = _root.scalefactor;
-		_root.box3out._x = _x;
-		_root.box3out._y = _y;
+		_root.box2out._x = _x;
+		_root.box2out._y = _y;
 	}
-	if (_root.resetready)
-	{
-		_root.resetready = false;
-		_root.reset();
-	}
+
 }
 onClipEvent (load) {
 	import mx.transitions.Tween;
 	import mx.transitions.easing.*;
-	initX = 5;
+	initX = 3;
 	initY = 2;
-	_root.togridX(5,this);
+	_root.togridX(3,this);
 	_root.togridY(2,this);
-	_root.box3x = cellx;
-	_root.box3y = celly;
+	_root.box2x = cellx;
+	_root.box2y = celly;
 	isDragged = false;
-	enemy1 = _root.box2out;
-	enemy2 = _root.box1out;
+	enemy1 = _root.box1out;
+	enemy2 = _root.box3out;
 
 
 }
@@ -33,8 +29,8 @@ on (release) {
 	{
 		this.stopDrag();
 		isDragged = false;
-		_root.box3x = cellx;
-		_root.box3y = celly;
+		_root.box2x = cellx;
+		_root.box2y = celly;
 		_root.land(this,enemy1,enemy2);
 		if (hit == false)
 		{
@@ -42,6 +38,7 @@ on (release) {
 			_root.varsSent = true;
 			_root.sendReceive(true);
 		}
+
 
 	}
 }

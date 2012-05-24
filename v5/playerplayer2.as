@@ -1,6 +1,11 @@
 onClipEvent (enterFrame) {
 	_xscale = scalefactor;
 	_yscale = scalefactor;
+		if (_root.resetready)
+	{
+		_root.resetready = false;
+		_root.reset();
+	}
 	if (_root.timer < 61)
 	{
 		_root.timer++;

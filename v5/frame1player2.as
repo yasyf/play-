@@ -110,7 +110,7 @@ function reset()
 			break;
 	}
 	
-	gameR = new LoadVars();
+	/*gameR = new LoadVars();
 	gameR.game = _root.game;
 	gameR.player = _root.iamplayer;
 	gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
@@ -118,11 +118,11 @@ function reset()
 	{
 		_root.turn = 1;
 		_root.resetBoxes();
-		trace("Game Reset");//game table now initialized
+		trace("Game Reset by p2");//game table now initialized
 		sendReceive(false);
 
 
-	};
+	};*/
 	
 }
 /**
@@ -166,7 +166,7 @@ function fall()
 	if (_root.resetsafe)
 	{
 
-		if (scalefactor > 35)
+		if (_root.turn < 9)
 		{
 			_root.motion = true;
 			var tweenSmall:Tween = new Tween(this, "scalefactor", Regular.easeOut, scalefactor, scalefactor * .85, 1, true);
@@ -415,7 +415,7 @@ if(_root.turn < 9)
 		_root.sendReceivebool = true;
 		_root.getreadybool = true;
 
-		trace("player1x: " + variables.player1x);
+		/*trace("player1x: " + variables.player1x);
 		trace("player1y: " + variables.player1y);
 		trace("player1ready: " + variables.player1ready);
 
@@ -424,7 +424,7 @@ if(_root.turn < 9)
 		trace("set box3x:" + _root.box3.cellx);
 		trace("set box1y:" + _root.box1.celly);
 		trace("set box2y:" + _root.box2.celly);
-		trace("set box3y:" + _root.box3.celly);
+		trace("set box3y:" + _root.box3.celly);*/
 
 		_root.gridX(_root.player1x,_root.player);
 		var tweenX:Tween = new Tween(_root.player, "_x", Regular.easeOut, _root.player._x, _root.player.gridx, 1, true);

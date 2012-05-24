@@ -50,7 +50,7 @@ function sendReceive(ismovemade)
 		_root.sendReceivebool = true;
 		_root.getreadybool = true;
 
-		trace("box1x:" + _root.box1x);
+		/*trace("box1x:" + _root.box1x);
 		trace("box2x:" + _root.box2x);
 		trace("box3x:" + _root.box3x);
 		trace("box1y:" + _root.box1y);
@@ -58,7 +58,7 @@ function sendReceive(ismovemade)
 		trace("box3y:" + _root.box3y);
 		trace("player2ready: " + variables.player2ready);
 		trace("New Y Set! (Y=" + variables.player1y + ")");
-		trace("New X Set! (X=" + variables.player1x + ")");
+		trace("New X Set! (X=" + variables.player1x + ")");*/
 
 		_root.gridX(_root.box1x,_root.box1);
 		_root.gridX(_root.box2x,_root.box2);
@@ -212,34 +212,36 @@ function plusTurn()
 		{
 			_root.box3.scalefactor = 35;
 		};
-	}
-	gameR = new LoadVars();
-	gameR.game = _root.game;
-	gameR.player = _root.iamplayer;
-	gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
-	gameR.onLoad = function(success)
-	{
-		_root.turn = 1;
-		_root.resetBoxes();
-		trace("Game Reset");//game table now initialized
-		sendReceive(false);
-		setturn = new LoadVars();
-		setturn.game = _root.game;
-		setturn.player = _root.iamplayer;
-		setturn.turn = _root.turn;
-		setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
-		setturn.onLoad = function(success)
-		{
-			_root.movemade = false;
-			_root.turn++;
-			trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
-			_root.setturnbool = true;
-		};
 
+		/*gameR = new LoadVars();
+		gameR.game = _root.game;
+		gameR.player = _root.iamplayer;
+		gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
+		gameR.onLoad = function(success)
+		{
+			_root.turn = 1;
+			_root.resetBoxes();
+			trace("Game Reset by p1");//game table now initialized
+		};*/
+	}
+	sendReceive(false);
+	setturn = new LoadVars();
+	setturn.game = _root.game;
+	setturn.player = _root.iamplayer;
+	setturn.turn = _root.turn;
+	setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
+	setturn.onLoad = function(success)
+	{
+		_root.movemade = false;
+		_root.turn++;
+		trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
+		_root.setturnbool = true;
 	};
 
-
 }
+
+
+
 /**
 * Exits game and cleans up table; exiterbool keeps track of active progress
 * @param game
@@ -348,7 +350,6 @@ function checkObstacle()
 		}
 
 	}
-	return _root.collider;
 }
 // init _x and _y position for  first cell (top right) plus the counter that sets the name (unique) and left/right and up/down
 // borrowed and adapted the dynamic grid from http://www.flashvalley.com/fv_tutorials/creating_a_grid_dynamically/
