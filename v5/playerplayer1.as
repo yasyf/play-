@@ -2,6 +2,7 @@ onClipEvent (enterFrame) {
 	_xscale = scalefactor;
 	_yscale = scalefactor;
 
+	
 	if (_root.timer < 61)
 	{
 		_root.timer++;
@@ -9,6 +10,14 @@ onClipEvent (enterFrame) {
 	else
 	{
 		_root.timer = 0;
+		if(_level1.lockk == undefined)
+		{
+			_root.pauser = false;
+		}
+		else
+		{
+			_root.pauser = true;
+		}
 	}
 
 	if (_root.sendReceivebool and _root.exiterbool != true and _root.varsSent != true)
@@ -114,12 +123,12 @@ onClipEvent (load) {
 
 }
 onClipEvent (keyDown) {
-	if (Key.isDown(Key.RIGHT) and cellx <= 4 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	if (Key.isDown(Key.RIGHT) and cellx <= 4 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
 	{
 		cellx++;
 		_root.gridX(cellx,_root.player);
-
-		if (_root.checkObstacle() != null)
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
 			trace("move prohibited");
 			cellx--;
@@ -141,11 +150,12 @@ onClipEvent (keyDown) {
 
 		}
 	}
-	else if (Key.isDown(Key.LEFT) and cellx >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	else if (Key.isDown(Key.LEFT) and cellx >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
 	{
 		cellx--;
 		_root.gridX(cellx,_root.player);
-		if (_root.checkObstacle() != null)
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
 			trace("move prohibited");
 			cellx++;
@@ -165,67 +175,69 @@ onClipEvent (keyDown) {
 			};
 		}
 	}
-	else if (Key.isDown(Key.UP) and celly <= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	else if (Key.isDown(Key.UP) and celly <= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
 	{
 		celly++;
 		_root.gridY(celly,_root.player);
-		if (_root.checkObstacle() != null)
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
 			trace("move prohibited");
 			celly--;
-		_root.gridY(celly,_root.player);
+			_root.gridY(celly,_root.player);
 		}
 		else
 		{
-			trace("move prohibited");
-		motion = true;
-		var tweenUp:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
-		tweenUp.onMotionFinished = function()
-		{
-			motion = false;
-			_root.myonemove = false;
-			_root.varsSent = true;
-			_root.sendReceive(true);
+			
+			motion = true;
+			var tweenUp:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
+			tweenUp.onMotionFinished = function()
+			{
+				motion = false;
+				_root.myonemove = false;
+				_root.varsSent = true;
+				_root.sendReceive(true);
 
-		};
-		
-		/*motion = true;
-		var tweenSmall:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor - 55, 1, true);
-		tweenSmall.onMotionFinished = function()
-		{
-		motion = false;
-		};*/
+			};
+
+			/*motion = true;
+			var tweenSmall:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor - 55, 1, true);
+			tweenSmall.onMotionFinished = function()
+			{
+			motion = false;
+			};*/
 		}
 
 	}
-	else if (Key.isDown(Key.DOWN) and celly >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	else if (Key.isDown(Key.DOWN) and celly >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
 	{
 		celly--;
 		_root.gridY(celly,_root.player);
-		if (_root.checkObstacle() != null)
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
 			trace("move prohibited");
 			celly++;
-		_root.gridY(celly,_root.player);
+			_root.gridY(celly,_root.player);
 		}
 		else
 		{
-		motion = true;
-		var tweenDown:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
-		tweenDown.onMotionFinished = function()
-		{
-			motion = false;
-			_root.myonemove = false;
-			_root.varsSent = true;
-			_root.sendReceive(true);
+			motion = true;
+			var tweenDown:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
+			tweenDown.onMotionFinished = function()
+			{
+				motion = false;
+				_root.myonemove = false;
+				_root.varsSent = true;
+				_root.sendReceive(true);
 
-		};
-		/*motion = true;
-		var tweenBig:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor + 55, 1, true);
-		tweenBig.onMotionFinished = function()
-		{
-		motion = false;
-		};*/
+			};
+			/*motion = true;
+			var tweenBig:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor + 55, 1, true);
+			tweenBig.onMotionFinished = function()
+			{
+			motion = false;
+			};*/
 		}
 	}
 }

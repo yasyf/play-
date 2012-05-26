@@ -392,7 +392,7 @@ function sendReceive(ismovemade)
 	variables = new LoadVars();
 	variables.game = _root.game;
 	variables.turn = _root.turn;
-if(_root.turn < 9)
+if(_root.turn < 8)
 {
 	
 	variables.box2x = _root.box2.cellx;

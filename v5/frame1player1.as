@@ -346,6 +346,23 @@ function checkObstacle()
 		if (_root["obstacle" + i + "x"] == _root.player.cellx and _root["obstacle" + i + "y"] == _root.player.celly)
 		{
 			trace("detected collision with obstacle" + i);
+			_root.pauser = true;
+			switch(_root["obstacle" + i + "type"])
+			{
+				case "chain":
+				//chain
+				loadMovieNum("CollideChain.swf",1);
+				break;
+				case "tv":
+				//tv
+				loadMovieNum("CollideTV.swf",1);
+				break;
+				case "barrel":
+				//barrell
+				loadMovieNum("CollideBox.swf",1);
+				break;
+				
+			}
 			_root.collider = i;
 		}
 
@@ -366,6 +383,7 @@ _root.opponentFinding = false;
 _root.opponentFound = false;
 _root.init = true;
 _root.myonemove = true;
+_root.pauser = false;
 //columns
 for (i = 3; i >= 1; i--)
 {
