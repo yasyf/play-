@@ -30,64 +30,61 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_4"></a><span class="line">    4 </span>
 <a name="l_5"></a><span class="line">    5 </span>		_xscale <span class="sym">=</span> _root.scalefactor<span class="sym">;</span>
 <a name="l_6"></a><span class="line">    6 </span>		_yscale <span class="sym">=</span> _root.scalefactor<span class="sym">;</span>
-<a name="l_7"></a><span class="line">    7 </span>		_root.box3out._x <span class="sym">=</span> _x<span class="sym">;</span>
-<a name="l_8"></a><span class="line">    8 </span>		_root.box3out._y <span class="sym">=</span> _y<span class="sym">;</span>
+<a name="l_7"></a><span class="line">    7 </span>		_root.box2out._x <span class="sym">=</span> _x<span class="sym">;</span>
+<a name="l_8"></a><span class="line">    8 </span>		_root.box2out._y <span class="sym">=</span> _y<span class="sym">;</span>
 <a name="l_9"></a><span class="line">    9 </span>	<span class="sym">}</span>
-<a name="l_10"></a><span class="line">   10 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.resetready<span class="sym">)</span>
-<a name="l_11"></a><span class="line">   11 </span>	<span class="sym">{</span>
-<a name="l_12"></a><span class="line">   12 </span>		_root.resetready <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
-<a name="l_13"></a><span class="line">   13 </span>		_root.<span class="kwd">reset</span><span class="sym">();</span>
-<a name="l_14"></a><span class="line">   14 </span>	<span class="sym">}</span>
-<a name="l_15"></a><span class="line">   15 </span><span class="sym">}</span>
-<a name="l_16"></a><span class="line">   16 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span><span class="kwb">load</span><span class="sym">) {</span>
-<a name="l_17"></a><span class="line">   17 </span>	import mx.transitions.Tween<span class="sym">;</span>
-<a name="l_18"></a><span class="line">   18 </span>	import mx.transitions.easing.<span class="sym">*;</span>
-<a name="l_19"></a><span class="line">   19 </span>	initX <span class="sym">=</span> <span class="num">5</span><span class="sym">;</span>
-<a name="l_20"></a><span class="line">   20 </span>	initY <span class="sym">=</span> <span class="num">2</span><span class="sym">;</span>
-<a name="l_21"></a><span class="line">   21 </span>	_root.<span class="kwd">togridX</span><span class="sym">(</span><span class="num">5</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
-<a name="l_22"></a><span class="line">   22 </span>	_root.<span class="kwd">togridY</span><span class="sym">(</span><span class="num">2</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
-<a name="l_23"></a><span class="line">   23 </span>	_root.box3x <span class="sym">=</span> cellx<span class="sym">;</span>
-<a name="l_24"></a><span class="line">   24 </span>	_root.box3y <span class="sym">=</span> celly<span class="sym">;</span>
-<a name="l_25"></a><span class="line">   25 </span>	isDragged <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
-<a name="l_26"></a><span class="line">   26 </span>	enemy1 <span class="sym">=</span> _root.box2out<span class="sym">;</span>
-<a name="l_27"></a><span class="line">   27 </span>	enemy2 <span class="sym">=</span> _root.box1out<span class="sym">;</span>
-<a name="l_28"></a><span class="line">   28 </span>
-<a name="l_29"></a><span class="line">   29 </span>
-<a name="l_30"></a><span class="line">   30 </span><span class="sym">}</span>
-<a name="l_31"></a><span class="line">   31 </span><span class="kwd">on</span> <span class="sym">(</span>release<span class="sym">) {</span>
-<a name="l_32"></a><span class="line">   32 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.motion <span class="kwb">and</span> isDragged<span class="sym">)</span>
-<a name="l_33"></a><span class="line">   33 </span>	<span class="sym">{</span>
-<a name="l_34"></a><span class="line">   34 </span>		<span class="kwb">this</span>.<span class="kwb">stopDrag</span><span class="sym">();</span>
-<a name="l_35"></a><span class="line">   35 </span>		isDragged <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
-<a name="l_36"></a><span class="line">   36 </span>		_root.box3x <span class="sym">=</span> cellx<span class="sym">;</span>
-<a name="l_37"></a><span class="line">   37 </span>		_root.box3y <span class="sym">=</span> celly<span class="sym">;</span>
-<a name="l_38"></a><span class="line">   38 </span>		_root.<span class="kwd">land</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span>enemy1<span class="sym">,</span>enemy2<span class="sym">);</span>
-<a name="l_39"></a><span class="line">   39 </span>		<span class="kwb">if</span> <span class="sym">(</span>hit <span class="sym">==</span> <span class="kwb">false</span><span class="sym">)</span>
-<a name="l_40"></a><span class="line">   40 </span>		<span class="sym">{</span>
-<a name="l_41"></a><span class="line">   41 </span>			_root.myonemove <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
-<a name="l_42"></a><span class="line">   42 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
-<a name="l_43"></a><span class="line">   43 </span>			_root.<span class="kwd">sendReceive</span><span class="sym">(</span><span class="kwb">true</span><span class="sym">);</span>
-<a name="l_44"></a><span class="line">   44 </span>		<span class="sym">}</span>
-<a name="l_45"></a><span class="line">   45 </span>
-<a name="l_46"></a><span class="line">   46 </span>	<span class="sym">}</span>
-<a name="l_47"></a><span class="line">   47 </span><span class="sym">}</span>
-<a name="l_48"></a><span class="line">   48 </span><span class="kwd">on</span> <span class="sym">(</span>press<span class="sym">) {</span>
-<a name="l_49"></a><span class="line">   49 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.resetsafe <span class="kwb">and</span> _root.opponentFound <span class="kwb">and</span> _root.myonemove<span class="sym">)</span>
-<a name="l_50"></a><span class="line">   50 </span>	<span class="sym">{</span>
-<a name="l_51"></a><span class="line">   51 </span>
-<a name="l_52"></a><span class="line">   52 </span>		_root.currentBox <span class="sym">=</span> <span class="kwb">this</span><span class="sym">;</span>
+<a name="l_10"></a><span class="line">   10 </span>
+<a name="l_11"></a><span class="line">   11 </span><span class="sym">}</span>
+<a name="l_12"></a><span class="line">   12 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span><span class="kwb">load</span><span class="sym">) {</span>
+<a name="l_13"></a><span class="line">   13 </span>	import mx.transitions.Tween<span class="sym">;</span>
+<a name="l_14"></a><span class="line">   14 </span>	import mx.transitions.easing.<span class="sym">*;</span>
+<a name="l_15"></a><span class="line">   15 </span>	initX <span class="sym">=</span> <span class="num">3</span><span class="sym">;</span>
+<a name="l_16"></a><span class="line">   16 </span>	initY <span class="sym">=</span> <span class="num">2</span><span class="sym">;</span>
+<a name="l_17"></a><span class="line">   17 </span>	_root.<span class="kwd">togridX</span><span class="sym">(</span><span class="num">3</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
+<a name="l_18"></a><span class="line">   18 </span>	_root.<span class="kwd">togridY</span><span class="sym">(</span><span class="num">2</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
+<a name="l_19"></a><span class="line">   19 </span>	_root.box2x <span class="sym">=</span> cellx<span class="sym">;</span>
+<a name="l_20"></a><span class="line">   20 </span>	_root.box2y <span class="sym">=</span> celly<span class="sym">;</span>
+<a name="l_21"></a><span class="line">   21 </span>	isDragged <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_22"></a><span class="line">   22 </span>	enemy1 <span class="sym">=</span> _root.box1out<span class="sym">;</span>
+<a name="l_23"></a><span class="line">   23 </span>	enemy2 <span class="sym">=</span> _root.box3out<span class="sym">;</span>
+<a name="l_24"></a><span class="line">   24 </span>
+<a name="l_25"></a><span class="line">   25 </span>
+<a name="l_26"></a><span class="line">   26 </span><span class="sym">}</span>
+<a name="l_27"></a><span class="line">   27 </span><span class="kwd">on</span> <span class="sym">(</span>release<span class="sym">) {</span>
+<a name="l_28"></a><span class="line">   28 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.motion <span class="kwb">and</span> isDragged<span class="sym">)</span>
+<a name="l_29"></a><span class="line">   29 </span>	<span class="sym">{</span>
+<a name="l_30"></a><span class="line">   30 </span>		<span class="kwb">this</span>.<span class="kwb">stopDrag</span><span class="sym">();</span>
+<a name="l_31"></a><span class="line">   31 </span>		isDragged <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_32"></a><span class="line">   32 </span>		_root.box2x <span class="sym">=</span> cellx<span class="sym">;</span>
+<a name="l_33"></a><span class="line">   33 </span>		_root.box2y <span class="sym">=</span> celly<span class="sym">;</span>
+<a name="l_34"></a><span class="line">   34 </span>		_root.<span class="kwd">land</span><span class="sym">(</span><span class="kwb">this</span><span class="sym">,</span>enemy1<span class="sym">,</span>enemy2<span class="sym">);</span>
+<a name="l_35"></a><span class="line">   35 </span>		<span class="kwb">if</span> <span class="sym">(</span>hit <span class="sym">==</span> <span class="kwb">false</span><span class="sym">)</span>
+<a name="l_36"></a><span class="line">   36 </span>		<span class="sym">{</span>
+<a name="l_37"></a><span class="line">   37 </span>			_root.myonemove <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_38"></a><span class="line">   38 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_39"></a><span class="line">   39 </span>			_root.<span class="kwd">sendReceive</span><span class="sym">(</span><span class="kwb">true</span><span class="sym">);</span>
+<a name="l_40"></a><span class="line">   40 </span>		<span class="sym">}</span>
+<a name="l_41"></a><span class="line">   41 </span>
+<a name="l_42"></a><span class="line">   42 </span>
+<a name="l_43"></a><span class="line">   43 </span>	<span class="sym">}</span>
+<a name="l_44"></a><span class="line">   44 </span><span class="sym">}</span>
+<a name="l_45"></a><span class="line">   45 </span><span class="kwd">on</span> <span class="sym">(</span>press<span class="sym">) {</span>
+<a name="l_46"></a><span class="line">   46 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.resetsafe <span class="kwb">and</span> _root.opponentFound <span class="kwb">and</span> _root.myonemove<span class="sym">)</span>
+<a name="l_47"></a><span class="line">   47 </span>	<span class="sym">{</span>
+<a name="l_48"></a><span class="line">   48 </span>
+<a name="l_49"></a><span class="line">   49 </span>		_root.currentBox <span class="sym">=</span> <span class="kwb">this</span><span class="sym">;</span>
+<a name="l_50"></a><span class="line">   50 </span>
+<a name="l_51"></a><span class="line">   51 </span>		<span class="kwb">if</span> <span class="sym">(!</span>_root.motion <span class="kwb">and</span> _root.player1ready <span class="sym">!=</span> <span class="num">1</span> <span class="kwb">and</span> _root.player1ready <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_52"></a><span class="line">   52 </span>		<span class="sym">{</span>
 <a name="l_53"></a><span class="line">   53 </span>
-<a name="l_54"></a><span class="line">   54 </span>		<span class="kwb">if</span> <span class="sym">(!</span>_root.motion <span class="kwb">and</span> _root.player1ready <span class="sym">!=</span> <span class="num">1</span> <span class="kwb">and</span> _root.player1ready <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
-<a name="l_55"></a><span class="line">   55 </span>		<span class="sym">{</span>
-<a name="l_56"></a><span class="line">   56 </span>
-<a name="l_57"></a><span class="line">   57 </span>			<span class="kwb">this</span>.<span class="kwb">startDrag</span><span class="sym">();</span>
-<a name="l_58"></a><span class="line">   58 </span>			isDragged <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
-<a name="l_59"></a><span class="line">   59 </span>			_root.motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_54"></a><span class="line">   54 </span>			<span class="kwb">this</span>.<span class="kwb">startDrag</span><span class="sym">();</span>
+<a name="l_55"></a><span class="line">   55 </span>			isDragged <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_56"></a><span class="line">   56 </span>			_root.motion <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
+<a name="l_57"></a><span class="line">   57 </span>
+<a name="l_58"></a><span class="line">   58 </span>		<span class="sym">}</span>
+<a name="l_59"></a><span class="line">   59 </span>	<span class="sym">}</span>
 <a name="l_60"></a><span class="line">   60 </span>
-<a name="l_61"></a><span class="line">   61 </span>		<span class="sym">}</span>
-<a name="l_62"></a><span class="line">   62 </span>	<span class="sym">}</span>
-<a name="l_63"></a><span class="line">   63 </span>
-<a name="l_64"></a><span class="line">   64 </span><span class="sym">}</span>
+<a name="l_61"></a><span class="line">   61 </span><span class="sym">}</span>
 </pre>
 </body>
 </html>
