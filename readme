@@ -10,7 +10,7 @@ After 8 increments (8 moves EACH), Player 2 will not make a move on the 9th turn
 Player 1 will make his 9th (final) turn, and then the game will decide the winner.
 If the player is trapped, Player 2 wins. If the player escapes, Player 1 wins.
 All communication between the two players is done via a PHP API and its connected MySQL Database.
-All in-game data is proccessed independently on either end by AS 2, based on what the API returns.
+All in-game data is processed independently on either end by AS 2, based on what the API returns.
 
 The API is documented in the file: API
 The Todo List is documented in the file: TODO
