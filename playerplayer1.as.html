@@ -51,7 +51,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_25"></a><span class="line">   25 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.opponentFound <span class="sym">==</span> <span class="str">&quot;true&quot;</span> <span class="kwb">and</span> _root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
 <a name="l_26"></a><span class="line">   26 </span>		<span class="sym">{</span>
 <a name="l_27"></a><span class="line">   27 </span>
-<a name="l_28"></a><span class="line">   28 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;opponent found&quot;</span><span class="sym">);</span>
+<a name="l_28"></a><span class="line">   28 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;opponent found&quot;</span><span class="sym">);</span>
 <a name="l_29"></a><span class="line">   29 </span>			_root.varsSent <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
 <a name="l_30"></a><span class="line">   30 </span>			_root.<span class="kwd">sendReceive</span><span class="sym">(</span><span class="kwb">false</span><span class="sym">);</span>
 <a name="l_31"></a><span class="line">   31 </span>
@@ -64,7 +64,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_38"></a><span class="line">   38 </span>
 <a name="l_39"></a><span class="line">   39 </span>			<span class="kwb">if</span> <span class="sym">(</span>_root.opponentFinding <span class="sym">==</span> <span class="kwb">false and</span> _root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
 <a name="l_40"></a><span class="line">   40 </span>			<span class="sym">{</span>
-<a name="l_41"></a><span class="line">   41 </span>				<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;looking...&quot;</span><span class="sym">);</span>
+<a name="l_41"></a><span class="line">   41 </span>				<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;looking...&quot;</span><span class="sym">);</span>
 <a name="l_42"></a><span class="line">   42 </span>				_root.<span class="kwd">checkFound</span><span class="sym">();</span>
 <a name="l_43"></a><span class="line">   43 </span>
 <a name="l_44"></a><span class="line">   44 </span>			<span class="sym">}</span>
@@ -75,12 +75,12 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_49"></a><span class="line">   49 </span>	<span class="sym">{</span>
 <a name="l_50"></a><span class="line">   50 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.abandoned<span class="sym">)</span>
 <a name="l_51"></a><span class="line">   51 </span>		<span class="sym">{</span>
-<a name="l_52"></a><span class="line">   52 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;opponent left&quot;</span><span class="sym">);</span>
+<a name="l_52"></a><span class="line">   52 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;opponent left&quot;</span><span class="sym">);</span>
 <a name="l_53"></a><span class="line">   53 </span>		<span class="sym">}</span>
 <a name="l_54"></a><span class="line">   54 </span>		<span class="kwb">else</span>
 <a name="l_55"></a><span class="line">   55 </span>		<span class="sym">{</span>
 <a name="l_56"></a><span class="line">   56 </span>
-<a name="l_57"></a><span class="line">   57 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;game over&quot;</span><span class="sym">);</span>
+<a name="l_57"></a><span class="line">   57 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;game over&quot;</span><span class="sym">);</span>
 <a name="l_58"></a><span class="line">   58 </span>
 <a name="l_59"></a><span class="line">   59 </span>		<span class="sym">}</span>
 <a name="l_60"></a><span class="line">   60 </span>
@@ -94,7 +94,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_68"></a><span class="line">   68 </span>				<span class="kwb">if</span> <span class="sym">(</span>_root.player2ready <span class="sym">==</span> <span class="num">0</span><span class="sym">)</span>
 <a name="l_69"></a><span class="line">   69 </span>				<span class="sym">{</span>
 <a name="l_70"></a><span class="line">   70 </span>					_root.timout <span class="sym">=</span> <span class="num">0</span><span class="sym">;</span>
-<a name="l_71"></a><span class="line">   71 </span>					<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Opponent Not Ready&quot;</span><span class="sym">);</span>
+<a name="l_71"></a><span class="line">   71 </span>					<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;Opponent Not Ready&quot;</span><span class="sym">);</span>
 <a name="l_72"></a><span class="line">   72 </span>					_root.<span class="kwd">getReady</span><span class="sym">();</span>
 <a name="l_73"></a><span class="line">   73 </span>
 <a name="l_74"></a><span class="line">   74 </span>				<span class="sym">}</span>
@@ -103,7 +103,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_77"></a><span class="line">   77 </span>					_root.timout <span class="sym">=</span> <span class="num">0</span><span class="sym">;</span>
 <a name="l_78"></a><span class="line">   78 </span>					_root.varsSent <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
 <a name="l_79"></a><span class="line">   79 </span>					_root.myonemove <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
-<a name="l_80"></a><span class="line">   80 </span>					<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Opponent Ready!&quot;</span><span class="sym">);</span>
+<a name="l_80"></a><span class="line">   80 </span>					<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;Opponent Ready!&quot;</span><span class="sym">);</span>
 <a name="l_81"></a><span class="line">   81 </span>					_root.<span class="kwd">plusTurn</span><span class="sym">();</span>
 <a name="l_82"></a><span class="line">   82 </span>					_root.<span class="kwd">sendReceive</span><span class="sym">(</span><span class="kwb">false</span><span class="sym">);</span>
 <a name="l_83"></a><span class="line">   83 </span>
@@ -116,11 +116,11 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_90"></a><span class="line">   90 </span>					_root.<span class="kwd">getReady</span><span class="sym">();</span>
 <a name="l_91"></a><span class="line">   91 </span>					_root.<span class="kwd">sendReceive</span><span class="sym">(</span><span class="kwb">false</span><span class="sym">);</span>
 <a name="l_92"></a><span class="line">   92 </span>					_root.timout<span class="sym">++;</span>
-<a name="l_93"></a><span class="line">   93 </span>					<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;timeout: &quot;</span> <span class="sym">+</span> _root.timout<span class="sym">);</span>
+<a name="l_93"></a><span class="line">   93 </span>					<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;timeout: &quot;</span> <span class="sym">+</span> _root.timout<span class="sym">);</span>
 <a name="l_94"></a><span class="line">   94 </span>					<span class="kwb">if</span> <span class="sym">(</span>_root.timout <span class="sym">==</span> <span class="num">5</span><span class="sym">)</span>
 <a name="l_95"></a><span class="line">   95 </span>					<span class="sym">{</span>
 <a name="l_96"></a><span class="line">   96 </span>
-<a name="l_97"></a><span class="line">   97 </span>						<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Opponent Left Game!&quot;</span><span class="sym">);</span>
+<a name="l_97"></a><span class="line">   97 </span>						<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;Opponent Left Game!&quot;</span><span class="sym">);</span>
 <a name="l_98"></a><span class="line">   98 </span>						_root.abandoned <span class="sym">=</span> <span class="kwb">true</span><span class="sym">;</span>
 <a name="l_99"></a><span class="line">   99 </span>						_root.<span class="kwd">exit</span><span class="sym">();</span>
 <a name="l_100"></a><span class="line">  100 </span>
@@ -132,7 +132,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_106"></a><span class="line">  106 </span>		<span class="sym">{</span>
 <a name="l_107"></a><span class="line">  107 </span>			<span class="kwb">if</span> <span class="sym">(</span>_root.timer <span class="sym">==</span> <span class="num">60</span><span class="sym">)</span>
 <a name="l_108"></a><span class="line">  108 </span>			<span class="sym">{</span>
-<a name="l_109"></a><span class="line">  109 </span>				<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;Vars have been sent, waiting...&quot;</span><span class="sym">);</span>
+<a name="l_109"></a><span class="line">  109 </span>				<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;Vars have been sent, waiting...&quot;</span><span class="sym">);</span>
 <a name="l_110"></a><span class="line">  110 </span>
 <a name="l_111"></a><span class="line">  111 </span>			<span class="sym">}</span>
 <a name="l_112"></a><span class="line">  112 </span>		<span class="sym">}</span>
@@ -156,7 +156,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_130"></a><span class="line">  130 </span>		_root.<span class="kwd">checkObstacle</span><span class="sym">();</span>
 <a name="l_131"></a><span class="line">  131 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.collider <span class="sym">!=</span> <span class="kwb">null</span><span class="sym">)</span>
 <a name="l_132"></a><span class="line">  132 </span>		<span class="sym">{</span>
-<a name="l_133"></a><span class="line">  133 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
+<a name="l_133"></a><span class="line">  133 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
 <a name="l_134"></a><span class="line">  134 </span>			cellx<span class="sym">--;</span>
 <a name="l_135"></a><span class="line">  135 </span>			_root.<span class="kwd">gridX</span><span class="sym">(</span>cellx<span class="sym">,</span>_root.player<span class="sym">);</span>
 <a name="l_136"></a><span class="line">  136 </span>		<span class="sym">}</span>
@@ -183,7 +183,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_157"></a><span class="line">  157 </span>		_root.<span class="kwd">checkObstacle</span><span class="sym">();</span>
 <a name="l_158"></a><span class="line">  158 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.collider <span class="sym">!=</span> <span class="kwb">null</span><span class="sym">)</span>
 <a name="l_159"></a><span class="line">  159 </span>		<span class="sym">{</span>
-<a name="l_160"></a><span class="line">  160 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
+<a name="l_160"></a><span class="line">  160 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
 <a name="l_161"></a><span class="line">  161 </span>			cellx<span class="sym">++;</span>
 <a name="l_162"></a><span class="line">  162 </span>			_root.<span class="kwd">gridX</span><span class="sym">(</span>cellx<span class="sym">,</span>_root.player<span class="sym">);</span>
 <a name="l_163"></a><span class="line">  163 </span>		<span class="sym">}</span>
@@ -208,7 +208,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_182"></a><span class="line">  182 </span>		_root.<span class="kwd">checkObstacle</span><span class="sym">();</span>
 <a name="l_183"></a><span class="line">  183 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.collider <span class="sym">!=</span> <span class="kwb">null</span><span class="sym">)</span>
 <a name="l_184"></a><span class="line">  184 </span>		<span class="sym">{</span>
-<a name="l_185"></a><span class="line">  185 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
+<a name="l_185"></a><span class="line">  185 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
 <a name="l_186"></a><span class="line">  186 </span>			celly<span class="sym">--;</span>
 <a name="l_187"></a><span class="line">  187 </span>			_root.<span class="kwd">gridY</span><span class="sym">(</span>celly<span class="sym">,</span>_root.player<span class="sym">);</span>
 <a name="l_188"></a><span class="line">  188 </span>		<span class="sym">}</span>
@@ -242,7 +242,7 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <a name="l_216"></a><span class="line">  216 </span>		_root.<span class="kwd">checkObstacle</span><span class="sym">();</span>
 <a name="l_217"></a><span class="line">  217 </span>		<span class="kwb">if</span> <span class="sym">(</span>_root.collider <span class="sym">!=</span> <span class="kwb">null</span><span class="sym">)</span>
 <a name="l_218"></a><span class="line">  218 </span>		<span class="sym">{</span>
-<a name="l_219"></a><span class="line">  219 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
+<a name="l_219"></a><span class="line">  219 </span>			<span class="kwd">ptrace</span><span class="sym">(</span><span class="str">&quot;move prohibited&quot;</span><span class="sym">);</span>
 <a name="l_220"></a><span class="line">  220 </span>			celly<span class="sym">++;</span>
 <a name="l_221"></a><span class="line">  221 </span>			_root.<span class="kwd">gridY</span><span class="sym">(</span>celly<span class="sym">,</span>_root.player<span class="sym">);</span>
 <a name="l_222"></a><span class="line">  222 </span>		<span class="sym">}</span>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>/Users/yasyf/sites/testnew/play/v5/assistant.as</title>
+<style type="text/css">
+<!--
+body.hl	{ background-color:#000000; }
+pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Courier New;}
+.num	{ color:#ff00ff; }
+.esc	{ color:#cd00ff; }
+.str	{ color:#cd00ff; }
+.dstr	{ color:#cd00ff; }
+.slc	{ color:#00ff00; font-style:italic; }
+.com	{ color:#00ff00; font-style:italic; }
+.dir	{ color:#ffbb00; }
+.sym	{ color:#ee5896; font-weight:bold; }
+.line	{ color:#55abff; }
+.kwa	{ color:#00ffff; font-weight:bold; }
+.kwb	{ color:#ffff00; }
+.kwc	{ color:#ef1347; font-weight:bold; }
+.kwd	{ color:#ffffff; font-weight:bold; }
+//-->
+</style>
+</head>
+<body class="hl">
+<pre class="hl"><a name="l_1"></a><span class="line">    1 </span><span class="kwb">if</span> <span class="sym">(</span>_level0.obstacles <span class="sym">!=</span> <span class="kwb">undefined</span><span class="sym">)</span>
+<a name="l_2"></a><span class="line">    2 </span><span class="sym">{</span>
+<a name="l_3"></a><span class="line">    3 </span>
+<a name="l_4"></a><span class="line">    4 </span>	<span class="kwb">for</span> <span class="sym">(</span>i <span class="sym">=</span> <span class="num">1</span><span class="sym">;</span> i <span class="sym">&lt;=</span> _level0.obstacles<span class="sym">;</span> i<span class="sym">++)</span>
+<a name="l_5"></a><span class="line">    5 </span>	<span class="sym">{</span>
+<a name="l_6"></a><span class="line">    6 </span>
+<a name="l_7"></a><span class="line">    7 </span>		_root.obstacleMC.<span class="kwb">attachMovie</span><span class="sym">(</span>_level0<span class="sym">[</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i <span class="sym">+</span> <span class="str">&quot;type&quot;</span><span class="sym">],</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i<span class="sym">,</span>i<span class="sym">);</span>
+<a name="l_8"></a><span class="line">    8 </span>		<span class="kwd">togridX</span><span class="sym">(</span>_level0<span class="sym">[</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i <span class="sym">+</span> <span class="str">&quot;x&quot;</span><span class="sym">],</span>_root.obstacleMC<span class="sym">[</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i<span class="sym">]);</span>
+<a name="l_9"></a><span class="line">    9 </span>		<span class="kwd">togridY</span><span class="sym">(</span><span class="num">7</span><span class="sym">,</span>_root.obstacleMC<span class="sym">[</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i<span class="sym">]);</span>
+<a name="l_10"></a><span class="line">   10 </span>		_root.obstacleMC<span class="sym">[</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i<span class="sym">]</span>._yscale <span class="sym">=</span> <span class="num">20</span><span class="sym">;</span>
+<a name="l_11"></a><span class="line">   11 </span>		_root.obstacleMC<span class="sym">[</span><span class="str">&quot;obstacle&quot;</span> <span class="sym">+</span> i<span class="sym">]</span>._xscale <span class="sym">=</span> <span class="num">20</span><span class="sym">;</span>
+<a name="l_12"></a><span class="line">   12 </span>	<span class="sym">}</span>
+<a name="l_13"></a><span class="line">   13 </span><span class="sym">}</span>
+<a name="l_14"></a><span class="line">   14 </span><span class="kwb">function</span> <span class="kwd">togridX</span><span class="sym">(</span>cellx<span class="sym">,</span> object<span class="sym">)</span>
+<a name="l_15"></a><span class="line">   15 </span><span class="sym">{</span>
+<a name="l_16"></a><span class="line">   16 </span>	<span class="slc">//I &lt;3 Math</span>
+<a name="l_17"></a><span class="line">   17 </span>	gridx <span class="sym">= (</span>cellx <span class="sym">*</span> <span class="num">110</span><span class="sym">) -</span> <span class="num">55</span><span class="sym">;</span>
+<a name="l_18"></a><span class="line">   18 </span>	object._x <span class="sym">=</span> gridx<span class="sym">;</span>
+<a name="l_19"></a><span class="line">   19 </span><span class="sym">}</span>
+<a name="l_20"></a><span class="line">   20 </span><span class="com">/**</span>
+<a name="l_21"></a><span class="line">   21 </span><span class="com">* Takes object's virtual cell Y coordinate, and moves it to flash grid location</span>
+<a name="l_22"></a><span class="line">   22 </span><span class="com">* &#64;param object</span>
+<a name="l_23"></a><span class="line">   23 </span><span class="com">* &#64;param celly</span>
+<a name="l_24"></a><span class="line">   24 </span><span class="com">* &#64;return gridy</span>
+<a name="l_25"></a><span class="line">   25 </span><span class="com">*/</span>
+<a name="l_26"></a><span class="line">   26 </span><span class="kwb">function</span> <span class="kwd">togridY</span><span class="sym">(</span>celly<span class="sym">,</span> object<span class="sym">)</span>
+<a name="l_27"></a><span class="line">   27 </span><span class="sym">{</span>
+<a name="l_28"></a><span class="line">   28 </span>	<span class="slc">//I &lt;3 Math</span>
+<a name="l_29"></a><span class="line">   29 </span>	gridy <span class="sym">= (</span><span class="num">57</span> <span class="sym">*</span> celly<span class="sym">) -</span> <span class="num">28.5</span><span class="sym">;</span>
+<a name="l_30"></a><span class="line">   30 </span>	object._y <span class="sym">=</span> gridy<span class="sym">;</span>
+<a name="l_31"></a><span class="line">   31 </span>
+<a name="l_32"></a><span class="line">   32 </span><span class="sym">}</span>
+<a name="l_33"></a><span class="line">   33 </span>initX <span class="sym">=</span> <span class="num">0</span><span class="sym">;</span>
+<a name="l_34"></a><span class="line">   34 </span>initY <span class="sym">=</span> <span class="num">0</span><span class="sym">;</span>
+<a name="l_35"></a><span class="line">   35 </span>counter <span class="sym">=</span> <span class="num">0</span><span class="sym">;</span>
+<a name="l_36"></a><span class="line">   36 </span><span class="slc">//columns</span>
+<a name="l_37"></a><span class="line">   37 </span><span class="kwb">for</span> <span class="sym">(</span>i <span class="sym">=</span> <span class="num">7</span><span class="sym">;</span> i <span class="sym">&gt;=</span> <span class="num">1</span><span class="sym">;</span> i<span class="sym">--)</span>
+<a name="l_38"></a><span class="line">   38 </span><span class="sym">{</span>
+<a name="l_39"></a><span class="line">   39 </span>	<span class="slc">//rows</span>
+<a name="l_40"></a><span class="line">   40 </span>	<span class="kwb">for</span> <span class="sym">(</span>j <span class="sym">=</span> <span class="num">1</span><span class="sym">;</span> j <span class="sym">&lt;=</span> <span class="num">5</span><span class="sym">;</span> j<span class="sym">++)</span>
+<a name="l_41"></a><span class="line">   41 </span>	<span class="sym">{</span>
+<a name="l_42"></a><span class="line">   42 </span>		counter<span class="sym">++;</span>
+<a name="l_43"></a><span class="line">   43 </span>		<span class="slc">// attach the movie clip on the stage - our dot now has the symbol attached to it</span>
+<a name="l_44"></a><span class="line">   44 </span>		<span class="slc">//grid_container[&quot;cell&quot;+counter] = the cell that the loop is on</span>
+<a name="l_45"></a><span class="line">   45 </span>		grid_container.<span class="kwb">attachMovie</span><span class="sym">(</span><span class="str">&quot;cellMC&quot;</span><span class="sym">,</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">,</span>counter<span class="sym">);</span>
+<a name="l_46"></a><span class="line">   46 </span>		<span class="slc">// We assign a _x position to the cell, and a cellx for the grid</span>
+<a name="l_47"></a><span class="line">   47 </span>		grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>._x <span class="sym">=</span> initX<span class="sym">;</span>
+<a name="l_48"></a><span class="line">   48 </span>		grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>.celly <span class="sym">=</span> i<span class="sym">;</span>
+<a name="l_49"></a><span class="line">   49 </span>		<span class="slc">// We assign a _y position to the cell, and a celly for the grid</span>
+<a name="l_50"></a><span class="line">   50 </span>		grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>._y <span class="sym">=</span> initY<span class="sym">;</span>
+<a name="l_51"></a><span class="line">   51 </span>		grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>.cellx <span class="sym">=</span> j<span class="sym">;</span>
+<a name="l_52"></a><span class="line">   52 </span>		grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>.cellnumber.<span class="kwa">embedFonts</span> <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_53"></a><span class="line">   53 </span>		<span class="kwb">if</span> <span class="sym">(</span>j <span class="sym">==</span> <span class="num">1</span><span class="sym">)</span>
+<a name="l_54"></a><span class="line">   54 </span>		<span class="sym">{</span>
+<a name="l_55"></a><span class="line">   55 </span>			grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>.cellnumber.text <span class="sym">=</span> i<span class="sym">;</span>
+<a name="l_56"></a><span class="line">   56 </span>		<span class="sym">}</span>
+<a name="l_57"></a><span class="line">   57 </span>		<span class="kwb">if</span> <span class="sym">(</span>i <span class="sym">==</span> <span class="num">1</span><span class="sym">)</span>
+<a name="l_58"></a><span class="line">   58 </span>		<span class="sym">{</span>
+<a name="l_59"></a><span class="line">   59 </span>			grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>.cellnumber.text <span class="sym">=</span> j<span class="sym">;</span>
+<a name="l_60"></a><span class="line">   60 </span>		<span class="sym">}</span>
+<a name="l_61"></a><span class="line">   61 </span>
+<a name="l_62"></a><span class="line">   62 </span>		<span class="slc">//when clicked</span>
+<a name="l_63"></a><span class="line">   63 </span>		grid_container<span class="sym">[</span><span class="str">&quot;cell&quot;</span> <span class="sym">+</span> counter<span class="sym">]</span>.<span class="kwb">onRelease</span> <span class="sym">=</span> <span class="kwb">function</span><span class="sym">()</span>
+<a name="l_64"></a><span class="line">   64 </span>		<span class="sym">{</span>
+<a name="l_65"></a><span class="line">   65 </span>			<span class="kwb">trace</span><span class="sym">(</span><span class="kwb">this</span>._name <span class="sym">+</span> <span class="str">&quot; (&quot;</span> <span class="sym">+</span> <span class="kwb">this</span>.cellx <span class="sym">+</span> <span class="str">&quot;,&quot;</span> <span class="sym">+</span> <span class="kwb">this</span>.celly <span class="sym">+</span> <span class="str">&quot;)&quot;</span><span class="sym">);</span>
+<a name="l_66"></a><span class="line">   66 </span>		<span class="sym">};</span>
+<a name="l_67"></a><span class="line">   67 </span>
+<a name="l_68"></a><span class="line">   68 </span>		initX <span class="sym">+=</span> <span class="num">110</span><span class="sym">;</span>
+<a name="l_69"></a><span class="line">   69 </span>	<span class="sym">}</span>
+<a name="l_70"></a><span class="line">   70 </span>	initY <span class="sym">+=</span> <span class="num">57</span><span class="sym">;</span>
+<a name="l_71"></a><span class="line">   71 </span>	initX <span class="sym">=</span> <span class="num">0</span><span class="sym">;</span>
+<a name="l_72"></a><span class="line">   72 </span><span class="sym">}</span>
+<a name="l_73"></a><span class="line">   73 </span>
+<a name="l_74"></a><span class="line">   74 </span><span class="kwb">stop</span><span class="sym">();</span>
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.4.8, http://www.andre-simon.de/-->

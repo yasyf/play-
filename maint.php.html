@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>/Users/yasyf/sites/testnew/play/maint.php</title>
+<style type="text/css">
+<!--
+body.hl	{ background-color:#000000; }
+pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Courier New;}
+.num	{ color:#ff00ff; }
+.esc	{ color:#cd00ff; }
+.str	{ color:#cd00ff; }
+.dstr	{ color:#cd00ff; }
+.slc	{ color:#00ff00; font-style:italic; }
+.com	{ color:#00ff00; font-style:italic; }
+.dir	{ color:#ffbb00; }
+.sym	{ color:#ee5896; font-weight:bold; }
+.line	{ color:#55abff; }
+.kwa	{ color:#00ffff; font-weight:bold; }
+.kwb	{ color:#ffff00; }
+.kwc	{ color:#ef1347; font-weight:bold; }
+.kwd	{ color:#ffffff; font-weight:bold; }
+//-->
+</style>
+</head>
+<body class="hl">
+<pre class="hl"><a name="l_1"></a><span class="line">    1 </span><span class="sym">&lt;</span>?php
+<a name="l_2"></a><span class="line">    2 </span><span class="kwb">$auth</span> <span class="sym">=</span> <span class="kwb">$_REQUEST</span><span class="sym">[</span><span class="str">'auth'</span><span class="sym">];</span>
+<a name="l_3"></a><span class="line">    3 </span><span class="kwa">if</span> <span class="sym">(!</span>isset<span class="sym">(</span><span class="kwb">$auth</span><span class="sym">)) {</span>
+<a name="l_4"></a><span class="line">    4 </span>    <span class="kwa">exit</span><span class="sym">(</span><span class="str">&quot;auth not set&quot;</span><span class="sym">);</span>
+<a name="l_5"></a><span class="line">    5 </span><span class="sym">}</span>
+<a name="l_6"></a><span class="line">    6 </span>include <span class="str">'vars.php'</span><span class="sym">;</span>
+<a name="l_7"></a><span class="line">    7 </span>
+<a name="l_8"></a><span class="line">    8 </span><span class="kwa">if</span><span class="sym">(</span><span class="kwb">$auth</span> <span class="sym">==</span> <span class="str">&quot;killall&quot;</span><span class="sym">)</span>
+<a name="l_9"></a><span class="line">    9 </span><span class="sym">{</span>
+<a name="l_10"></a><span class="line">   10 </span><span class="kwa">for</span><span class="sym">(</span><span class="kwb">$i</span><span class="sym">=</span><span class="num">0</span><span class="sym">;</span><span class="kwb">$i</span><span class="sym">&lt;</span><span class="num">100</span><span class="sym">;</span><span class="kwb">$i</span><span class="sym">++)</span>
+<a name="l_11"></a><span class="line">   11 </span><span class="sym">{</span>
+<a name="l_12"></a><span class="line">   12 </span><span class="kwb">$tname</span> <span class="sym">=</span> <span class="str">&quot;game&quot;</span>.<span class="kwb">$i</span><span class="sym">;</span>
+<a name="l_13"></a><span class="line">   13 </span><span class="kwb">$sql2</span> <span class="sym">=</span> <span class="str">&quot;DROP TABLE IF EXISTS `&quot;</span> . <span class="kwb">$tname</span> . <span class="str">&quot;`&quot;</span><span class="sym">;</span> <span class="slc">//wipe</span>
+<a name="l_14"></a><span class="line">   14 </span>&#64;<span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql2</span><span class="sym">);</span>
+<a name="l_15"></a><span class="line">   15 </span><span class="kwb">$sql3</span> <span class="sym">=</span> <span class="str">&quot;TRUNCATE TABLE active&quot;</span><span class="sym">;</span>
+<a name="l_16"></a><span class="line">   16 </span>&#64;<span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql3</span><span class="sym">);</span>
+<a name="l_17"></a><span class="line">   17 </span><span class="kwa">echo</span> <span class="str">&quot;dropped table $tname &lt;br /&gt;&quot;</span><span class="sym">;</span>
+<a name="l_18"></a><span class="line">   18 </span><span class="sym">}</span>
+<a name="l_19"></a><span class="line">   19 </span><span class="sym">}</span>
+<a name="l_20"></a><span class="line">   20 </span><span class="kwa">else</span>
+<a name="l_21"></a><span class="line">   21 </span><span class="sym">{</span>
+<a name="l_22"></a><span class="line">   22 </span><span class="kwa">for</span><span class="sym">(</span><span class="kwb">$i</span><span class="sym">=</span><span class="num">0</span><span class="sym">;</span><span class="kwb">$i</span><span class="sym">&lt;</span><span class="num">100</span><span class="sym">;</span><span class="kwb">$i</span><span class="sym">++)</span>
+<a name="l_23"></a><span class="line">   23 </span><span class="sym">{</span>
+<a name="l_24"></a><span class="line">   24 </span><span class="kwb">$tname</span> <span class="sym">=</span> <span class="str">&quot;game&quot;</span>.<span class="kwb">$i</span><span class="sym">;</span>
+<a name="l_25"></a><span class="line">   25 </span><span class="kwb">$sql</span> <span class="sym">=</span> <span class="str">&quot;SELECT COUNT(*) FROM `$tname`&quot;</span><span class="sym">;</span>
+<a name="l_26"></a><span class="line">   26 </span><span class="kwb">$result</span> <span class="sym">=</span> &#64;<span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>
+<a name="l_27"></a><span class="line">   27 </span><span class="kwb">$numb</span> <span class="sym">=</span> &#64;<span class="kwa">mysql_fetch_array</span><span class="sym">(</span><span class="kwb">$result</span><span class="sym">);</span>
+<a name="l_28"></a><span class="line">   28 </span><span class="kwb">$result</span> <span class="sym">=</span> <span class="kwb">$numb</span><span class="sym">[</span><span class="num">0</span><span class="sym">];</span>
+<a name="l_29"></a><span class="line">   29 </span>
+<a name="l_30"></a><span class="line">   30 </span><span class="kwa">if</span> <span class="sym">(</span><span class="kwb">$result</span> <span class="sym">==</span> <span class="str">&quot;8&quot;</span><span class="sym">)</span>
+<a name="l_31"></a><span class="line">   31 </span><span class="sym">{</span>
+<a name="l_32"></a><span class="line">   32 </span><span class="kwb">$sql2</span> <span class="sym">=</span> <span class="str">&quot;DROP TABLE IF EXISTS `&quot;</span> . <span class="kwb">$tname</span> . <span class="str">&quot;`&quot;</span><span class="sym">;</span> <span class="slc">//wipe</span>
+<a name="l_33"></a><span class="line">   33 </span>&#64;<span class="kwa">mysql_query</span><span class="sym">(</span><span class="kwb">$sql2</span><span class="sym">);</span>
+<a name="l_34"></a><span class="line">   34 </span><span class="kwa">echo</span> <span class="str">&quot;dropped table $tname &lt;br /&gt;&quot;</span><span class="sym">;</span>
+<a name="l_35"></a><span class="line">   35 </span>
+<a name="l_36"></a><span class="line">   36 </span><span class="sym">}</span>
+<a name="l_37"></a><span class="line">   37 </span><span class="sym">}</span>
+<a name="l_38"></a><span class="line">   38 </span><span class="sym">}</span>
+<a name="l_39"></a><span class="line">   39 </span>?<span class="sym">&gt;</span>
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.4.8, http://www.andre-simon.de/-->

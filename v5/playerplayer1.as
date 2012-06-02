@@ -25,7 +25,7 @@ onClipEvent (enterFrame) {
 		if (_root.opponentFound == "true" and _root.timer == 60)
 		{
 
-			trace("opponent found");
+			ptrace("opponent found");
 			_root.varsSent = true;
 			_root.sendReceive(false);
 
@@ -38,7 +38,7 @@ onClipEvent (enterFrame) {
 
 			if (_root.opponentFinding == false and _root.timer == 60)
 			{
-				trace("looking...");
+				ptrace("looking...");
 				_root.checkFound();
 
 			}
@@ -49,12 +49,12 @@ onClipEvent (enterFrame) {
 	{
 		if (_root.abandoned)
 		{
-			trace("opponent left");
+			ptrace("opponent left");
 		}
 		else
 		{
 
-			trace("game over");
+			ptrace("game over");
 
 		}
 
@@ -68,7 +68,7 @@ onClipEvent (enterFrame) {
 				if (_root.player2ready == 0)
 				{
 					_root.timout = 0;
-					trace("Opponent Not Ready");
+					ptrace("Opponent Not Ready");
 					_root.getReady();
 
 				}
@@ -77,7 +77,7 @@ onClipEvent (enterFrame) {
 					_root.timout = 0;
 					_root.varsSent = false;
 					_root.myonemove = true;
-					trace("Opponent Ready!");
+					ptrace("Opponent Ready!");
 					_root.plusTurn();
 					_root.sendReceive(false);
 
@@ -90,11 +90,11 @@ onClipEvent (enterFrame) {
 					_root.getReady();
 					_root.sendReceive(false);
 					_root.timout++;
-					trace("timeout: " + _root.timout);
+					ptrace("timeout: " + _root.timout);
 					if (_root.timout == 5)
 					{
 
-						trace("Opponent Left Game!");
+						ptrace("Opponent Left Game!");
 						_root.abandoned = true;
 						_root.exit();
 
@@ -106,7 +106,7 @@ onClipEvent (enterFrame) {
 		{
 			if (_root.timer == 60)
 			{
-				trace("Vars have been sent, waiting...");
+				ptrace("Vars have been sent, waiting...");
 
 			}
 		}
@@ -130,7 +130,7 @@ onClipEvent (keyDown) {
 		_root.checkObstacle();
 		if (_root.collider != null)
 		{
-			trace("move prohibited");
+			ptrace("move prohibited");
 			cellx--;
 			_root.gridX(cellx,_root.player);
 		}
@@ -157,7 +157,7 @@ onClipEvent (keyDown) {
 		_root.checkObstacle();
 		if (_root.collider != null)
 		{
-			trace("move prohibited");
+			ptrace("move prohibited");
 			cellx++;
 			_root.gridX(cellx,_root.player);
 		}
@@ -182,7 +182,7 @@ onClipEvent (keyDown) {
 		_root.checkObstacle();
 		if (_root.collider != null)
 		{
-			trace("move prohibited");
+			ptrace("move prohibited");
 			celly--;
 			_root.gridY(celly,_root.player);
 		}
@@ -216,7 +216,7 @@ onClipEvent (keyDown) {
 		_root.checkObstacle();
 		if (_root.collider != null)
 		{
-			trace("move prohibited");
+			ptrace("move prohibited");
 			celly++;
 			_root.gridY(celly,_root.player);
 		}

@@ -2,6 +2,15 @@ import mx.transitions.Tween;
 import mx.transitions.easing.*;
 serverloc = "http://site5.yasyf.com/";
 /**
+* Custom ptrace() method that prepends player ID
+* @param pmessage
+*/
+function ptrace(pmessage)
+{
+	myMessage = "{P" + _root.iamplayer + "} " + pmessage;
+	trace(myMessage);
+}
+/**
 * Send and receive relevant game variables; used for communication with server-side PHP/MySQL API; getreadybool and sendReceivebool keep track of active progress
 * @param ismovemade
 * @param game
@@ -50,15 +59,15 @@ function sendReceive(ismovemade)
 		_root.sendReceivebool = true;
 		_root.getreadybool = true;
 
-		/*trace("box1x:" + _root.box1x);
-		trace("box2x:" + _root.box2x);
-		trace("box3x:" + _root.box3x);
-		trace("box1y:" + _root.box1y);
-		trace("box2y:" + _root.box2y);
-		trace("box3y:" + _root.box3y);
-		trace("player2ready: " + variables.player2ready);
-		trace("New Y Set! (Y=" + variables.player1y + ")");
-		trace("New X Set! (X=" + variables.player1x + ")");*/
+		/*ptrace("box1x:" + _root.box1x);
+		ptrace("box2x:" + _root.box2x);
+		ptrace("box3x:" + _root.box3x);
+		ptrace("box1y:" + _root.box1y);
+		ptrace("box2y:" + _root.box2y);
+		ptrace("box3y:" + _root.box3y);
+		ptrace("player2ready: " + variables.player2ready);
+		ptrace("New Y Set! (Y=" + variables.player1y + ")");
+		ptrace("New X Set! (X=" + variables.player1x + ")");*/
 
 		_root.gridX(_root.box1x,_root.box1);
 		_root.gridX(_root.box2x,_root.box2);
@@ -77,7 +86,7 @@ function sendReceive(ismovemade)
 		if (ismovemade)
 		{
 			_root.movemade = true;
-			trace("recorded move, sent");
+			ptrace("recorded move, sent");
 
 
 		}
@@ -103,7 +112,7 @@ function getReady()
 	{
 		_root.player2ready = getready.player2ready;
 		_root.getreadybool = true;
-		trace("player2ready: " + getready.player2ready);
+		ptrace("player2ready: " + getready.player2ready);
 	};
 	//getready
 }
@@ -126,7 +135,7 @@ function checkFound()
 	opponentFoundd.onLoad = function(success)
 	{
 		_root.opponentFound = opponentFoundd.opponentFound;
-		trace("Opponent Found:" + _root.opponentFound);
+		ptrace("Opponent Found:" + _root.opponentFound);
 		_root.opponentFinding = false;
 	};
 }
@@ -187,14 +196,18 @@ function plusTurn()
 			case true :
 				for (i; i < 10; i++)
 				{
-					trace("PLAYER 2 WINS");
+					ptrace("PLAYER 2 WINS");
+
 				}
+				gotoAndStop(3);
 				break;
 			case false :
 				for (i; i < 10; i++)
 				{
-					trace("PLAYER 1 WINS");
+					ptrace("PLAYER 1 WINS");
+
 				}
+				gotoAndStop(2);
 				break;
 		}
 		var tweenGrow1:Tween = new Tween(_root.box1, "scalefactor", Regular.easeOut, _root.box1.scalefactor, 35, 1, true);
@@ -219,9 +232,9 @@ function plusTurn()
 		gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
 		gameR.onLoad = function(success)
 		{
-			_root.turn = 1;
-			_root.resetBoxes();
-			trace("Game Reset by p1");//game table now initialized
+		_root.turn = 1;
+		_root.resetBoxes();
+		ptrace("Game Reset by p1");//game table now initialized
 		};*/
 	}
 	sendReceive(false);
@@ -234,7 +247,7 @@ function plusTurn()
 	{
 		_root.movemade = false;
 		_root.turn++;
-		trace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
+		ptrace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
 		_root.setturnbool = true;
 	};
 
@@ -256,7 +269,7 @@ function exit()
 	exiter.onLoad = function(success)
 	{
 		_root.exiterbool = true;
-		trace("exit cleanup done");
+		ptrace("exit cleanup done");
 	};
 
 }
@@ -345,23 +358,23 @@ function checkObstacle()
 	{
 		if (_root["obstacle" + i + "x"] == _root.player.cellx and _root["obstacle" + i + "y"] == _root.player.celly)
 		{
-			trace("detected collision with obstacle" + i);
+			ptrace("detected collision with obstacle" + i);
 			_root.pauser = true;
-			switch(_root["obstacle" + i + "type"])
+			switch (_root["obstacle" + i + "type"])
 			{
-				case "chain":
-				//chain
-				loadMovieNum("CollideChain.swf",1);
-				break;
-				case "tv":
-				//tv
-				loadMovieNum("CollideTV.swf",1);
-				break;
-				case "barrel":
-				//barrell
-				loadMovieNum("CollideBox.swf",1);
-				break;
-				
+				case "chain" :
+					//chain
+					loadMovieNum("CollideChain.swf", 1);
+					break;
+				case "tv" :
+					//tv
+					loadMovieNum("CollideTV.swf", 1);
+					break;
+				case "barrel" :
+					//barrell
+					loadMovieNum("CollideBox.swf", 1);
+					break;
+
 			}
 			_root.collider = i;
 		}
@@ -405,10 +418,10 @@ for (i = 3; i >= 1; i--)
 		grid_container["cell" + counter].cellnumber.text += " (" + grid_container["cell" + counter].cellx;
 		grid_container["cell" + counter].cellnumber.text += "," + grid_container["cell" + counter].celly + ")";
 		//when clicked
-		grid_container["cell" + counter].onRelease = function()
+		/*grid_container["cell" + counter].onRelease = function()
 		{
-			trace(this._name + " (" + this.cellx + "," + this.celly + ")");
-		};
+		ptrace(this._name + " (" + this.cellx + "," + this.celly + ")");
+		};*/
 
 		initX += 110;
 	}
@@ -422,7 +435,7 @@ gameTable.onLoad = function(success)
 {
 	_root.game = this.game;
 	_root.found = this.found;
-	trace("game table: " + _root.game);//game table now loaded
+	ptrace("game table: " + _root.game);//game table now loaded
 	gameInit = new LoadVars();
 	gameInit.found = _root.found;
 	gameInit.game = _root.game;
@@ -447,14 +460,14 @@ gameTable.onLoad = function(success)
 					_root["obstacle" + i + "type"] = "barrel";
 					break;
 			}
-			trace(_root["obstacle" + i + "type"]);
+			ptrace(_root["obstacle" + i + "type"]);
 			_root.obstacleMC.attachMovie(_root["obstacle" + i + "type"],"obstacle" + i,i);
 			togridX(_root["obstacle" + i + "x"],_root.obstacleMC["obstacle" + i]);
 			togridY(_root["obstacle" + i + "y"],_root.obstacleMC["obstacle" + i]);
 			_root.obstacleMC["obstacle" + i]._yscale = 50;
 			_root.obstacleMC["obstacle" + i]._xscale = 50;
 		}
-		trace("Game Table Initialized");//game table now initialized
+		ptrace("Game Table Initialized");//game table now initialized
 		sendReceive(false);
 
 	};
