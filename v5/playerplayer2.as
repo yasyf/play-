@@ -1,8 +1,26 @@
 onClipEvent (enterFrame) {
 	_xscale = scalefactor;
 	_yscale = scalefactor;
-		
-		if (_root.resetready)
+
+	if (_root.player1ready == "1" and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "waiting...";
+	}
+	else if (_root.myonemove == false and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "waiting..";
+	}
+	else if (_root.player1ready == "0"  and !_root.tempstop and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "go!";
+	}
+	else if(_root.opponentFound != "true")
+	{
+		_root.myStatus.text = "looking...";
+	}
+
+
+	if (_root.resetready)
 	{
 		_root.resetready = false;
 		_root.reset();
@@ -69,9 +87,8 @@ onClipEvent (enterFrame) {
 				}
 				else if (_root.player1ready == 0 and _root.movemade == true)
 				{
-					
-		else
-		{
+
+
 					_root.timout = 0;
 					_root.varsSent = false;
 					_root.myonemove = true;
@@ -79,7 +96,7 @@ onClipEvent (enterFrame) {
 					_root.plusTurn();
 					_root.sendReceive(false);
 
-		}
+
 
 
 				}

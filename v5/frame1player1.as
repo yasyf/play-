@@ -113,6 +113,10 @@ function getReady()
 		_root.player2ready = getready.player2ready;
 		_root.getreadybool = true;
 		ptrace("player2ready: " + getready.player2ready);
+	if(getready.player2ready == "1")
+		{
+			_root.tempstop = false;
+		}
 	};
 	//getready
 }
@@ -173,83 +177,114 @@ function plusTurn()
 		{
 			_root.box3.scalefactor = _root.box3.scalefactor * 1.15;
 		};
-
+		sendReceive(false);
+		setturn = new LoadVars();
+		setturn.game = _root.game;
+		setturn.player = _root.iamplayer;
+		setturn.turn = _root.turn;
+		setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
+		setturn.onLoad = function(success)
+		{
+			_root.movemade = false;
+			_root.turn++;
+			ptrace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
+			_root.setturnbool = true;
+		};
 
 	}
 	else
 	{
-		_root.gotya = false;
-		if (_root.box1x == _root.player.cellx and _root.box1y == _root.player.celly)
+		setturn = new LoadVars();
+		setturn.game = _root.game;
+		setturn.player = _root.iamplayer;
+		setturn.turn = _root.turn;
+		setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
+		setturn.onLoad = function(success)
 		{
-			_root.gotya = true;
-		}
-		if (_root.box2x == _root.player.cellx and _root.box2y == _root.player.celly)
-		{
-			_root.gotya = true;
-		}
-		if (_root.box3x == _root.player.cellx and _root.box3y == _root.player.celly)
-		{
-			_root.gotya = true;
-		}
-		switch (_root.gotya)
-		{
-			case true :
-				for (i; i < 10; i++)
-				{
-					ptrace("PLAYER 2 WINS");
+			_root.movemade = false;
+			_root.turn++;
+			ptrace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
+			_root.setturnbool = true;
+			_root.sendReceivebool = false;
+	variables = new LoadVars();
+	variables.game = _root.game;
+	variables.turn = _root.turn;
+	variables.player1x = _root.player.cellx;
+	variables.player1y = _root.player.celly;
 
-				}
-				gotoAndStop(3);
-				break;
-			case false :
-				for (i; i < 10; i++)
-				{
-					ptrace("PLAYER 1 WINS");
+	
+		variables.setready = true;
 
-				}
-				gotoAndStop(2);
-				break;
-		}
-		var tweenGrow1:Tween = new Tween(_root.box1, "scalefactor", Regular.easeOut, _root.box1.scalefactor, 35, 1, true);
-		tweenGrow.onMotionFinished = function()
-		{
-			_root.box1.scalefactor = 35;
-		};
-		var tweenGrow2:Tween = new Tween(_root.box2, "scalefactor", Regular.easeOut, _root.box2.scalefactor, 35, 1, true);
-		tweenGrow.onMotionFinished = function()
-		{
-			_root.box2.scalefactor = 35;
-		};
-		var tweenGrow3:Tween = new Tween(_root.box3, "scalefactor", Regular.easeOut, _root.box3.scalefactor, 35, 1, true);
-		tweenGrow.onMotionFinished = function()
-		{
-			_root.box3.scalefactor = 35;
-		};
-
-		/*gameR = new LoadVars();
-		gameR.game = _root.game;
-		gameR.player = _root.iamplayer;
-		gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
-		gameR.onLoad = function(success)
-		{
-		_root.turn = 1;
-		_root.resetBoxes();
-		ptrace("Game Reset by p1");//game table now initialized
-		};*/
-	}
-	sendReceive(false);
-	setturn = new LoadVars();
-	setturn.game = _root.game;
-	setturn.player = _root.iamplayer;
-	setturn.turn = _root.turn;
-	setturn.sendAndLoad(serverloc + "setturn.php",setturn,"POST");
-	setturn.onLoad = function(success)
+	variables.sendAndLoad(serverloc + "player1.php",variables,"POST");
+	variables.onLoad = function(success)
 	{
-		_root.movemade = false;
-		_root.turn++;
-		ptrace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
-		_root.setturnbool = true;
+	
+		//-----//
+			_root.gotya = false;
+			if (_root.box1x == _root.player.cellx and _root.box1y == _root.player.celly)
+			{
+				_root.gotya = true;
+			}
+			if (_root.box2x == _root.player.cellx and _root.box2y == _root.player.celly)
+			{
+				_root.gotya = true;
+			}
+			if (_root.box3x == _root.player.cellx and _root.box3y == _root.player.celly)
+			{
+				_root.gotya = true;
+			}
+			switch (_root.gotya)
+			{
+				case true :
+					for (i; i < 10; i++)
+					{
+						ptrace("PLAYER 2 WINS");
+
+					}
+					gotoAndStop(3);
+					break;
+				case false :
+					for (i; i < 10; i++)
+					{
+						ptrace("PLAYER 1 WINS");
+
+					}
+					gotoAndStop(2);
+					break;
+			}
+			var tweenGrow1:Tween = new Tween(_root.box1, "scalefactor", Regular.easeOut, _root.box1.scalefactor, 35, 1, true);
+			tweenGrow.onMotionFinished = function()
+			{
+				_root.box1.scalefactor = 35;
+			};
+			var tweenGrow2:Tween = new Tween(_root.box2, "scalefactor", Regular.easeOut, _root.box2.scalefactor, 35, 1, true);
+			tweenGrow.onMotionFinished = function()
+			{
+				_root.box2.scalefactor = 35;
+			};
+			var tweenGrow3:Tween = new Tween(_root.box3, "scalefactor", Regular.easeOut, _root.box3.scalefactor, 35, 1, true);
+			tweenGrow.onMotionFinished = function()
+			{
+				_root.box3.scalefactor = 35;
+			};
+
+			/*gameR = new LoadVars();
+			gameR.game = _root.game;
+			gameR.player = _root.iamplayer;
+			gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
+			gameR.onLoad = function(success)
+			{
+			_root.turn = 1;
+			_root.resetBoxes();
+			ptrace("Game Reset by p1");//game table now initialized
+			};*/
+			//-----//
 	};
+
+		};
+
+	}
+
 
 }
 

@@ -27,23 +27,31 @@ onClipEvent (load) {
 on (release) {
 	if (_root.motion and isDragged)
 	{
+		_root.tempstop = true;
 		this.stopDrag();
 		isDragged = false;
+		_root.myonemove = false;
 		_root.box2x = cellx;
 		_root.box2y = celly;
 		_root.land(this,enemy1,enemy2);
 		if (hit == false)
 		{
+			
 			_root.myonemove = false;
 			_root.varsSent = true;
 			_root.sendReceive(true);
+		}
+		else
+		{
+			_root.tempstop = false;
+			_root.myonemove = true;
 		}
 
 
 	}
 }
 on (press) {
-	if (_root.resetsafe and _root.opponentFound and _root.myonemove)
+	if (_root.resetsafe and _root.opponentFound and _root.myonemove and !_root.tempstop)
 	{
 
 		_root.currentBox = this;

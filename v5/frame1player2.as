@@ -48,14 +48,14 @@ function land(object, enemy1, enemy2)
 	if (object.hitTest(enemy1) or object.hitTest(enemy2) or _root.samecell(object._x, object._y, object))
 	{
 
-		
+
 		object.hit = true;
 
 
 	}
 	else
 	{
-		
+
 		object.hit = false;
 		_root.tocellX(object._x,object);
 		_root.tocellY(object._y,object);
@@ -90,38 +90,54 @@ function land(object, enemy1, enemy2)
 */
 function reset()
 {
-	_root.gotya = false;
-	if (_root.box1.cellx == _root.player1x and _root.box1.celly == _root.player1y)
+
+	variables = new LoadVars();
+	variables.game = _root.game;
+	variables.turn = _root.turn;
+
+	variables.sendAndLoad(serverloc + "player2.php",variables,"POST");
+	variables.onLoad = function(success)
 	{
-		_root.gotya = true;
-	}
-	if (_root.box2.cellx == _root.player1x and _root.box2.celly == _root.player1y)
-	{
-		_root.gotya = true;
-	}
-	if (_root.box3.cellx == _root.player1x and _root.box3.celly == _root.player1y)
-	{
-		_root.gotya = true;
-	}
-	switch (_root.gotya)
-	{
-		case true :
-			for (i; i < 10; i++)
-			{
-				ptrace("PLAYER 2 WINS");
-				gotoAndStop(3);
-			}
-			break;
-		case false :
-			for (i; i < 10; i++)
-			{
-				ptrace("PLAYER 1 WINS");
-				gotoAndStop(2);
-			}
-			break;
-	}
-	
-	/*gameR = new LoadVars();
+		_root.player1x = variables.player1x;
+		_root.player1y = variables.player1y;
+
+		_root.gridX(_root.player1x,_root.player);
+		var tweenX:Tween = new Tween(_root.player, "_x", Regular.easeOut, _root.player._x, _root.player.gridx, 1, true);
+		_root.gridY(_root.player1y,_root.player);
+		var tweenY:Tween = new Tween(_root.player, "_y", Regular.easeOut, _root.player._y, _root.player.gridy, 1, true);
+		//------//
+		_root.gotya = false;
+		if (_root.box1.cellx == _root.player1x and _root.box1.celly == _root.player1y)
+		{
+			_root.gotya = true;
+		}
+		if (_root.box2.cellx == _root.player1x and _root.box2.celly == _root.player1y)
+		{
+			_root.gotya = true;
+		}
+		if (_root.box3.cellx == _root.player1x and _root.box3.celly == _root.player1y)
+		{
+			_root.gotya = true;
+		}
+		switch (_root.gotya)
+		{
+			case true :
+				for (i; i < 10; i++)
+				{
+					ptrace("PLAYER 2 WINS");
+					gotoAndStop(3);
+				}
+				break;
+			case false :
+				for (i; i < 10; i++)
+				{
+					ptrace("PLAYER 1 WINS");
+					gotoAndStop(2);
+				}
+				break;
+		}
+
+/*gameR = new LoadVars();
 	gameR.game = _root.game;
 	gameR.player = _root.iamplayer;
 	gameR.sendAndLoad(serverloc + "init.php",gameR,"POST");
@@ -134,7 +150,12 @@ function reset()
 
 
 	};*/
-	
+
+
+	};
+
+
+
 }
 /**
 * Resets boxes back to original position; resetsafe keeps track of active progress
@@ -295,7 +316,7 @@ function samecell(gridx, gridy, object, yfix)
 */
 function getReady()
 {
-	
+
 	_root.getreadybool = false;
 	//getready
 	getready = new LoadVars();
@@ -306,15 +327,20 @@ function getReady()
 	getready.onLoad = function(success)
 	{
 		_root.player1ready = getready.player1ready;
-		if(_root.player1ready == 0 and _root.turn == 8)
+		if (_root.player1ready == 0 and _root.turn == 8)
 		{
 			_root.reset();
 		}
 		else
 		{
-		_root.getreadybool = true;
+			_root.getreadybool = true;
 		}
 		ptrace("player1ready: " + getready.player1ready);
+		if (getready.player1ready == "0")
+		{
+			_root.tempstop = false;
+		}
+
 	};
 	//getready
 }
@@ -369,7 +395,7 @@ function plusTurn()
 		_root.turn++;
 		ptrace("Next Turn! (Turn " + _root.turn + ")");//Next Turn
 		_root.setturnbool = true;
-		
+
 	};
 
 }
@@ -412,9 +438,8 @@ function sendReceive(ismovemade)
 	variables = new LoadVars();
 	variables.game = _root.game;
 	variables.turn = _root.turn;
-if(_root.turn < 8)
-{
-	
+
+
 	variables.box2x = _root.box2.cellx;
 	variables.box2y = _root.box2.celly;
 	variables.box1x = _root.box1.cellx;
@@ -422,7 +447,7 @@ if(_root.turn < 8)
 	variables.box3x = _root.box3.cellx;
 	variables.box3y = _root.box3.celly;
 
-}
+
 
 	variables.sendAndLoad(serverloc + "player2.php",variables,"POST");
 	variables.onLoad = function(success)
@@ -438,7 +463,7 @@ if(_root.turn < 8)
 		/*ptrace("player1x: " + variables.player1x);
 		ptrace("player1y: " + variables.player1y);
 		ptrace("player1ready: " + variables.player1ready);
-
+		
 		ptrace("set box1x:" + _root.box1.cellx);
 		ptrace("set box2x:" + _root.box2.cellx);
 		ptrace("set box3x:" + _root.box3.cellx);
@@ -501,8 +526,8 @@ for (i = 3; i >= 1; i--)
 		//when clicked
 		/*grid_container["cell" + counter].onRelease = function()
 		{
-			ptrace(this._name + " (" + this.cellx + "," + this.celly + ")");
-
+		ptrace(this._name + " (" + this.cellx + "," + this.celly + ")");
+		
 		};*/
 
 		initX += 110;
@@ -543,8 +568,8 @@ gameTable.onLoad = function(success)
 			}
 			ptrace(_root["obstacle" + i + "type"]);
 			_root.obstacleMC.attachMovie(_root["obstacle" + i + "type"],"obstacle" + i,i);
-			togridX(_root["obstacle" + i + "x"], _root.obstacleMC["obstacle" + i]);
-			togridY(_root["obstacle" + i + "y"], _root.obstacleMC["obstacle" + i]);
+			togridX(_root["obstacle" + i + "x"],_root.obstacleMC["obstacle" + i]);
+			togridY(_root["obstacle" + i + "y"],_root.obstacleMC["obstacle" + i]);
 			_root.obstacleMC["obstacle" + i]._yscale = 50;
 			_root.obstacleMC["obstacle" + i]._xscale = 50;
 		}

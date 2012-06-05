@@ -1,7 +1,23 @@
 onClipEvent (enterFrame) {
 	_xscale = scalefactor;
 	_yscale = scalefactor;
-
+	
+	if (_root.player2ready == "0" and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "waiting...";
+	}
+	else if (_root.myonemove == false and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "waiting..";
+	}
+	else if (_root.player2ready == "1"  and !_root.tempstop and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "go!";
+	}
+	else if(_root.opponentFound != "true")
+	{
+		_root.myStatus.text = "looking...";
+	}
 	
 	if (_root.timer < 61)
 	{
@@ -10,7 +26,7 @@ onClipEvent (enterFrame) {
 	else
 	{
 		_root.timer = 0;
-		if(_level1.lockk == undefined)
+		if (_level1.lockk == undefined)
 		{
 			_root.pauser = false;
 		}
@@ -123,8 +139,9 @@ onClipEvent (load) {
 
 }
 onClipEvent (keyDown) {
-	if (Key.isDown(Key.RIGHT) and cellx <= 4 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
+	if (Key.isDown(Key.RIGHT) and cellx <= 4 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		cellx++;
 		_root.gridX(cellx,_root.player);
 		_root.checkObstacle();
@@ -133,6 +150,7 @@ onClipEvent (keyDown) {
 			ptrace("move prohibited");
 			cellx--;
 			_root.gridX(cellx,_root.player);
+			_root.tempstop = false;
 		}
 		else
 		{
@@ -150,8 +168,9 @@ onClipEvent (keyDown) {
 
 		}
 	}
-	else if (Key.isDown(Key.LEFT) and cellx >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
+	else if (Key.isDown(Key.LEFT) and cellx >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		cellx--;
 		_root.gridX(cellx,_root.player);
 		_root.checkObstacle();
@@ -160,6 +179,7 @@ onClipEvent (keyDown) {
 			ptrace("move prohibited");
 			cellx++;
 			_root.gridX(cellx,_root.player);
+			_root.tempstop = false;
 		}
 		else
 		{
@@ -175,8 +195,9 @@ onClipEvent (keyDown) {
 			};
 		}
 	}
-	else if (Key.isDown(Key.UP) and celly <= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
+	else if (Key.isDown(Key.UP) and celly <= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		celly++;
 		_root.gridY(celly,_root.player);
 		_root.checkObstacle();
@@ -185,10 +206,11 @@ onClipEvent (keyDown) {
 			ptrace("move prohibited");
 			celly--;
 			_root.gridY(celly,_root.player);
+			_root.tempstop = false;
 		}
 		else
 		{
-			
+
 			motion = true;
 			var tweenUp:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
 			tweenUp.onMotionFinished = function()
@@ -209,8 +231,9 @@ onClipEvent (keyDown) {
 		}
 
 	}
-	else if (Key.isDown(Key.DOWN) and celly >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser)
+	else if (Key.isDown(Key.DOWN) and celly >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		celly--;
 		_root.gridY(celly,_root.player);
 		_root.checkObstacle();
@@ -219,6 +242,7 @@ onClipEvent (keyDown) {
 			ptrace("move prohibited");
 			celly++;
 			_root.gridY(celly,_root.player);
+			_root.tempstop = false;
 		}
 		else
 		{
