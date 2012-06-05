@@ -1,0 +1,2 @@
+stop();
+unloadMovieNum(1);

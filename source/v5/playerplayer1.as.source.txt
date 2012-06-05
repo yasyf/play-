@@ -1,6 +1,24 @@
 onClipEvent (enterFrame) {
 	_xscale = scalefactor;
 	_yscale = scalefactor;
+	
+	if (_root.player2ready == "0" and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "waiting...";
+	}
+	else if (_root.myonemove == false and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "waiting..";
+	}
+	else if (_root.player2ready == "1"  and !_root.tempstop and _root.opponentFound == "true")
+	{
+		_root.myStatus.text = "go!";
+	}
+	else if(_root.opponentFound != "true")
+	{
+		_root.myStatus.text = "looking...";
+	}
+	
 	if (_root.timer < 61)
 	{
 		_root.timer++;
@@ -8,14 +26,22 @@ onClipEvent (enterFrame) {
 	else
 	{
 		_root.timer = 0;
+		if (_level1.lockk == undefined)
+		{
+			_root.pauser = false;
+		}
+		else
+		{
+			_root.pauser = true;
+		}
 	}
-	
+
 	if (_root.sendReceivebool and _root.exiterbool != true and _root.varsSent != true)
 	{
 		if (_root.opponentFound == "true" and _root.timer == 60)
 		{
 
-			trace("opponent found");
+			ptrace("opponent found");
 			_root.varsSent = true;
 			_root.sendReceive(false);
 
@@ -28,7 +54,7 @@ onClipEvent (enterFrame) {
 
 			if (_root.opponentFinding == false and _root.timer == 60)
 			{
-				trace("looking...");
+				ptrace("looking...");
 				_root.checkFound();
 
 			}
@@ -39,12 +65,12 @@ onClipEvent (enterFrame) {
 	{
 		if (_root.abandoned)
 		{
-			trace("opponent left");
+			ptrace("opponent left");
 		}
 		else
 		{
 
-			trace("game over");
+			ptrace("game over");
 
 		}
 
@@ -58,7 +84,7 @@ onClipEvent (enterFrame) {
 				if (_root.player2ready == 0)
 				{
 					_root.timout = 0;
-					trace("Opponent Not Ready");
+					ptrace("Opponent Not Ready");
 					_root.getReady();
 
 				}
@@ -67,7 +93,7 @@ onClipEvent (enterFrame) {
 					_root.timout = 0;
 					_root.varsSent = false;
 					_root.myonemove = true;
-					trace("Opponent Ready!");
+					ptrace("Opponent Ready!");
 					_root.plusTurn();
 					_root.sendReceive(false);
 
@@ -80,11 +106,11 @@ onClipEvent (enterFrame) {
 					_root.getReady();
 					_root.sendReceive(false);
 					_root.timout++;
-					trace("timeout: " + _root.timout);
+					ptrace("timeout: " + _root.timout);
 					if (_root.timout == 5)
 					{
 
-						trace("Opponent Left Game!");
+						ptrace("Opponent Left Game!");
 						_root.abandoned = true;
 						_root.exit();
 
@@ -96,7 +122,7 @@ onClipEvent (enterFrame) {
 		{
 			if (_root.timer == 60)
 			{
-				trace("Vars have been sent, waiting...");
+				ptrace("Vars have been sent, waiting...");
 
 			}
 		}
@@ -113,79 +139,129 @@ onClipEvent (load) {
 
 }
 onClipEvent (keyDown) {
-	if (Key.isDown(Key.RIGHT) and cellx <= 4 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	if (Key.isDown(Key.RIGHT) and cellx <= 4 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		cellx++;
 		_root.gridX(cellx,_root.player);
-		motion = true;
-		var tweenRight:Tween = new Tween(this, "_x", Regular.easeOut, _x, gridx, 1, true);
-		tweenRight.onMotionFinished = function()
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
-			motion = false;
-			_root.myonemove = false;
-			_root.varsSent = true;
-			_root.sendReceive(true);
+			ptrace("move prohibited");
+			cellx--;
+			_root.gridX(cellx,_root.player);
+			_root.tempstop = false;
+		}
+		else
+		{
 
-		};
+			motion = true;
+			var tweenRight:Tween = new Tween(this, "_x", Regular.easeOut, _x, gridx, 1, true);
+			tweenRight.onMotionFinished = function()
+			{
+				motion = false;
+				_root.myonemove = false;
+				_root.varsSent = true;
+				_root.sendReceive(true);
+
+			};
+
+		}
 	}
-	else if (Key.isDown(Key.LEFT) and cellx >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	else if (Key.isDown(Key.LEFT) and cellx >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		cellx--;
 		_root.gridX(cellx,_root.player);
-		motion = true;
-		var tweenRight:Tween = new Tween(this, "_x", Regular.easeOut, _x, gridx, 1, true);
-		tweenRight.onMotionFinished = function()
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
-			motion = false;
-			_root.myonemove = false;
-			_root.varsSent = true;
-			_root.sendReceive(true);
+			ptrace("move prohibited");
+			cellx++;
+			_root.gridX(cellx,_root.player);
+			_root.tempstop = false;
+		}
+		else
+		{
+			motion = true;
+			var tweenRight:Tween = new Tween(this, "_x", Regular.easeOut, _x, gridx, 1, true);
+			tweenRight.onMotionFinished = function()
+			{
+				motion = false;
+				_root.myonemove = false;
+				_root.varsSent = true;
+				_root.sendReceive(true);
 
-		};
-
+			};
+		}
 	}
-	else if (Key.isDown(Key.UP) and celly <= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	else if (Key.isDown(Key.UP) and celly <= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		celly++;
 		_root.gridY(celly,_root.player);
-		motion = true;
-		var tweenUp:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
-		tweenUp.onMotionFinished = function()
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
-			motion = false;
-			_root.myonemove = false;
-			_root.varsSent = true;
-			_root.sendReceive(true);
-
-		};
-		/*motion = true;
-		var tweenSmall:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor - 55, 1, true);
-		tweenSmall.onMotionFinished = function()
+			ptrace("move prohibited");
+			celly--;
+			_root.gridY(celly,_root.player);
+			_root.tempstop = false;
+		}
+		else
 		{
-			motion = false;
-		};*/
 
+			motion = true;
+			var tweenUp:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
+			tweenUp.onMotionFinished = function()
+			{
+				motion = false;
+				_root.myonemove = false;
+				_root.varsSent = true;
+				_root.sendReceive(true);
+
+			};
+
+			/*motion = true;
+			var tweenSmall:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor - 55, 1, true);
+			tweenSmall.onMotionFinished = function()
+			{
+			motion = false;
+			};*/
+		}
 
 	}
-	else if (Key.isDown(Key.DOWN) and celly >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove)
+	else if (Key.isDown(Key.DOWN) and celly >= 2 and !motion and _root.player2ready != 0 and _root.player2ready != undefined and _root.opponentFound and _root.myonemove and !_root.pauser and !_root.tempstop)
 	{
+		_root.tempstop = true;
 		celly--;
 		_root.gridY(celly,_root.player);
-		motion = true;
-		var tweenDown:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
-		tweenDown.onMotionFinished = function()
+		_root.checkObstacle();
+		if (_root.collider != null)
 		{
-			motion = false;
-			_root.myonemove = false;
-			_root.varsSent = true;
-			_root.sendReceive(true);
+			ptrace("move prohibited");
+			celly++;
+			_root.gridY(celly,_root.player);
+			_root.tempstop = false;
+		}
+		else
+		{
+			motion = true;
+			var tweenDown:Tween = new Tween(this, "_y", Regular.easeOut, _y, gridy, 1, true);
+			tweenDown.onMotionFinished = function()
+			{
+				motion = false;
+				_root.myonemove = false;
+				_root.varsSent = true;
+				_root.sendReceive(true);
 
-		};
-	/*	motion = true;
-		var tweenBig:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor + 55, 1, true);
-		tweenBig.onMotionFinished = function()
-		{
+			};
+			/*motion = true;
+			var tweenBig:Tween = new Tween(this, "scalefactor", Strong.easeOut, scalefactor, scalefactor + 55, 1, true);
+			tweenBig.onMotionFinished = function()
+			{
 			motion = false;
-		};*/
+			};*/
+		}
 	}
 }

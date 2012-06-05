@@ -24,6 +24,7 @@ if (isset($game)) {
     $sql4 = "DELETE FROM `active` WHERE `table`= '" . $game . "'";
     mysql_query($sql4) or die(mysql_error()); //log game closing
     echo("game=$game");
+	 echo("&found=true");
 } else {
 
     //echo("game created!");
@@ -40,5 +41,6 @@ if (isset($game)) {
     $sql4 = "INSERT INTO `active` (`table`,`player`) VALUES ('" . $table . "','" . $player . "')";
     mysql_query($sql4) or die(mysql_error()); //log game opening
     echo("game=$table");
+	 echo("&found=false");
 }
 ?>
