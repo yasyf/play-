@@ -29,11 +29,11 @@ All in-game data is processed independently on either end by AS 2, based on what
 
 
 
-The API is documented in the file:  [**API**]()
+The API is documented in the file:  [**API.md**](https://github.com/yasyf/play-/blob/master/API.md)
 
-The Todo List is documented in the file:  **TODO**
+The Todo List is documented in the file:  [**TODO.md**](https://github.com/yasyf/play-/blob/master/TODO.md)
 
-The Grading Scheme is documented in the file: **Grading.txt**
+The Grading Scheme is documented in the file: [**Grading.md**](https://github.com/yasyf/play-/blob/master/Grading.md)
 
 The Gameplay Cycle is documented in the file: **Gameplay.txt**
 
