@@ -1,6 +1,7 @@
-# Welcome to Yasyf's Cousin Garvey's Den!
+# Welcome to [Yasyf's Cousin Garvey's Den](http://yasyf.github.com/play-/)!
 
-[Visit Homepage](http://garveysden.yasyf.com)
+[Visit Homepage To Play](http://garveysden.yasyf.com)
+
 
 This is a simple turn-based game developed completely using AS 2 and PHP. 
 
@@ -16,9 +17,9 @@ Player 2 will move first.
 
 After both player's have made a move, the turn number increments, and the cages 'fall' one increment towards the ground.
 
-After 8 increments (8 moves EACH), Player 2 will not make a move on the 9th turn, but observe.
+After 7 increments (7 moves EACH), Player 2 will not make a move on the 8th turn, but observe.
 
-Player 1 will make his 9th (final) turn, and then the game will decide the winner.
+Player 1 will make his 8th (final) turn, and then the game will decide the winner.
 
 If the player is trapped, Player 2 wins. If the player escapes, Player 1 wins.
 
@@ -114,4 +115,4 @@ player2 - player two - box dropper with player
 
 -For v5, we will not use a coded grid, but a movie clip with the symbol in its correct scale and position, with one frame per cell, so that playing through the movie clip (or going to a certain frame) will show the new position. This is not compatible with animating this move, so a solution must be found (possible using AS within the movie clip, if possible).
 
--Turns per game: 9
+-Turns per game: 8
