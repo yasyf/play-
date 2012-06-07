@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Garvey's Den : A simple turn-based game developed completely using AS 2 and PHP." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Garvey's Den</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yasyf/play-">View on GitHub</a>
+
+          <h1 id="project_title">Garvey's Den</h1>
+          <h2 id="project_tagline">A simple turn-based game developed completely using AS 2 and PHP.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yasyf/play-/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yasyf/play-/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Welcome to <a href="http://yasyf.github.com/play-/">Yasyf's Cousin Garvey's Den</a>!</h1>
+
+<p><a href="http://garveysden.yasyf.com">Visit Homepage To Play</a></p>
+
+<p>This is a simple turn-based game developed completely using AS 2 and PHP. </p>
+
+<p>The objective of the game is either to drop cages on an enemy player, trapping him, or to avoid the cages being dropped.</p>
+
+<p>The way this is accomplished is that each game starts with three cages positioned across the center of a 5x3 grid at positions (1,2), (3,2), and (5,2), and a player at (3,2).</p>
+
+<p>On Player 1's turn, he can move his player one square in any 90° direction (up, down, left, right), space permitting</p>
+
+<p>On Player 2's turn, he can move one of his three cages to anywhere on the grid (besides from the location occupied by the other two)</p>
+
+<p>Player 2 will move first.</p>
+
+<p>After both player's have made a move, the turn number increments, and the cages 'fall' one increment towards the ground.</p>
+
+<p>After 7 increments (7 moves EACH), Player 2 will not make a move on the 8th turn, but observe.</p>
+
+<p>Player 1 will make his 8th (final) turn, and then the game will decide the winner.</p>
+
+<p>If the player is trapped, Player 2 wins. If the player escapes, Player 1 wins.</p>
+
+<p>All communication between the two players is done via a PHP API and its connected MySQL Database.</p>
+
+<p>All in-game data is processed independently on either end by AS 2, based on what the API returns.</p>
+
+<p>The API is documented in the file:  <a href="https://github.com/yasyf/play-/blob/master/API.md"><strong>API.md</strong></a></p>
+
+<p>The Todo List is documented in the file:  <a href="https://github.com/yasyf/play-/blob/master/TODO.md"><strong>TODO.md</strong></a></p>
+
+<p>The Grading Scheme is documented in the file: <a href="https://github.com/yasyf/play-/blob/master/Grading.md"><strong>Grading.md</strong></a></p>
+
+<p>The Gameplay Cycle is documented in the file: <a href="https://github.com/yasyf/play-/blob/master/Gameplay.md"><strong>Gameplay.md</strong></a></p>
+
+<p>The Commit History is documented in the file: <a href="https://github.com/yasyf/play-/blob/master/ChangeLog"><strong>ChangeLog</strong></a></p>
+
+<p>The Commit History (clean) is documented in the file: <a href="https://github.com/yasyf/play-/blob/master/COMMITS.LOG"><strong>COMMITS.LOG</strong></a></p>
+
+<p>The Source Files are documented in the folder: <a href="https://github.com/yasyf/play-/tree/master/source"><strong>Source</strong></a></p>
+
+<p>The Functions is documented in the file: <a href="https://github.com/yasyf/play-/blob/master/FUNCTIONS.md"><strong>FUNCTIONS.md</strong></a></p>
+
+<h3>API - php files</h3>
+
+<p>accept arguments: <code>box1y</code>, <code>box1x</code>, <code>box2y</code>, <code>box2x</code>, <code>box3y</code>, <code>box3x</code>, <code>player1y</code>, <code>player1x</code>, <code>turn</code>, <code>player1ready</code>, <code>player2ready</code></p>
+
+<h3>v1 - flash files</h3>
+
+<p>multiplayer framework (ActionScript 2)</p>
+
+<p>play - player one - side scroller</p>
+
+<p>player2 - player two - box dropper</p>
+
+<h3>v2 - flash files</h3>
+
+<p>game framework [animation with graphic placeholders]</p>
+
+<p>play - player one - side scroller</p>
+
+<p>player2 - player two - box dropper</p>
+
+<h3>v3 - flash files</h3>
+
+<p>game framework combined [animation with both player's objects with graphic placeholders]</p>
+
+<p>play - player one - side scroller with boxes</p>
+
+<p>player2 - player two - box dropper with player</p>
+
+<h3>v4 - flash files</h3>
+
+<p>game framework and multiplayer framework integration [with placeholder graphics]</p>
+
+<p>play - player one - side scroller with boxes</p>
+
+<p>player2 - player two - box dropper with player</p>
+
+<h3>v5 - flash files</h3>
+
+<p>game framework with actual layout and multiplayer framework integration [with placeholder graphics]</p>
+
+<p>play - player one - side scroller with boxes</p>
+
+<p>player2 - player two - box dropper with player</p>
+
+<h2><em>Notes</em></h2>
+
+<p>-For my sanity, these will be the basic grid of the game. All external backgrounds/surroundings will be a SEPARATE flash file, so that I do not have to recode everything!</p>
+
+<p>-External .as files are not up-to-date or reliable, and should not be referred to except for base framework code.</p>
+
+<p>-ChangeLog is auto generated, and up-to-date since the second-latest commit (HEAD~1).</p>
+
+<p>-For v5, we will not use a coded grid, but a movie clip with the symbol in its correct scale and position, with one frame per cell, so that playing through the movie clip (or going to a certain frame) will show the new position. This is not compatible with animating this move, so a solution must be found (possible using AS within the movie clip, if possible).</p>
+
+<p>-Turns per game: 8</p>
+
+<h2>Ready To Play?</h2>
+
+<p>Check out the game at <a href="http://garveysden.yasyf.com">http://garveysden.yasyf.com</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Garvey's Den maintained by <a href="https://github.com/yasyf">yasyf</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
