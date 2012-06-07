@@ -18,10 +18,10 @@ $player = $data2[0];
 	header("Pragma: no-cache");
 if($player == "1")
 {
-header("Location: site/indexb.php?me=2&nocache=".time());
+header("Location: v5/indexb.php?me=2&nocache=".time());
 }
 else
 {
-header("Location: site/indexb.php?me=1&nocache=".time());
+header("Location: v5/indexb.php?me=1&nocache=".time());
 }
 ?>

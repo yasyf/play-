@@ -14,14 +14,14 @@ $fl = "player2.swf";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Garvey's Den</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../site/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../site/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,7 +29,7 @@ $fl = "player2.swf";
 </head>
 
 <body>
-<img src="images/background.jpg" class="bg" />
+<img src="../site/images/background.jpg" class="bg" />
 <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -40,14 +40,14 @@ $fl = "player2.swf";
              <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Garvey's Den</a>
+          <a class="brand" href="../site/">Garvey's Den</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="../source/">Source Index</a></li>
-               <li><a href="../index.html">Source (Raw)</a></li>
-                 <li><a href="https://github.com/yasyf/play-">Source (GitHub)</a></li>
-                 <li><a href="https://github.com/yasyf/play-/zipball/master">Download Archive</a></li>
+              <li class="active"><a href="../site/">Home</a></li>
+              <li><a href="../source/" target=_blank">Source Index</a></li>
+               <li><a href="../index.html" target=_blank">Source (Raw)</a></li>
+                 <li><a href="https://github.com/yasyf/play-" target=_blank">Source (GitHub)</a></li>
+                 <li><a href="https://github.com/yasyf/play-/zipball/master" target=_blank">Download Archive</a></li>
             </ul>
             
           </div><!--/.nav-collapse -->
@@ -90,7 +90,42 @@ $fl = "player2.swf";
 				<!--<![endif]-->
 			</object>
 		</div>
-    <p><a class="btn btn-primary btn-large" href="../source/">Source &raquo;</a></p>
+		<h1>Instructions:</h1>
+	<div class="row">
+<?php
+if($me != "2")
+{
+?>
+	  <div class="span4 offset1">
+<h2>Player 1:</h2> <br />
+Use the arrow keys to move your player around<br />
+You have nine turns to move your player<br />
+One direction,one square per turn<br />
+Your opponent will be rearanging the falling blocks above you<br />
+He will move one to any location per turn<br />
+The blocks will fall closer one increment each turn<br />
+After the 8th turn, if you are not hit by a landing block, you win!<br />
+</div>
+<?php
+}
+if($me != "1")
+{
+?>
+  <div class="span4 offset4">
+<h2>Player 2:</h2><br />
+Use your mouse to drag the block around<br />
+You have nine turns to move your block<br />
+One block per turn<br />
+Your opponent will be moving his player to avoid your blocks<br />
+He will move one direction,one square per turn <br />
+The blocks will fall down one increment each turn<br />
+After the 8th turn, if you hit him with a landing block, you win!<br />
+</div>
+<?php
+}
+?>
+</div>
+    <p><a class="btn btn-primary btn-large" href="../source/" target=_blank">Source &raquo;</a></p>
 </div>
 </body>
 </html>

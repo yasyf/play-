@@ -11,6 +11,12 @@ if (_level0.obstacles != undefined)
 		_root.obstacleMC["obstacle" + i]._xscale = 20;
 	}
 }
+/**
+* Takes object's virtual cell X coordinate, and turns it into flash grid location
+* @param object
+* @param cellx
+* @return gridx
+*/
 function togridX(cellx, object)
 {
 	//I <3 Math

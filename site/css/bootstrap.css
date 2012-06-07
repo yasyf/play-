@@ -4973,8 +4973,8 @@ img.bg {
 	top: 0;
 	left: 0;
 	z-index: -2;
-	opacity:0.4;
-filter:alpha(opacity=40); /* For IE8 and earlier */
+	opacity:0.15;
+filter:alpha(opacity=15); /* For IE8 and earlier */
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
