@@ -386,6 +386,9 @@ function tocellY(gridy, object)
 	celly = Math.round(celly);
 	object.celly = celly;
 }
+/**
+* Checks through each obstacle for collision with player's current position
+*/
 function checkObstacle()
 {
 	_root.collider = null;
