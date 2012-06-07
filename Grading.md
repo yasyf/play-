@@ -12,8 +12,8 @@ Animation 	5%
 
 Audio 		5%
 
-Webpage 	5%<pre>
+Webpage 	5%
 
-			---</pre>
+			--- 
 
 TOTAL		100%
