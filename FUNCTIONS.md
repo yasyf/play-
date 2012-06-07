@@ -9,12 +9,11 @@
 Takes object's virtual cell Y coordinate, and turns it into flash grid location
 
 
+param: `object`
 
-param: object
+param: `celly`
 
-param: celly
-
-return: gridy
+return: `gridy`
 
 
 
@@ -23,12 +22,11 @@ return: gridy
 Takes object's virtual cell X coordinate, and turns it into flash grid location
 
 
+param: `object`
 
-param: object
+param: `cellx`
 
-param: cellx
-
-return: gridx
+return: `gridx`
 
 
 
@@ -37,14 +35,13 @@ return: gridx
 Checks if box is overlapping other box, and if not animates the move
 
 
+param: `enemy1`
 
-param: enemy1
+param: `enemy2`
 
-param: enemy2
+param: `object`
 
-param: object
-
-param: object.hit
+param: `object.hit`
 
 
 
@@ -53,24 +50,23 @@ param: object.hit
 Checks who won the round
 
 
+param: `box1.cellx`
 
-param: box1.cellx
+param: `box1.celly`
 
-param: box1.celly
+param: `box2.cellx`
 
-param: box2.cellx
+param: `box2.celly`
 
-param: box2.celly
+param: `box3.cellx`
 
-param: box3.cellx
+param: `box3.celly`
 
-param: box3.celly
+param: `player1x`
 
-param: player1x
+param: `player1y`
 
-param: player1y
-
-param: gotya
+param: `gotya`
 
 
 
@@ -79,8 +75,7 @@ param: gotya
 Resets boxes back to original position; resetsafe keeps track of active progress
 
 
-
-param: resetsafe
+param: `resetsafe`
 
 
 
@@ -89,12 +84,11 @@ param: resetsafe
 Animates one turn's move of falling, resetting if round is over; motion keeps track of active progress
 
 
+param: `resetready`
 
-param: resetready
+param: `motion`
 
-param: motion
-
-param: scalefactor
+param: `scalefactor`
 
 
 
@@ -103,12 +97,11 @@ param: scalefactor
 Takes object's virtual cell X coordinate, and moves it to flash grid location
 
 
+param: `object`
 
-param: object
+param: `cellx`
 
-param: cellx
-
-return: gridx
+return: `gridx`
 
 
 
@@ -117,12 +110,11 @@ return: gridx
 Takes object's virtual cell Y coordinate, and moves it to flash grid location
 
 
+param: `object`
 
-param: object
+param: `celly`
 
-param: celly
-
-return: gridy
+return: `gridy`
 
 
 
@@ -131,12 +123,11 @@ return: gridy
 Takes object's flash grid location, and moves it to virtual cell X coordinate
 
 
+param: `object`
 
-param: object
+param: `gridx`
 
-param: gridx
-
-return: cellx
+return: `cellx`
 
 
 
@@ -145,12 +136,11 @@ return: cellx
 Takes object's flash grid location, and moves it to virtual cell Y coordinate
 
 
+param: `object`
 
-param: object
+param: `gridy`
 
-param: gridy
-
-return: celly
+return: `celly`
 
 
 
@@ -159,14 +149,13 @@ return: celly
 Check if object has landed in the same cell it started in
 
 
+param: `object`
 
-param: object
+param: `gridy`
 
-param: gridy
+param: `gridx`
 
-param: gridx
-
-param: yfix
+param: `yfix`
 
 
 
@@ -175,14 +164,13 @@ param: yfix
 Check with API if other player is ready; getreadybool keeps track of active progress
 
 
+param: `game`
 
-param: game
+param: `turn`
 
-param: turn
+param: `player`
 
-param: player
-
-param: getreadybool
+param: `getreadybool`
 
 
 
@@ -191,16 +179,15 @@ param: getreadybool
 Check with API if other player has been found; opponentFinding keeps track of active progress
 
 
+param: `game`
 
-param: game
+param: `turn`
 
-param: turn
+param: `player`
 
-param: player
+param: `opponentFinding`
 
-param: opponentFinding
-
-param: opponentFoundd
+param: `opponentFoundd`
 
 
 
@@ -209,26 +196,25 @@ param: opponentFoundd
 Increments turn in animation, and relays to API; setturnbool keeps track of active progress
 
 
+param: `game`
 
-param: game
+param: `turn`
 
-param: turn
+param: `player`
 
-param: player
+param: `setturnbool`
 
-param: setturnbool
+param: `box1.scalefactor`
 
-param: box1.scalefactor
+param: `box2.scalefactor`
 
-param: box2.scalefactor
+param: `box3.scalefactor`
 
-param: box3.scalefactor
+param: `player.cellx`
 
-param: player.cellx
+param: `player.celly`
 
-param: player.celly
-
-param: gotya
+param: `gotya`
 
 
 
@@ -237,10 +223,9 @@ param: gotya
 Exits game and cleans up table; exiterbool keeps track of active progress
 
 
+param: `game`
 
-param: game
-
-param: exiterbool
+param: `exiterbool`
 
 
 
@@ -249,28 +234,37 @@ param: exiterbool
 Send and receive relevant game variables; used for communication with server-side PHP/MySQL API; getreadybool and sendReceivebool keep track of active progress
 
 
+param: `ismovemade`
 
-param: ismovemade
+param: `game`
 
-param: game
+param: `turn`
 
-param: turn
+param: `setready`
 
-param: setready
+param: `player1x`
 
-param: player1x
+param: `player1y`
 
-param: player1y
+param: `box1x`
 
-param: box1x
+param: `box1y`
 
-param: box1y
+param: `box2x`
 
-param: box2x
+param: `box2y`
 
-param: box2y
+param: `box3x`
 
-param: box3x
+param: `box3y`
 
-param: box3y
+
+
+###checkObstacle()   
+
+Checks through each obstacle for collision with player's current position
+
+
+param: `root.obstacles`
+
 
