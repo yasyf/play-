@@ -24,13 +24,13 @@
 
 <s>11. Ensure gameplay - you don't know what the other move is until you move (introduce element of luck) - on the last scene, both players see a cutscene while a killing or escaping animation takes place</s>
 
-<s>12. Add new variable to be transmitted back and forth to keep track of who won - otherwise player 1 detects the winner after 7 turns (first), but then player 2 could make a move to change the outcome (turn 8)
+<s>12. Add new variable to be transmitted back and forth to keep track of who won - otherwise player 1 detects the winner after 7 turns (first), but then player 2 could make a move to change the outcome (turn 8)</s>
 
 	Since player 1 detects first, have him send the win or loss.
 
 	BETTER IDEA! On the last "turn" (turn 8) in the code, player 2 cannot make a move, just watch the last move of p1. (Send in blank variables, progress. Set up some method to keep track of turns, and implement this on the last one)
 
-		tl;dr T7: P1 makes final move, plays win sequence T8: p2 submits blank move (no change), animates final p1 move,then does same win sequence</s>
+		tl;dr T7: P1 makes final move, plays win sequence T8: p2 submits blank move (no change), animates final p1 move,then does same win sequence
 
 <s>13. Implement obstacles in flash that are already in PHP and db</s>
 
