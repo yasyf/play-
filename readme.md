@@ -35,19 +35,19 @@ The Todo List is documented in the file:  [**TODO.md**](https://github.com/yasyf
 
 The Grading Scheme is documented in the file: [**Grading.md**](https://github.com/yasyf/play-/blob/master/Grading.md)
 
-The Gameplay Cycle is documented in the file: **Gameplay.txt**
+The Gameplay Cycle is documented in the file: [**Gameplay.md**](https://github.com/yasyf/play-/blob/master/Gameplay.md)
 
-The Commit History is documented in the file: **ChangeLog**
+The Commit History is documented in the file: [**ChangeLog**](https://github.com/yasyf/play-/blob/master/ChangeLog)
 
-The Commit History (clean) is documented in the file: **COMMITS.LOG**
+The Commit History (clean) is documented in the file: [**COMMITS.LOG**](https://github.com/yasyf/play-/blob/master/COMMITS.LOG)
 
-The Source Files are documented in the folder: **Source**
+The Source Files are documented in the folder: [**Source**](https://github.com/yasyf/play-/tree/master/source)
 
-The Functions is documented in the file: **FUNCTIONS**
+The Functions is documented in the file: [**FUNCTIONS.md**](https://github.com/yasyf/play-/blob/master/FUNCTIONS.md)
 
 
 
-## API - php files
+### API - php files
 
 accept arguments: `box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1y`, `player1x`, `turn`, `player1ready`, `player2ready`
 
@@ -55,7 +55,7 @@ accept arguments: `box1y`, `box1x`, `box2y`, `box2x`, `box3y`, `box3x`, `player1
 
 
 
-## v1 - flash files
+### v1 - flash files
 
 multiplayer framework (ActionScript 2)
 
@@ -65,7 +65,7 @@ player2 - player two - box dropper
 
 
 
-## v2 - flash files
+### v2 - flash files
 
 game framework [animation with graphic placeholders]
 
@@ -75,7 +75,7 @@ player2 - player two - box dropper
 
 
 
-## v3 - flash files
+### v3 - flash files
 
 game framework combined [animation with both player's objects with graphic placeholders]
 
@@ -85,7 +85,7 @@ player2 - player two - box dropper with player
 
 
 
-## v4 - flash files
+### v4 - flash files
 
 game framework and multiplayer framework integration [with placeholder graphics]
 
@@ -95,7 +95,7 @@ player2 - player two - box dropper with player
 
 
 
-## v5 - flash files
+### v5 - flash files
 
 game framework with actual layout and multiplayer framework integration [with placeholder graphics]
 
@@ -105,7 +105,7 @@ player2 - player two - box dropper with player
 
 
 
-# *Notes*
+## *Notes*
 
 -For my sanity, these will be the basic grid of the game. All external backgrounds/surroundings will be a SEPARATE flash file, so that I do not have to recode everything!
 
@@ -116,3 +116,6 @@ player2 - player two - box dropper with player
 -For v5, we will not use a coded grid, but a movie clip with the symbol in its correct scale and position, with one frame per cell, so that playing through the movie clip (or going to a certain frame) will show the new position. This is not compatible with animating this move, so a solution must be found (possible using AS within the movie clip, if possible).
 
 -Turns per game: 8
+
+## Ready To Play?
+Check out the game at [http://garveysden.yasyf.com](http://garveysden.yasyf.com)
