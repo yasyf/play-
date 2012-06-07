@@ -44,7 +44,7 @@ $fl = "player2.swf";
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="../site/">Home</a></li>
-			  <li><a href="http://yasyf.github.com/play-/" target=_blank">Readme</a></li>
+			  <li><a href="http://yasyf.github.com/play-/" target="_blank">Readme</a></li>
               <li><a href="../source/" target=_blank">Source Index</a></li>
                <li><a href="../index.html" target=_blank">Source (Raw)</a></li>
                  <li><a href="https://github.com/yasyf/play-" target=_blank">Source (GitHub)</a></li>
