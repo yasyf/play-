@@ -503,6 +503,7 @@ _root.opponentFinding = false;
 _root.opponentFound = false;
 _root.init = true;
 _root.myonemove = true;
+loadMovieNum("welcome.swf", 1);
 //columns
 for (i = 3; i >= 1; i--)
 {

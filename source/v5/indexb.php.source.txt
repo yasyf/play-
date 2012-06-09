@@ -44,10 +44,11 @@ $fl = "player2.swf";
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="../site/">Home</a></li>
-              <li><a href="../source/">Source Index</a></li>
-               <li><a href="../index.html">Source (Raw)</a></li>
-                 <li><a href="https://github.com/yasyf/play-">Source (GitHub)</a></li>
-                 <li><a href="https://github.com/yasyf/play-/zipball/master">Download Archive</a></li>
+			  <li><a href="http://yasyf.github.com/play-/" target="_blank">Readme</a></li>
+              <li><a href="../source/" target=_blank">Source Index</a></li>
+               <li><a href="../index.html" target=_blank">Source (Raw)</a></li>
+                 <li><a href="https://github.com/yasyf/play-" target=_blank">Source (GitHub)</a></li>
+                 <li><a href="https://github.com/yasyf/play-/zipball/master" target=_blank">Download Archive</a></li>
             </ul>
             
           </div><!--/.nav-collapse -->
@@ -125,7 +126,8 @@ After the 8th turn, if you hit him with a landing block, you win!<br />
 }
 ?>
 </div>
-    <p><a class="btn btn-primary btn-large" href="../source/">Source &raquo;</a></p>
+    <p><a class="btn btn-primary btn-large" href="../source/" target=_blank">Source &raquo;</a></p>
+<p>&copy; Copyright 2012 <a href="http://www.yasyf.com" target="_blank">Yasyf Mohamedali</a> and Rafay Chaudry. All Rights Reserved.</p>
 </div>
 </body>
 </html>
