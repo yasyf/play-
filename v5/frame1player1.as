@@ -435,6 +435,7 @@ _root.opponentFound = false;
 _root.init = true;
 _root.myonemove = true;
 _root.pauser = false;
+loadMovieNum("welcome.swf", 1);
 //columns
 for (i = 3; i >= 1; i--)
 {

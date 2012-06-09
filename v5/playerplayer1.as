@@ -34,6 +34,7 @@ onClipEvent (enterFrame) {
 		{
 			_root.pauser = true;
 		}
+	
 	}
 
 	if (_root.sendReceivebool and _root.exiterbool != true and _root.varsSent != true)
