@@ -27,27 +27,26 @@ pre.hl	{ color:#ffffff; background-color:#000000; font-size:10pt; font-family:Co
 <pre class="hl"><a name="l_1"></a><span class="line">    1 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span>enterFrame<span class="sym">) {</span>
 <a name="l_2"></a><span class="line">    2 </span>	<span class="kwb">if</span> <span class="sym">(</span>_root.resetsafe<span class="sym">)</span>
 <a name="l_3"></a><span class="line">    3 </span>	<span class="sym">{</span>
-<a name="l_4"></a><span class="line">    4 </span>		_xscale <span class="sym">=</span> scalefactor<span class="sym">;</span>
-<a name="l_5"></a><span class="line">    5 </span>		_yscale <span class="sym">=</span> scalefactor<span class="sym">;</span>
-<a name="l_6"></a><span class="line">    6 </span>		_root.box1out._x <span class="sym">=</span> _x<span class="sym">;</span>
-<a name="l_7"></a><span class="line">    7 </span>		_root.box1out._y <span class="sym">=</span> _y<span class="sym">;</span>
-<a name="l_8"></a><span class="line">    8 </span>	<span class="sym">}</span>
-<a name="l_9"></a><span class="line">    9 </span>
-<a name="l_10"></a><span class="line">   10 </span>
-<a name="l_11"></a><span class="line">   11 </span><span class="sym">}</span>
-<a name="l_12"></a><span class="line">   12 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span><span class="kwb">load</span><span class="sym">) {</span>
-<a name="l_13"></a><span class="line">   13 </span>	import mx.transitions.Tween<span class="sym">;</span>
-<a name="l_14"></a><span class="line">   14 </span>	import mx.transitions.easing.<span class="sym">*;</span>
-<a name="l_15"></a><span class="line">   15 </span>	initX <span class="sym">=</span> <span class="num">1</span><span class="sym">;</span>
-<a name="l_16"></a><span class="line">   16 </span>	initY <span class="sym">=</span> <span class="num">2</span><span class="sym">;</span>
-<a name="l_17"></a><span class="line">   17 </span>	_root.<span class="kwd">togridX</span><span class="sym">(</span><span class="num">1</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
-<a name="l_18"></a><span class="line">   18 </span>	_root.<span class="kwd">togridY</span><span class="sym">(</span><span class="num">2</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
-<a name="l_19"></a><span class="line">   19 </span>	isDragged <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
-<a name="l_20"></a><span class="line">   20 </span>	enemy1 <span class="sym">=</span> box2out<span class="sym">;</span>
-<a name="l_21"></a><span class="line">   21 </span>	enemy2 <span class="sym">=</span> box3out<span class="sym">;</span>
-<a name="l_22"></a><span class="line">   22 </span>	scalefactor <span class="sym">=</span> <span class="num">35</span><span class="sym">;</span>
-<a name="l_23"></a><span class="line">   23 </span>
-<a name="l_24"></a><span class="line">   24 </span><span class="sym">}</span>
+<a name="l_4"></a><span class="line">    4 </span>
+<a name="l_5"></a><span class="line">    5 </span>		_xscale <span class="sym">=</span> scalefactor<span class="sym">;</span>
+<a name="l_6"></a><span class="line">    6 </span>		_yscale <span class="sym">=</span> scalefactor<span class="sym">;</span>
+<a name="l_7"></a><span class="line">    7 </span>		_root.box3out._x <span class="sym">=</span> _x<span class="sym">;</span>
+<a name="l_8"></a><span class="line">    8 </span>		_root.box3out._y <span class="sym">=</span> _y<span class="sym">;</span>
+<a name="l_9"></a><span class="line">    9 </span>	<span class="sym">}</span>
+<a name="l_10"></a><span class="line">   10 </span><span class="sym">}</span>
+<a name="l_11"></a><span class="line">   11 </span><span class="kwb">onClipEvent</span> <span class="sym">(</span><span class="kwb">load</span><span class="sym">) {</span>
+<a name="l_12"></a><span class="line">   12 </span>	import mx.transitions.Tween<span class="sym">;</span>
+<a name="l_13"></a><span class="line">   13 </span>	import mx.transitions.easing.<span class="sym">*;</span>
+<a name="l_14"></a><span class="line">   14 </span>	initX <span class="sym">=</span> <span class="num">5</span><span class="sym">;</span>
+<a name="l_15"></a><span class="line">   15 </span>	initY <span class="sym">=</span> <span class="num">2</span><span class="sym">;</span>
+<a name="l_16"></a><span class="line">   16 </span>	_root.<span class="kwd">togridX</span><span class="sym">(</span><span class="num">5</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
+<a name="l_17"></a><span class="line">   17 </span>	_root.<span class="kwd">togridY</span><span class="sym">(</span><span class="num">2</span><span class="sym">,</span><span class="kwb">this</span><span class="sym">);</span>
+<a name="l_18"></a><span class="line">   18 </span>	isDragged <span class="sym">=</span> <span class="kwb">false</span><span class="sym">;</span>
+<a name="l_19"></a><span class="line">   19 </span>	enemy1 <span class="sym">=</span> box2out<span class="sym">;</span>
+<a name="l_20"></a><span class="line">   20 </span>	enemy2 <span class="sym">=</span> box1out<span class="sym">;</span>
+<a name="l_21"></a><span class="line">   21 </span>	scalefactor <span class="sym">=</span> <span class="num">35</span><span class="sym">;</span>
+<a name="l_22"></a><span class="line">   22 </span>
+<a name="l_23"></a><span class="line">   23 </span><span class="sym">}</span>
 </pre>
 </body>
 </html>
